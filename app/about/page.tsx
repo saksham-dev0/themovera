@@ -1,0 +1,92 @@
+import { Card } from "@/components/ui/Card";
+import { Nav } from "@/components/ui/Nav";
+import { CTABand, Footer } from "@/components/ui/Footer";
+
+export const metadata = {
+  title: "About Us | Movera Removals & Storage",
+  description: "Family owned removalists with 13+ years combined experience across Sydney, Melbourne and Brisbane.",
+};
+
+const stats = [
+  { value: "12,000+", label: "MOVES COMPLETED" },
+  { value: "4.9★", label: "FROM 5,527+ REVIEWS" },
+  { value: "13+ yrs", label: "COMBINED EXPERIENCE" },
+  { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
+];
+
+const values = [
+  {
+    title: "Family owned, not a bidding site",
+    body: "Movera is family owned and operated. When you call us, you're talking to the people who run the crews — not a call centre passing your details to the highest-bidding subcontractor.",
+  },
+  {
+    title: "One trained crew, start to finish",
+    body: "Every move is handled by our own trained, background-checked movers. No subcontractors, no unfamiliar faces showing up on the day.",
+  },
+  {
+    title: "Fixed price, every time",
+    body: "We assess volume, distance and access up front, then give you one fixed price. What we quote is what's on the invoice.",
+  },
+  {
+    title: "Careful with what matters",
+    body: "From everyday furniture to pianos and antiques, every item is wrapped, handled and placed with the same level of care.",
+  },
+];
+
+export default function AboutPage() {
+  return (
+    <div className="bg-gray-50 font-sans text-ink-600">
+      <Nav />
+
+      <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10">
+        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-6">
+          About Movera
+        </div>
+        <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
+          Reliable Removalists Australia Trusts.
+        </h1>
+        <p className="text-[17px] leading-[1.65] max-w-[640px]">
+          Movera is a family owned and operated removals company serving Sydney, Melbourne and Brisbane. Over 13
+          years of combined experience, our trained crews have completed 12,000+ moves — homes, offices, and
+          interstate relocations — always with one fixed price and no subcontractors.
+        </p>
+      </section>
+
+      <section className="bg-white border-y border-border">
+        <div className="max-w-[1180px] mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <div className="font-display font-bold text-3xl text-teal-500 mb-1.5">{s.value}</div>
+              <div className="text-xs font-display font-semibold tracking-[1.2px] uppercase text-ink-400">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-[1180px] mx-auto px-8 py-16">
+        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
+          What We Stand For
+        </div>
+        <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
+          Every move, handled properly
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {values.map((v) => (
+            <Card key={v.title}>
+              <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">{v.title}</div>
+              <p className="m-0 text-sm leading-[1.6]">{v.body}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <div className="max-w-[1180px] mx-auto px-8 pb-16">
+        <CTABand />
+      </div>
+
+      <Footer />
+    </div>
+  );
+}

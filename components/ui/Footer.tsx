@@ -1,7 +1,40 @@
+import Image from "next/image";
+
 const columns = [
-  { title: "Moving", links: ["Local Moving", "Interstate Relocation", "Business Relocations", "Warehouse Relocations", "Packing & Unpacking", "Box Shop"] },
-  { title: "Storage", links: ["Sydney Storage", "Melbourne Storage", "Brisbane Storage", "How it works", "Storage Units", "Our Facilities"] },
-  { title: "Resources", links: ["About Us", "Moving Guides", "Meet the Team", "Careers", "Helpful content"] },
+  {
+    title: "Moving",
+    links: [
+      { label: "Local Moving", href: "/services/local-removals" },
+      { label: "Interstate Relocation", href: "#" },
+      { label: "Business Relocations", href: "/services/office-commercial-relocations" },
+      { label: "Warehouse Relocations", href: "#" },
+      { label: "Packing & Unpacking", href: "/services/packing-unpacking" },
+      { label: "Box Shop", href: "#" },
+    ],
+  },
+  {
+    title: "Storage",
+    links: [
+      { label: "Sydney Storage", href: "#" },
+      { label: "Melbourne Storage", href: "#" },
+      { label: "Brisbane Storage", href: "#" },
+      { label: "How it works", href: "#" },
+      { label: "Storage Units", href: "#" },
+      { label: "Our Facilities", href: "#" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Moving Guides", href: "/guides" },
+      { label: "Meet the Team", href: "#" },
+      { label: "Careers", href: "#" },
+    ],
+  },
 ];
 
 const locations = [
@@ -35,8 +68,8 @@ export function Footer() {
     <footer className="bg-ink-900">
       <div className="max-w-[1180px] mx-auto px-8 pt-14 pb-10">
         <div className="flex justify-between items-start gap-8 flex-wrap mb-10">
-          <div className="w-11 h-11 border-2 border-white rounded-sm grid place-items-center font-display font-bold text-xl text-white">
-            M
+          <div className="relative h-11 w-11 bg-white rounded-sm overflow-hidden">
+            <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" />
           </div>
           <div className="text-right">
             <div className="font-display font-bold text-2xl text-white mb-2">☎ 1300 465 569</div>
@@ -54,13 +87,20 @@ export function Footer() {
               Your trusted partner for professional removals and storage across Australia
             </div>
             <div className="flex gap-2.5">
-              {["f", "t", "ig", "yt"].map((s) => (
-                <div
-                  key={s}
-                  className="w-9 h-9 border-[1.5px] border-ink-400 rounded-pill grid place-items-center text-white text-[13px]"
+              {[
+                { label: "Facebook", icon: "/facebook.png" },
+                { label: "Twitter", icon: "/twitter.png" },
+                { label: "Instagram", icon: "/instagram.png" },
+                { label: "YouTube", icon: "/youtube.png" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href="#"
+                  aria-label={s.label}
+                  className="relative w-9 h-9 border-[1.5px] border-ink-400 rounded-pill grid place-items-center"
                 >
-                  {s}
-                </div>
+                  <Image src={s.icon} alt={s.label} fill className="object-contain p-2" />
+                </a>
               ))}
             </div>
           </div>
@@ -69,8 +109,8 @@ export function Footer() {
               <div className="font-display font-semibold text-sm text-teal-500 mb-3.5">{col.title}</div>
               <div className="grid gap-2.5 text-sm">
                 {col.links.map((link) => (
-                  <a key={link} href="#" className="text-white hover:text-teal-500">
-                    {link}
+                  <a key={link.label} href={link.href} className="text-white hover:text-teal-500">
+                    {link.label}
                   </a>
                 ))}
               </div>

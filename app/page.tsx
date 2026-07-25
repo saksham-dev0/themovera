@@ -1,9 +1,12 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, IconTile } from "@/components/ui/Card";
 import { Input, Select, Label } from "@/components/ui/Input";
 import { Accordion } from "@/components/ui/Accordion";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
+import { services } from "@/app/services/data";
 
 const stats = [
   { value: "12,000+", label: "MOVES COMPLETED" },
@@ -12,24 +15,26 @@ const stats = [
   { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
-const services = [
-  {
-    title: "Local Removals",
-    body: "Studios to 5-bedroom homes across Sydney, Melbourne and Brisbane. Fixed price, trained crew — not a subcontractor bidding site.",
-  },
-  {
-    title: "Office & Commercial",
-    body: "Minimum downtime. After-hours and weekend moves available. Labelled, sequenced IT and workstations handled with care.",
-  },
-  {
-    title: "Interstate Removals",
-    body: "Sydney to Melbourne, Brisbane, Adelaide, Canberra — on our own truck, not handed off. SMS tracking door to door.",
-  },
-  {
-    title: "Packing & Storage",
-    body: "Full or partial packing with materials supplied. Pianos, pool tables, antiques — specialist handling as standard.",
-  },
+const areas = [
+  { city: "Sydney", note: "27 Allen Street, Wolli Creek NSW — plus surrounding suburbs" },
+  { city: "Melbourne", note: "32-44 Keys Road, Cheltenham VIC — plus surrounding suburbs" },
+  { city: "Brisbane", note: "26 Murdoch Circuit, Acacia Ridge QLD — plus surrounding suburbs" },
 ];
+
+const fleet = [
+  { title: "Our truck fleet", caption: "Modern, well-maintained trucks sized to your move.", image: "/Interstate.png" },
+  { title: "Trained crew", caption: "Background-checked movers, not subcontractors.", image: "/office_removal.png" },
+  { title: "Packing materials", caption: "Boxes, wrap and padding ready for every job.", image: "/movera_storage.png" },
+];
+
+const serviceImages: Record<string, string> = {
+  "local-removals": "/House.png",
+  "office-commercial-relocations": "/office_removal.png",
+  "packing-unpacking": "/movera_storage.png",
+  "furniture-removals": "/House_removalist.png",
+  "specialty-item-removals": "/movera.jpeg",
+  "loading-unloading": "/house_removal2.png",
+};
 
 const steps = [
   {
@@ -165,10 +170,8 @@ export default function Home() {
 
       {/* Photo banner */}
       <section className="max-w-[1180px] mx-auto px-8 pb-16">
-        <div className="relative rounded-md overflow-hidden border border-border shadow-raised">
-          <div className="h-[360px] bg-[repeating-linear-gradient(45deg,#EEF6F4,#EEF6F4_12px,#DCEEEA_12px,#DCEEEA_24px)] grid place-items-center font-mono text-xs text-[#5E8A80]">
-            moving crew &amp; truck photo
-          </div>
+        <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[360px]">
+          <Image src="/banner.png" alt="Movera crew moving furniture" fill className="object-cover" priority />
           <div className="absolute bottom-5 left-5 bg-white/95 rounded-pill px-4 py-2 text-xs font-display font-semibold text-ink-800 flex items-center gap-2">
             <span className="w-2 h-2 rounded-pill bg-clay-500" />
             Live move · Fitzroy → St Kilda
@@ -195,22 +198,36 @@ export default function Home() {
         <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
           Services
         </div>
-        <h2 className="font-display font-bold text-[28px] leading-[1.2] text-ink-800 m-0 mb-8 max-w-[640px]">
-          Removalist Services — Every Move, Handled
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex items-end justify-between gap-6 flex-wrap mb-8">
+          <h2 className="font-display font-bold text-[28px] leading-[1.2] text-ink-800 m-0 max-w-[640px]">
+            Removalist Services — Every Move, Handled
+          </h2>
+          <Link
+            href="/services"
+            className="text-sm font-display font-semibold text-teal-500 no-underline hover:underline shrink-0"
+          >
+            View all services →
+          </Link>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
-            <div key={s.title} className="bg-white rounded-md overflow-hidden border border-border">
-              <div className="relative h-[120px] bg-[repeating-linear-gradient(45deg,#EEF6F4,#EEF6F4_10px,#DCEEEA_10px,#DCEEEA_20px)]">
+            <Link
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              className="block bg-white rounded-md overflow-hidden border border-border no-underline hover:shadow-raised transition-shadow"
+            >
+              <div className="relative h-[120px]">
+                <Image src={serviceImages[s.slug]} alt={s.title} fill className="object-cover" />
                 <div className="absolute bottom-3 left-3">
                   <IconTile>M</IconTile>
                 </div>
               </div>
               <div className="p-5">
                 <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">{s.title}</div>
-                <p className="m-0 text-sm leading-[1.6]">{s.body}</p>
+                <p className="m-0 mb-3 text-sm leading-[1.6]">{s.tagline}</p>
+                <span className="text-sm font-display font-semibold text-teal-500">View details →</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -242,8 +259,8 @@ export default function Home() {
       {/* Comparison */}
       <section className="bg-ink-900">
         <div className="max-w-[1180px] mx-auto px-8 py-16 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="rounded-md overflow-hidden h-[380px] bg-[repeating-linear-gradient(45deg,#22302B,#22302B_14px,#14211D_14px,#14211D_28px)] grid place-items-center font-mono text-xs text-white/50">
-            crew loading truck photo
+          <div className="relative rounded-md overflow-hidden h-[380px]">
+            <Image src="/house_removal2.png" alt="Movera crew loading truck" fill className="object-cover" />
           </div>
           <div>
             <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-teal-500 mb-3">
@@ -267,6 +284,49 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Areas We Service */}
+      <section className="max-w-[1180px] mx-auto px-8 py-16">
+        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
+          Areas We Service
+        </div>
+        <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
+          Servicing Sydney, Melbourne &amp; Brisbane — and everywhere in between
+        </h2>
+        <div className="grid sm:grid-cols-3 gap-6">
+          {areas.map((a) => (
+            <Card key={a.city}>
+              <div className="font-display font-semibold text-lg text-ink-800 mb-2">{a.city}</div>
+              <p className="m-0 text-sm leading-[1.6]">{a.note}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Fleet & Crew showcase */}
+      <section className="bg-white">
+        <div className="max-w-[1180px] mx-auto px-8 py-16">
+          <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
+            Our Fleet &amp; Crew
+          </div>
+          <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
+            The people and equipment behind every move
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {fleet.map((f) => (
+              <div key={f.title} className="rounded-md overflow-hidden border border-border">
+                <div className="relative h-[160px]">
+                  <Image src={f.image} alt={f.title} fill className="object-cover" />
+                </div>
+                <div className="p-5">
+                  <div className="font-display font-semibold text-[15px] text-ink-800 mb-1.5">{f.title}</div>
+                  <p className="m-0 text-sm leading-[1.6]">{f.caption}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
