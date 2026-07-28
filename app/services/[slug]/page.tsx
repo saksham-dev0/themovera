@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
@@ -55,6 +56,17 @@ export default async function ServicePage({
         <div className="flex flex-wrap items-center gap-4">
           <Button variant="secondary">☎ 02 8503 4444</Button>
           <Button variant="primary">Get My Free Quote →</Button>
+        </div>
+      </section>
+
+      {/* Photo banner */}
+      <section className="max-w-[1180px] mx-auto px-8 pb-16">
+        <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[360px]">
+          <Image src={service.image} alt={service.title} fill className="object-cover" priority />
+          <div className="absolute bottom-5 left-5 bg-white/95 rounded-pill px-4 py-2 text-xs font-display font-semibold text-ink-800 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-pill bg-clay-500" />
+            {service.caption}
+          </div>
         </div>
       </section>
 

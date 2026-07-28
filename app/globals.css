@@ -11,32 +11,32 @@
   --font-sans: var(--font-mulish);
   --font-display: var(--font-poppins);
 
-  /* Brand · Harbour Teal */
-  --color-teal-600: #12665b;
-  --color-teal-500: #1a7f72;
-  --color-teal-400: #156f63;
-  --color-teal-200: #c9e4df;
-  --color-teal-100: #dceeea;
-  --color-teal-50: #eef6f4;
+  /* Brand · Harbour Blue */
+  --color-teal-600: #20496b;
+  --color-teal-500: #2c5f8a;
+  --color-teal-400: #274f72;
+  --color-teal-200: #c6d8e5;
+  --color-teal-100: #dce8f1;
+  --color-teal-50: #eef4f8;
 
-  /* Accent */
-  --color-clay-600: #c55a2a;
-  --color-clay-500: #e0703c;
-  --color-clay-100: #f9e4d7;
+  /* Accent · Sand */
+  --color-clay-600: #6e5429;
+  --color-clay-500: #8a6a34;
+  --color-clay-100: #e8d5b0;
   --color-sage-500: #7fb25b;
   --color-gold-400: #e8a93c;
 
   /* Ink */
-  --color-ink-900: #14211d;
-  --color-ink-800: #22302b;
-  --color-ink-600: #43514b;
-  --color-ink-400: #7e8a84;
+  --color-ink-900: #1b2a38;
+  --color-ink-800: #22303d;
+  --color-ink-600: #4a5762;
+  --color-ink-400: #7c8790;
 
-  /* Surface */
+  /* Surface · Cream */
   --color-white: #ffffff;
-  --color-gray-50: #f6f5f1;
-  --color-gray-100: #f0eee8;
-  --color-border: #e4e2d9;
+  --color-gray-50: #f7f6f3;
+  --color-gray-100: #f0ece2;
+  --color-border: #e2dcc9;
 
   /* Status */
   --color-success-bg: #f1f7e9;
@@ -44,8 +44,8 @@
   --color-danger: #c8503c;
   --color-danger-bg: #faece8;
   --color-danger-border: #efc9bf;
-  --color-info-bg: #eef6f4;
-  --color-info-border: #c9e4df;
+  --color-info-bg: #eef4f8;
+  --color-info-border: #c6d8e5;
 
   /* Radius */
   --radius-sm: 8px;

@@ -13,22 +13,22 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 const colorGroups = [
   {
-    name: "Brand · Harbour Teal",
+    name: "Brand · Harbour Blue",
     swatches: [
-      { token: "teal-500", hex: "#1A7F72", use: "Primary brand, links", cls: "bg-teal-500" },
-      { token: "teal-600", hex: "#12665B", use: "Hover, emphasis", cls: "bg-teal-600" },
-      { token: "teal-400", hex: "#156F63", use: "CTA band fill", cls: "bg-teal-400" },
-      { token: "teal-200", hex: "#C9E4DF", use: "Road motif", cls: "bg-teal-200" },
-      { token: "teal-100", hex: "#DCEEEA", use: "Icon tiles, tints", cls: "bg-teal-100" },
-      { token: "teal-50", hex: "#EEF6F4", use: "Subtle washes", cls: "bg-teal-50" },
+      { token: "teal-500", hex: "#2C5F8A", use: "Primary brand, links", cls: "bg-teal-500" },
+      { token: "teal-600", hex: "#20496B", use: "Hover, emphasis", cls: "bg-teal-600" },
+      { token: "teal-400", hex: "#274F72", use: "CTA band fill", cls: "bg-teal-400" },
+      { token: "teal-200", hex: "#C6D8E5", use: "Road motif", cls: "bg-teal-200" },
+      { token: "teal-100", hex: "#DCE8F1", use: "Icon tiles, tints", cls: "bg-teal-100" },
+      { token: "teal-50", hex: "#EEF4F8", use: "Subtle washes", cls: "bg-teal-50" },
     ],
   },
   {
-    name: "Accent",
+    name: "Accent · Sand",
     swatches: [
-      { token: "clay-500", hex: "#E0703C", use: "Primary CTA, step badges", cls: "bg-clay-500" },
-      { token: "clay-600", hex: "#C55A2A", use: "CTA hover", cls: "bg-clay-600" },
-      { token: "clay-100", hex: "#F9E4D7", use: "Clay tint", cls: "bg-clay-100" },
+      { token: "clay-500", hex: "#8A6A34", use: "Primary CTA, step badges", cls: "bg-clay-500" },
+      { token: "clay-600", hex: "#6E5429", use: "CTA hover", cls: "bg-clay-600" },
+      { token: "clay-100", hex: "#E8D5B0", use: "Sand tint", cls: "bg-clay-100" },
       { token: "sage-500", hex: "#7FB25B", use: "Contact / phone only", cls: "bg-sage-500" },
       { token: "gold-400", hex: "#E8A93C", use: "Rating stars", cls: "bg-gold-400" },
     ],
@@ -36,19 +36,19 @@ const colorGroups = [
   {
     name: "Ink",
     swatches: [
-      { token: "ink-900", hex: "#14211D", use: "Nav, footer surfaces", cls: "bg-ink-900" },
-      { token: "ink-800", hex: "#22302B", use: "Headings", cls: "bg-ink-800" },
-      { token: "ink-600", hex: "#43514B", use: "Body text", cls: "bg-ink-600" },
-      { token: "ink-400", hex: "#7E8A84", use: "Muted, captions", cls: "bg-ink-400" },
+      { token: "ink-900", hex: "#1B2A38", use: "Nav, footer surfaces", cls: "bg-ink-900" },
+      { token: "ink-800", hex: "#22303D", use: "Headings", cls: "bg-ink-800" },
+      { token: "ink-600", hex: "#4A5762", use: "Body text", cls: "bg-ink-600" },
+      { token: "ink-400", hex: "#7C8790", use: "Muted, captions", cls: "bg-ink-400" },
     ],
   },
   {
-    name: "Surface",
+    name: "Surface · Cream",
     swatches: [
       { token: "white", hex: "#FFFFFF", use: "Cards, page", cls: "bg-white border border-border" },
-      { token: "gray-50", hex: "#F6F5F1", use: "Alt sections", cls: "bg-gray-50" },
-      { token: "gray-100", hex: "#F0EEE8", use: "Input fill", cls: "bg-gray-100" },
-      { token: "border", hex: "#E4E2D9", use: "Card borders, rules", cls: "bg-border" },
+      { token: "gray-50", hex: "#F7F6F3", use: "Alt sections", cls: "bg-gray-50" },
+      { token: "gray-100", hex: "#F0ECE2", use: "Input fill", cls: "bg-gray-100" },
+      { token: "border", hex: "#E2DCC9", use: "Card borders, rules", cls: "bg-border" },
     ],
   },
 ];

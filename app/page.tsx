@@ -120,6 +120,7 @@ export default function Home() {
             <Button variant="secondary">☎ 02 8503 4444</Button>
             <Button variant="outline">See How It Works</Button>
           </div>
+
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-600">
             <span>✓ Fully Insured</span>
             <span className="text-border">•</span>

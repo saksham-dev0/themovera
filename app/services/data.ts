@@ -5,11 +5,15 @@ export type Service = {
   description: string;
   features: string[];
   idealFor: string[];
+  image: string;
+  caption: string;
 };
 
 export const services: Service[] = [
   {
     slug: "local-removals",
+    image: "/House.png",
+    caption: "Local move · packed and loaded with care",
     title: "Local Removals",
     tagline: "Across the street or across the city — simple, efficient, stress-free.",
     description:
@@ -24,6 +28,8 @@ export const services: Service[] = [
   },
   {
     slug: "office-commercial-relocations",
+    image: "/office_removal.png",
+    caption: "Office fit-out relocated after-hours",
     title: "Office & Commercial Relocations",
     tagline: "Efficient business moves that keep downtime to a minimum.",
     description:
@@ -38,6 +44,8 @@ export const services: Service[] = [
   },
   {
     slug: "packing-unpacking",
+    image: "/movera_storage.png",
+    caption: "Boxes, wrap and materials ready to go",
     title: "Packing & Unpacking",
     tagline: "Quality materials, proven technique, everything secured for transport.",
     description:
@@ -52,6 +60,8 @@ export const services: Service[] = [
   },
   {
     slug: "furniture-removals",
+    image: "/House_removalist.png",
+    caption: "Furniture wrapped and carried with care",
     title: "Furniture Removals",
     tagline: "Everyday and oversized pieces, moved without the worry.",
     description:
@@ -66,6 +76,8 @@ export const services: Service[] = [
   },
   {
     slug: "specialty-item-removals",
+    image: "/movera.jpeg",
+    caption: "Specialty items handled with purpose-built care",
     title: "Specialty Item Removals",
     tagline: "Extra care for the items that can't be replaced.",
     description:
@@ -80,6 +92,8 @@ export const services: Service[] = [
   },
   {
     slug: "loading-unloading",
+    image: "/house_removal2.png",
+    caption: "Loading crew maximising every truck",
     title: "Loading & Unloading Services",
     tagline: "Labour-only support for your own truck, trailer or container.",
     description:

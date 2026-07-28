@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
@@ -6,6 +7,25 @@ export const metadata = {
   title: "Reviews | Movera Removals & Storage",
   description: "4.9 stars from 5,527+ reviews — see what customers say about moving with Movera.",
 };
+
+type VideoTestimonial = {
+  type: "video";
+  src: string;
+  aspect: string;
+};
+type PhotoTestimonial = {
+  type: "photo";
+  src: string;
+  aspect: string;
+};
+
+const mediaTestimonials: (VideoTestimonial | PhotoTestimonial)[] = [
+  { type: "video", src: "/review1.mp4", aspect: "aspect-[9/16]" },
+  { type: "video", src: "/review.mp4", aspect: "aspect-[9/16]" },
+  { type: "photo", src: "/review.jpeg", aspect: "aspect-[9/16]" },
+  { type: "video", src: "/review2.mp4", aspect: "aspect-[9/16]" },
+  // { type: "photo", src: "/review1.jpeg", aspect: "aspect-video" },
+];
 
 const reviews = [
   {
@@ -85,7 +105,46 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <section className="max-w-[1180px] mx-auto px-8 py-16">
+      {/* Video & photo reviews */}
+      <section className="max-w-[1180px] mx-auto px-8 pb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-2 h-2 rounded-pill bg-clay-500" />
+          <h2 className="font-display font-bold text-[22px] text-ink-800 m-0">
+            Real moves, in customers&rsquo; own words
+          </h2>
+        </div>
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-5 [column-fill:balance]">
+          {mediaTestimonials.map((m) => (
+            <div
+              key={m.src}
+              className={`relative mb-5 break-inside-avoid rounded-md overflow-hidden border border-border bg-ink-900 shadow-raised ${m.aspect}`}
+            >
+              {m.type === "video" ? (
+                <video
+                  src={m.src}
+                  controls
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <Image src={m.src} alt="Movera customer review" fill className="object-cover" />
+              )}
+              <div className="pointer-events-none absolute top-3 left-3 bg-white/95 rounded-pill px-3 py-1 text-[11px] font-display font-semibold text-ink-800 flex items-center gap-1.5">
+                <span className="text-gold-400">★★★★★</span>
+                Verified
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-[1180px] mx-auto px-8 pb-16">
+        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-8">
+          Written reviews
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((r) => (
             <Card key={r.name}>

@@ -131,11 +131,11 @@ export function Footer() {
             MOVE THE RIGHT WAY <span className="text-white">MOVE WITH MOVERA</span>
           </div>
           <div className="flex gap-4 text-xs text-white/60">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
+            <a href="/privacy" className="hover:text-white">Privacy Policy</a>
             <span>|</span>
-            <a href="#" className="hover:text-white">Terms &amp; Conditions</a>
+            <a href="/terms" className="hover:text-white">Terms &amp; Conditions</a>
             <span>|</span>
-            <a href="#" className="hover:text-white">Returns &amp; Refunds</a>
+            <a href="/returns-refunds" className="hover:text-white">Returns &amp; Refunds</a>
           </div>
           <div className="text-xs text-white/40">
             Movera Transport Pty Ltd t/a Movera Removals &amp; Storage · ABN 26 161 560 489

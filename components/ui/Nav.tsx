@@ -22,6 +22,7 @@ const navItems = [
 
 export function Nav() {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <div className="sticky top-0 z-20">
@@ -39,15 +40,12 @@ export function Nav() {
       </div>
       <div className="bg-ink-900">
         <div className="max-w-[1180px] mx-auto flex items-center gap-9 px-8 py-4.5">
-          <div className="flex items-center gap-2.5 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 no-underline" aria-label="Movera — home">
             <div className="relative h-10 w-10 bg-white rounded-sm overflow-hidden shrink-0">
               <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" priority />
             </div>
-            <div>
-              <div className="font-display font-bold text-base tracking-[2px] text-white leading-none">MOVERA</div>
-              <div className="text-[9px] tracking-[3px] text-ink-400 mt-1">REMOVALS &amp; STORAGE</div>
-            </div>
-          </div>
+            <div className="font-display font-bold text-base tracking-[2px] text-white leading-none">MOVERA</div>
+          </Link>
           <nav className="hidden lg:flex gap-7 flex-1 items-center">
             <Link
               href="/"
@@ -94,10 +92,55 @@ export function Nav() {
               </Link>
             ))}
           </nav>
-          <button className="ml-auto font-display font-semibold text-xs tracking-wide text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-sm px-4.5 py-2.5 cursor-pointer whitespace-nowrap">
-            GET A QUOTE
-          </button>
+          <div className="ml-auto flex items-center gap-3">
+            <button className="font-display font-semibold text-xs tracking-wide text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-sm px-4.5 py-2.5 cursor-pointer whitespace-nowrap">
+              GET A QUOTE
+            </button>
+            <button
+              className="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-9 shrink-0 bg-transparent border-0 cursor-pointer"
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <span
+                className={`block h-[2px] w-6 bg-white transition-transform ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`}
+              />
+              <span className={`block h-[2px] w-6 bg-white transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
+              <span
+                className={`block h-[2px] w-6 bg-white transition-transform ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+              />
+            </button>
+          </div>
         </div>
+
+        {mobileOpen && (
+          <nav className="lg:hidden border-t border-white/10 px-8 py-4 flex flex-col gap-1">
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              className="font-display font-semibold text-[13px] tracking-wide text-white no-underline py-2.5 hover:text-teal-500"
+            >
+              HOME
+            </Link>
+            <Link
+              href="/services"
+              onClick={() => setMobileOpen(false)}
+              className="font-display font-semibold text-[13px] tracking-wide text-white no-underline py-2.5 hover:text-teal-500"
+            >
+              SERVICES
+            </Link>
+            {navItems.slice(1).map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="font-display font-semibold text-[13px] tracking-wide text-white no-underline py-2.5 hover:text-teal-500"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
       </div>
     </div>
   );

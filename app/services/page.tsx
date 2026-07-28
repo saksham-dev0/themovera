@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { IconTile } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
@@ -21,10 +22,14 @@ export default function ServicesIndexPage() {
         <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
           Removalist Services — Every Move, Handled
         </h1>
-        <p className="text-[17px] leading-[1.65] max-w-[620px] mb-12">
+        <p className="text-[17px] leading-[1.65] max-w-[620px] mb-10">
           Home, office, or specialty item — our trained crews handle every part of your move with the same
           fixed-price, no-surprises approach.
         </p>
+
+        <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[300px] mb-12">
+          <Image src="/banner.png" alt="Movera crew moving furniture" fill className="object-cover" priority />
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
@@ -33,7 +38,8 @@ export default function ServicesIndexPage() {
               href={`/services/${s.slug}`}
               className="block bg-white rounded-md overflow-hidden border border-border no-underline hover:shadow-raised transition-shadow"
             >
-              <div className="relative h-[120px] bg-[repeating-linear-gradient(45deg,#EEF6F4,#EEF6F4_10px,#DCEEEA_10px,#DCEEEA_20px)]">
+              <div className="relative h-[160px]">
+                <Image src={s.image} alt={s.title} fill className="object-cover" />
                 <div className="absolute bottom-3 left-3">
                   <IconTile>M</IconTile>
                 </div>
