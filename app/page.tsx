@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, IconTile } from "@/components/ui/Card";
-import { Input, Select, Label } from "@/components/ui/Input";
+import { Input, Label } from "@/components/ui/Input";
 import { Accordion } from "@/components/ui/Accordion";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
@@ -16,15 +16,15 @@ const stats = [
 ];
 
 const areas = [
-  { city: "Sydney", note: "27 Allen Street, Wolli Creek NSW — plus surrounding suburbs" },
-  { city: "Melbourne", note: "32-44 Keys Road, Cheltenham VIC — plus surrounding suburbs" },
-  { city: "Brisbane", note: "26 Murdoch Circuit, Acacia Ridge QLD — plus surrounding suburbs" },
+  { city: "Bayside & South-East", note: "32-44 Keys Road, Cheltenham VIC — plus Brighton, Sandringham, Mentone and surrounds" },
+  { city: "Melbourne CBD & Inner", note: "Servicing Fitzroy, Richmond, South Yarra, Carlton and inner-city suburbs" },
+  { city: "Eastern & Northern Suburbs", note: "Servicing Box Hill, Doncaster, Preston, Reservoir and surrounding suburbs" },
 ];
 
 const fleet = [
   { title: "Our truck fleet", caption: "Modern, well-maintained trucks sized to your move.", image: "/Interstate.png" },
   { title: "Trained crew", caption: "Background-checked movers, not subcontractors.", image: "/office_removal.png" },
-  { title: "Packing materials", caption: "Boxes, wrap and padding ready for every job.", image: "/movera_storage.png" },
+  { title: "Packing materials", caption: "Boxes, wrap and dolly ready for every job.", image: "/movera_storage.png" },
 ];
 
 const serviceImages: Record<string, string> = {
@@ -39,8 +39,8 @@ const serviceImages: Record<string, string> = {
 const steps = [
   {
     n: "1",
-    title: "Get One Fixed-Price Quote",
-    body: "Online or by phone in under 3 minutes. No form submissions to 5 companies. One price back to you in under 2 hours.",
+    title: "Get One Upfront Quote",
+    body: "Online or by phone in under 3 minutes. One price back to you in under 2 hours.",
   },
   {
     n: "2",
@@ -50,12 +50,12 @@ const steps = [
   {
     n: "3",
     title: "Our Crew Handles the Rest",
-    body: "Trained removalists, not subcontractors. Wrapping, lifting, transport, and placement done start to finish.",
+    body: "Trained removalists, and subcontractors. Wrapping, lifting, transport, and placement done start to finish.",
   },
 ];
 
 const checklist = [
-  "Fixed price — no hourly meter, no depot-to-depot tricks.",
+  "One upfront quote — no hourly meter, no depot-to-depot tricks.",
   "Trained, background-checked movers. No subcontractors. Ever.",
   "Furniture wrap & floor protection included as standard.",
   "SMS tracking on the day — you always know where your things are.",
@@ -65,7 +65,7 @@ const checklist = [
 const reviews = [
   {
     quote:
-      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. Fixed price, on time, careful with our piano and antiques.",
+      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. Upfront pricing, on time, careful with our piano and antiques.",
     initials: "SM",
     name: "Sarah M.",
     suburb: "South Yarra",
@@ -79,7 +79,7 @@ const reviews = [
   },
   {
     quote:
-      "Called at 6am needing a same-day move. They quoted fixed price, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
+      "Called at 6am needing a same-day move. They gave us an upfront quote, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
     initials: "PD",
     name: "Portia D.",
     suburb: "Brunswick",
@@ -87,12 +87,14 @@ const reviews = [
 ];
 
 const faqs = [
-  { q: "How much does a removalist cost?", a: "It depends on the size of your move, distance and access — but you'll always get one fixed price upfront, confirmed before the day." },
-  { q: "Do you charge by the hour or a fixed price?", a: "Fixed price as standard. We assess volume, distance and access first, so the number we quote is the number on the invoice." },
+  { q: "How much does a removalist in Melbourne cost?", a: "It depends on the size of your move, distance and access — every move's different, so we assess yours and give you a clear, affordable quote upfront, confirmed before the day." },
+  { q: "Do you charge by the hour or give an upfront quote?", a: "We quote upfront as standard. We assess volume, distance and access first, so the number we quote is the number on the invoice — no surprise hourly blowouts." },
+  { q: "Do you do interstate removals as well as local moves?", a: "Yes. As interstate removalists we run regular routes out of Melbourne to Sydney, Brisbane, Adelaide and beyond, alongside our local house and furniture removal services." },
+  { q: "Can you handle office and commercial relocations?", a: "Yes — office relocation is one of our specialties. We schedule after-hours or weekend moves so your business has zero downtime, with IT equipment and workstations handled with care." },
   { q: "Do you do last-minute or same-day moves?", a: "Yes — subject to crew availability. Call us and we'll do our best to get a truck to you the same day." },
   { q: "Are my belongings insured during the move?", a: "Every move includes $100,000 goods-in-transit cover as standard, with optional comprehensive cover available." },
-  { q: "Do you move interstate?", a: "Yes — regular runs to Sydney, Melbourne, Brisbane, Adelaide and Canberra, on our own trucks." },
-  { q: "Do you handle packing, fragile items, and pianos?", a: "Yes. We supply materials for full or partial packing and specialise in pianos, pool tables, antiques and other fragile items." },
+  { q: "What areas do you service?", a: "Melbourne and surrounding suburbs — bayside, inner-city, eastern and northern suburbs — all with our own trained crew and trucks." },
+  { q: "Do you handle packing, fragile items, and pianos?", a: "Yes. As experienced packers and movers we supply materials for full or partial packing and specialise in pianos, pool tables, antiques and other fragile items." },
 ];
 
 export default function Home() {
@@ -104,14 +106,15 @@ export default function Home() {
       <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10 grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-start">
         <div>
           <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-6">
-            Fixed price, no hidden fees, family owned
+            Melbourne&apos;s trusted removalists — upfront pricing, no hidden fees, family owned
           </div>
           <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6">
-            Reliable Removalists Australia Trusts.
+            Removalists Melbourne Trusts for House &amp; Office Moves.
           </h1>
           <p className="text-[17px] leading-[1.65] max-w-[520px] mb-8">
-            Home, office, and interstate moves — done by our own trained crew, not a subcontractor from a
-            comparison site. One fixed price. No forms, no 5-way bidding war, no nasty surprises on the day.
+            From local house movers to interstate removalists, Movera handles home and office moves across
+            Melbourne with our own trained crew — not a subcontractor from a comparison site. One clear quote,
+            upfront. No forms, no 5-way bidding war, no nasty surprises on the day.
           </p>
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <Button variant="secondary">☎ 02 8503 4444</Button>
@@ -130,34 +133,28 @@ export default function Home() {
         {/* Quote card */}
         <Card className="rounded-md p-8 shadow-floating">
           <div className="font-display font-bold text-2xl text-ink-800 mb-1.5">
-            Get your free fixed-price quote
+            Get your free upfront quote
           </div>
           <p className="m-0 mb-6 text-sm text-ink-400 leading-[1.5]">
             One price. No callbacks from 5 competing movers. Back to you in under 2 hours.
           </p>
           <div className="grid gap-4">
             <div className="grid gap-1.5">
-              <Label className="text-xs uppercase tracking-wide">What are you moving?</Label>
-              <Select defaultValue="Home — 1-2 bedroom">
-                <option>Home — 1-2 bedroom</option>
-                <option>Home — 3-4 bedroom</option>
-                <option>Home — 5+ bedroom</option>
-                <option>Office / commercial</option>
-                <option>Storage only</option>
-              </Select>
+              <Label className="text-xs uppercase tracking-wide">Full name</Label>
+              <Input placeholder="Your name" className="bg-white" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="grid gap-1.5">
-                <Label className="text-xs uppercase tracking-wide">From</Label>
-                <Input placeholder="Suburb" className="bg-white" />
+                <Label className="text-xs uppercase tracking-wide">Phone number</Label>
+                <Input type="tel" placeholder="04XX XXX XXX" className="bg-white" />
               </div>
               <div className="grid gap-1.5">
-                <Label className="text-xs uppercase tracking-wide">To</Label>
-                <Input placeholder="Suburb" className="bg-white" />
+                <Label className="text-xs uppercase tracking-wide">Email</Label>
+                <Input type="email" placeholder="you@example.com" className="bg-white" />
               </div>
             </div>
             <div className="grid gap-1.5">
-              <Label className="text-xs uppercase tracking-wide">Preferred date</Label>
+              <Label className="text-xs uppercase tracking-wide">Move date</Label>
               <Input type="date" className="bg-white" />
             </div>
             <Button variant="primary" className="w-full mt-1">
@@ -200,7 +197,7 @@ export default function Home() {
         </div>
         <div className="flex items-end justify-between gap-6 flex-wrap mb-8">
           <h2 className="font-display font-bold text-[28px] leading-[1.2] text-ink-800 m-0 max-w-[640px]">
-            Removalist Services — Every Move, Handled
+            Removalists &amp; Moving Services Melbourne Relies On
           </h2>
           <Link
             href="/services"
@@ -270,9 +267,9 @@ export default function Home() {
               No middleman. No bidding war. Just your move, done properly.
             </h2>
             <p className="text-[15px] leading-[1.7] text-white/70 mb-7 max-w-[480px]">
-              Comparison sites sell your details to 4-5 movers who undercut each other — and cut corners. With
-              Movera you get one dedicated crew, one fixed price, and a coordinator who knows your move inside
-              out.
+              Comparison sites sell your details to 4-5 movers and packers who undercut each other — and cut
+              corners. With Movera, an affordable and professional removalist Melbourne locals recommend, you get
+              one dedicated crew, one upfront price, and a coordinator who knows your move inside out.
             </p>
             <div className="grid gap-3">
               {checklist.map((item) => (
@@ -294,7 +291,7 @@ export default function Home() {
           Areas We Service
         </div>
         <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
-          Servicing Sydney, Melbourne &amp; Brisbane — and everywhere in between
+          Local movers servicing Melbourne and surrounding suburbs
         </h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {areas.map((a) => (

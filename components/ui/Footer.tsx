@@ -13,17 +13,6 @@ const columns = [
     ],
   },
   {
-    title: "Storage",
-    links: [
-      { label: "Sydney Storage", href: "#" },
-      { label: "Melbourne Storage", href: "#" },
-      { label: "Brisbane Storage", href: "#" },
-      { label: "How it works", href: "#" },
-      { label: "Storage Units", href: "#" },
-      { label: "Our Facilities", href: "#" },
-    ],
-  },
-  {
     title: "Resources",
     links: [
       { label: "About Us", href: "/about" },
@@ -38,9 +27,9 @@ const columns = [
 ];
 
 const locations = [
-  { city: "Sydney", address: ["27 Allen Street,", "Wolli Creek NSW 2205"] },
   { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
-  { city: "Brisbane", address: ["26 Murdoch Circuit,", "Acacia Ridge QLD 4110"] },
+  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
+  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
 ];
 
 export function CTABand() {
@@ -81,10 +70,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="border-t border-white/10 pt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           <div>
             <div className="text-[15px] leading-[1.7] text-[#C9D1CC] max-w-[260px] mb-5">
-              Your trusted partner for professional removals and storage across Australia
+              Your trusted partner for professional removals across Australia
             </div>
             <div className="flex gap-2.5">
               {[
@@ -122,8 +111,8 @@ export function Footer() {
           <div className="sm:col-span-3">
             <div className="font-display font-semibold text-sm text-teal-500 mb-4">Find Us</div>
           </div>
-          {locations.map((loc) => (
-            <div key={loc.city} className="text-sm text-white/80">
+          {locations.map((loc, i) => (
+            <div key={`${loc.city}-${i}`} className="text-sm text-white/80">
               <div className="font-display font-semibold text-white mb-1">{loc.city}</div>
               {loc.address.map((line) => (
                 <div key={line}>{line}</div>
