@@ -30,7 +30,7 @@ const mediaTestimonials: (VideoTestimonial | PhotoTestimonial)[] = [
 const reviews = [
   {
     quote:
-      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. Fixed price, on time, careful with our piano and antiques.",
+      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. Genuine upfront quote, on time, careful with our piano and antiques.",
     initials: "SM",
     name: "Sarah M.",
     suburb: "South Yarra",
@@ -44,7 +44,7 @@ const reviews = [
   },
   {
     quote:
-      "Called at 6am needing a same-day move. They quoted fixed price, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
+      "Called at 6am needing a same-day move. They assessed it and quoted straight away, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
     initials: "PD",
     name: "Portia D.",
     suburb: "Brunswick",
@@ -54,14 +54,14 @@ const reviews = [
       "Packed our whole house in a day, labelled every box by room. Unpacking at the other end was so much easier because of it.",
     initials: "TR",
     name: "Tom R.",
-    suburb: "Bondi",
+    suburb: "Preston",
   },
   {
     quote:
       "Moved our pool table and gym equipment without a scratch. The crew knew exactly how to break it down and reassemble it.",
     initials: "AL",
     name: "Aisha L.",
-    suburb: "New Farm",
+    suburb: "Doncaster",
   },
   {
     quote:
@@ -72,10 +72,10 @@ const reviews = [
   },
   {
     quote:
-      "Interstate-sounding job turned out to be local across two suburbs — either way, same fixed price promise, same careful crew.",
+      "Thought it'd be a small job, turned into a full house across two suburbs — either way, same genuine quote, same careful crew.",
     initials: "MC",
     name: "Maria C.",
-    suburb: "Paddington",
+    suburb: "Box Hill",
   },
   {
     quote:
@@ -100,8 +100,8 @@ export default function ReviewsPage() {
         </h1>
         <div className="flex items-center justify-center gap-3 text-lg">
           <span className="text-gold-400">★★★★★</span>
-          <span className="font-display font-bold text-ink-800">4.9</span>
-          <span className="text-ink-400 text-sm">from 5,527+ reviews</span>
+          <span className="font-display font-bold text-ink-800">4.8</span>
+          <span className="text-ink-400 text-sm">from 876+ reviews</span>
         </div>
       </section>
 

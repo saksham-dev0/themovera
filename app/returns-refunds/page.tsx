@@ -36,9 +36,9 @@ const sections: Section[] = [
   },
   {
     num: "3",
-    title: "Fixed-Price Guarantee",
+    title: "Genuine Quote Guarantee",
     intro:
-      "We quote a fixed price upfront based on the details you provide. If you're charged above that quote without your agreement to a scope change (e.g. additional items, extra stops, or access issues not disclosed at booking), the difference is refunded on request.",
+      "We quote upfront based on the details you provide, reflecting the actual work involved in your move. If you're charged above that quote without your agreement to a scope change (e.g. additional items, extra stops, or access issues not disclosed at booking), the difference is refunded on request.",
   },
   {
     num: "4",
@@ -50,7 +50,7 @@ const sections: Section[] = [
       },
       {
         title: "How claims are resolved",
-        text: "Confirmed claims are covered by our standard $100,000 goods-in-transit insurance. We reserve the right to offer monetary compensation instead of repair or replacement.",
+        text: "Confirmed claims are covered by our standard $80,000 goods-in-transit insurance. We reserve the right to offer monetary compensation instead of repair or replacement.",
       },
       {
         title: "What isn't covered",

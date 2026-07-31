@@ -8,9 +8,9 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 import { services, getService } from "@/app/services/data";
 
 const trustStrip = [
-  "Fixed price — no hourly meter, no surprises on the day.",
-  "Trained, background-checked movers. No subcontractors.",
-  "$100,000 goods-in-transit insurance on every move.",
+  "A genuine quote based on your move — no hourly meter, no surprises on the day.",
+  "Trained, vetted moving teams — including trusted local partner crews.",
+  "$80,000 goods-in-transit insurance on every move.",
 ];
 
 export function generateStaticParams() {

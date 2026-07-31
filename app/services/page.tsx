@@ -24,7 +24,7 @@ export default function ServicesIndexPage() {
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[620px] mb-10">
           Home, office, or specialty item — our trained crews handle every part of your move with the same
-          fixed-price, no-surprises approach.
+          genuine, work-based quote and no-surprises approach.
         </p>
 
         <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[300px] mb-12">

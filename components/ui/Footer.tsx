@@ -4,12 +4,12 @@ const columns = [
   {
     title: "Moving",
     links: [
-      { label: "Local Moving", href: "/services/local-removals" },
-      { label: "Interstate Relocation", href: "#" },
-      { label: "Business Relocations", href: "/services/office-commercial-relocations" },
-      { label: "Warehouse Relocations", href: "#" },
+      { label: "Local Removals", href: "/services/local-removals" },
+      { label: "Office & Commercial Relocations", href: "/services/office-commercial-relocations" },
       { label: "Packing & Unpacking", href: "/services/packing-unpacking" },
-      { label: "Box Shop", href: "#" },
+      { label: "Furniture Removals", href: "/services/furniture-removals" },
+      { label: "Specialty Item Removals", href: "/services/specialty-item-removals" },
+      { label: "Loading & Unloading Services", href: "/services/loading-unloading" },
     ],
   },
   {
@@ -27,9 +27,9 @@ const columns = [
 ];
 
 const locations = [
-  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
-  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
-  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
+  { city: "Bayside & South-East", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
+  { city: "Melbourne CBD & Inner", address: ["Servicing Fitzroy, Richmond,", "South Yarra & Carlton"] },
+  { city: "Eastern & Northern Suburbs", address: ["Servicing Box Hill, Doncaster,", "Preston & Reservoir"] },
 ];
 
 export function CTABand() {
@@ -45,7 +45,7 @@ export function CTABand() {
           Get a Quote ›
         </button>
         <button className="font-display font-semibold text-[15px] text-white bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer">
-          Call 1300 465 569
+          Call 02 8503 4444
         </button>
       </div>
     </div>
@@ -61,9 +61,9 @@ export function Footer() {
             <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" />
           </div>
           <div className="text-right">
-            <div className="font-display font-bold text-2xl text-white mb-2">☎ 1300 465 569</div>
+            <div className="font-display font-bold text-2xl text-white mb-2">☎ 02 8503 4444</div>
             <div className="flex gap-6 text-sm text-white/80">
-              <a href="#" className="hover:text-teal-500">Give Feedback</a>
+              <a href="/feedback" className="hover:text-teal-500">Give Feedback</a>
               <a href="#" className="hover:text-teal-500">Contact Us</a>
               <a href="#" className="hover:text-teal-500">Meet the Team</a>
             </div>
@@ -73,7 +73,7 @@ export function Footer() {
         <div className="border-t border-white/10 pt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           <div>
             <div className="text-[15px] leading-[1.7] text-[#C9D1CC] max-w-[260px] mb-5">
-              Your trusted partner for professional removals across Australia
+              Your trusted partner for professional removals across Melbourne and surrounding suburbs
             </div>
             <div className="flex gap-2.5">
               {[
@@ -122,11 +122,6 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-8 flex flex-col items-center gap-4 text-center">
-          <div className="flex items-center gap-2 text-sm text-white">
-            <span className="font-display font-bold">Excellent</span>
-            <span className="text-gold-400">★★★★★</span>
-            <span className="text-white/70">1,521 reviews on ProductReview</span>
-          </div>
           <div className="font-display font-bold text-lg text-teal-500">
             MOVE THE RIGHT WAY <span className="text-white">MOVE WITH MOVERA</span>
           </div>
@@ -136,9 +131,6 @@ export function Footer() {
             <a href="/terms" className="hover:text-white">Terms &amp; Conditions</a>
             <span>|</span>
             <a href="/returns-refunds" className="hover:text-white">Returns &amp; Refunds</a>
-          </div>
-          <div className="text-xs text-white/40">
-            Movera Transport Pty Ltd t/a Movera Removals &amp; Storage · ABN 26 161 560 489
           </div>
         </div>
       </div>

@@ -4,28 +4,28 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 export const metadata = {
   title: "About Us | Movera Removals & Storage",
-  description: "Family owned removalists with 13+ years combined experience across Sydney, Melbourne and Brisbane.",
+  description: "Family owned removalists with 10+ years combined experience across Melbourne and surrounding suburbs.",
 };
 
 const stats = [
-  { value: "12,000+", label: "MOVES COMPLETED" },
-  { value: "4.9★", label: "FROM 5,527+ REVIEWS" },
-  { value: "13+ yrs", label: "COMBINED EXPERIENCE" },
-  { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
+  { value: "10,000+", label: "MOVES COMPLETED" },
+  { value: "4.8★", label: "FROM 876+ REVIEWS" },
+  { value: "10+ yrs", label: "COMBINED EXPERIENCE" },
+  { value: "$80k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
 const values = [
   {
     title: "Family owned, not a bidding site",
-    body: "Movera is family owned and operated. When you call us, you're talking to the people who run the crews — not a call centre passing your details to the highest-bidding subcontractor.",
+    body: "Movera is family owned and operated. When you call us, you're talking to the people who run the crews — not a call centre passing your details around to the highest bidder.",
   },
   {
-    title: "One trained crew, start to finish",
-    body: "Every move is handled by our own trained, background-checked movers. No subcontractors, no unfamiliar faces showing up on the day.",
+    title: "Vetted crews, start to finish",
+    body: "Every move is handled by a trained, background-checked moving team — our own crews and trusted local partners we hold to the same standard, so the service is consistent every time.",
   },
   {
-    title: "Fixed price, every time",
-    body: "We assess volume, distance and access up front, then give you one fixed price. What we quote is what's on the invoice.",
+    title: "A genuine quote, every time",
+    body: "We assess volume, distance and access up front, then quote based on the actual work involved. What we assess is what we quote, and what we quote is what's on the invoice.",
   },
   {
     title: "Careful with what matters",
@@ -43,12 +43,13 @@ export default function AboutPage() {
           About Movera
         </div>
         <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          Reliable Removalists Australia Trusts.
+          Reliable Removalists Melbourne Trusts.
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[640px]">
-          Movera is a family owned and operated removals company serving Sydney, Melbourne and Brisbane. Over 13
-          years of combined experience, our trained crews have completed 12,000+ moves — homes, offices, and
-          interstate relocations — always with one fixed price and no subcontractors.
+          Movera is a family owned and operated removals company serving Melbourne and surrounding suburbs. Over
+          10 years of combined experience, our trained crews and partner teams have completed 10,000+ moves —
+          homes, offices, and everything in between — always with a quote based on the actual work involved, and
+          one point of accountability.
         </p>
       </section>
 

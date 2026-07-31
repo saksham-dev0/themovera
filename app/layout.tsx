@@ -17,7 +17,7 @@ const mulish = Mulish({
 export const metadata: Metadata = {
   title: "Removalists Melbourne | Movera — Furniture & House Movers",
   description:
-    "Movera is a trusted removalists Melbourne relies on for local, interstate and office moves. Upfront quotes, professional movers, no hidden fees. Get your free quote today.",
+    "Movera is a trusted removalists Melbourne relies on for local house and office moves. No-surprise quotes, professional movers, no hidden fees. Get your free quote today.",
 };
 
 export default function RootLayout({

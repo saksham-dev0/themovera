@@ -8,15 +8,15 @@ export const metadata = {
 };
 
 const faqs = [
-  { q: "How much does a removalist cost?", a: "It depends on the size of your move, distance and access — but you'll always get one fixed price upfront, confirmed before the day." },
-  { q: "Do you charge by the hour or a fixed price?", a: "Fixed price as standard. We assess volume, distance and access first, so the number we quote is the number on the invoice." },
+  { q: "How much does a removalist cost?", a: "It depends on the size of your move, distance and access — every move is different. We assess your specific requirements and give you a genuine, itemised quote upfront, confirmed before the day." },
+  { q: "Do you charge by the hour, or give a quote upfront?", a: "We quote upfront as standard. We assess volume, distance and access first, so your quote reflects the actual work involved — and that's the number that appears on the invoice." },
   { q: "Do you do last-minute or same-day moves?", a: "Yes — subject to crew availability. Call us and we'll do our best to get a truck to you the same day." },
-  { q: "Are my belongings insured during the move?", a: "Every move includes $100,000 goods-in-transit cover as standard, with optional comprehensive cover available." },
-  { q: "Do you move interstate?", a: "Interstate removals are currently being finalised — get in touch and we'll let you know current availability for your route." },
+  { q: "Are my belongings insured during the move?", a: "Every move includes $80,000 goods-in-transit cover as standard, with optional comprehensive cover available." },
+  { q: "What areas do you service?", a: "We're a Melbourne-based removalist, servicing the metro area and surrounding suburbs — bayside, inner-city, eastern and northern." },
   { q: "Do you handle packing, fragile items, and pianos?", a: "Yes. We supply materials for full or partial packing and specialise in pianos, pool tables, antiques and other fragile items." },
   { q: "Can I hire your crew just to load or unload my own truck?", a: "Yes — our loading & unloading service is labour-only, for customers who've hired their own truck, trailer or shipping container." },
   { q: "Do you offer storage?", a: "We can arrange short and long-term storage as part of your move — ask your coordinator when you get your quote." },
-  { q: "What happens if my move takes longer than expected?", a: "Because we quote a fixed price based on an upfront assessment, you're not charged extra for the job taking longer on the day." },
+  { q: "What happens if my move takes longer than expected?", a: "Your quote is based on an accurate upfront assessment of your move, so on-the-day timing matching that assessment won't cost you extra. If the scope changes on the day — extra items, extra stops, or access issues not disclosed at booking — we'll always confirm any adjustment with you before proceeding." },
   { q: "Do I need to empty my drawers and cupboards before you arrive?", a: "Light items can often stay in drawers — your coordinator will confirm what to prep based on your move type." },
   { q: "Can I cancel or reschedule my booking?", a: "Yes — contact us as early as possible and we'll work with you to find a new date or process a cancellation." },
   { q: "Do you provide packing boxes and materials?", a: "Yes, quality packing materials are available and included as part of our packing & unpacking service." },

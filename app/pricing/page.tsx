@@ -4,7 +4,7 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 export const metadata = {
   title: "Pricing | Movera Removals & Storage",
-  description: "One fixed price, confirmed before the day. No hourly meter, no depot-to-depot tricks.",
+  description: "An accurate quote based on your move's actual volume, distance and access — confirmed before the day, no depot-to-depot tricks.",
 };
 
 const comparison = [
@@ -14,11 +14,11 @@ const comparison = [
   },
   {
     title: "Comparison-site mover",
-    points: ["Details sold to 4-5 competing movers", "Subcontracted crew, quality varies", "Hourly meter can run over quoted time"],
+    points: ["Details sold to 4-5 competing movers", "Crew and quality can vary quote to quote", "Hourly meter can run over quoted time"],
   },
   {
     title: "Movera",
-    points: ["One dedicated, trained crew", "Fixed price confirmed before the day", "$100,000 goods-in-transit cover included"],
+    points: ["One dedicated, trained crew", "Quote based on your move's actual requirements", "$80,000 goods-in-transit cover included"],
     highlight: true,
   },
 ];
@@ -26,8 +26,8 @@ const comparison = [
 const included = [
   "Volume, distance and access assessed before you're quoted",
   "Furniture wrap and floor protection",
-  "Trained, background-checked movers — no subcontractors",
-  "$100,000 goods-in-transit insurance",
+  "Trained, background-checked moving teams — own crews and vetted partners",
+  "$80,000 goods-in-transit insurance",
   "SMS tracking on moving day",
   "A dedicated coordinator for your move",
 ];
@@ -42,11 +42,12 @@ export default function PricingPage() {
           Pricing
         </div>
         <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          One Fixed Price. No Hourly Meter.
+          A Genuine Quote, Based on Your Move.
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">
-          We assess your move — volume, distance, access — before quoting, so the number we give you is the
-          number on the invoice. No surprises, no depot-to-depot charges, no bidding war.
+          Every quote is calculated from your move&rsquo;s actual requirements — volume, distance and access —
+          not a guess or a generic hourly rate. What we assess is what we quote, and what we quote is what&rsquo;s
+          on the invoice. No depot-to-depot charges, no bidding war.
         </p>
         <Button variant="primary">Get My Free Quote →</Button>
       </section>
@@ -54,7 +55,7 @@ export default function PricingPage() {
       <section className="bg-white">
         <div className="max-w-[1180px] mx-auto px-8 py-16">
           <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-10 max-w-[640px]">
-            Why fixed price beats the alternatives
+            Why a genuine, work-based quote beats the alternatives
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {comparison.map((c) => (

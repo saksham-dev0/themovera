@@ -97,8 +97,8 @@ export const guides: Guide[] = [
       {
         heading: "Ask about pricing upfront",
         body: [
-          "Fixed price or hourly? Hourly quotes can look cheaper but run over on the day — ask what happens if the job takes longer than estimated.",
-          "Is the quote based on an actual assessment of your move, or a guess over the phone? A real assessment of volume, distance and access is what makes a fixed price reliable.",
+          "Quoted upfront or charged hourly? Hourly rates can look cheaper but run over on the day — ask what happens if the job takes longer than estimated.",
+          "Is the quote based on an actual assessment of your move, or a guess over the phone? A real assessment of volume, distance and access is what makes a quote genuine and reliable.",
           "Are there depot-to-depot charges, callout fees, or fuel surcharges added after the quote? Ask for this in writing.",
         ],
       },
@@ -106,7 +106,7 @@ export const guides: Guide[] = [
         heading: "Ask who's actually doing the move",
         body: [
           "Comparison sites collect your details and sell them to whichever mover bids lowest — you often don't know who's turning up until the day.",
-          "Ask directly: is this your own crew, or a subcontractor? Consistency in training and accountability usually comes from a company that employs its own movers.",
+          "Ask directly: is this a dedicated crew, and are they background-checked and insured under the company you're booking? A clear answer either way is what matters, not the label.",
           "Ask what insurance covers your belongings in transit, and get the coverage amount in writing.",
         ],
       },
@@ -122,8 +122,8 @@ export const guides: Guide[] = [
         heading: "What good looks like",
         body: [
           "A dedicated coordinator who plans your move — access timing, parking, stairs — before the day arrives.",
-          "A fixed price confirmed in writing before your move, with no hidden extras.",
-          "Trained, background-checked movers who are employees, not subcontractors picked up for the day.",
+          "A quote based on your move's actual requirements, confirmed in writing before your move, with no hidden extras.",
+          "A trained, background-checked crew held to the same standard whether they're on staff or a trusted partner.",
         ],
       },
     ],

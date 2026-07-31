@@ -5,19 +5,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { services } from "@/app/services/data";
 
-const socials = [
-  { label: "Facebook", icon: "/facebook.png", href: "#" },
-  { label: "Twitter", icon: "/twitter.png", href: "#" },
-  { label: "Instagram", icon: "/instagram.png", href: "#" },
-  { label: "YouTube", icon: "/youtube.png", href: "#" },
-];
-
 const navItems = [
-  { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "PRICING", href: "/pricing" },
   { label: "REVIEWS", href: "/reviews" },
   { label: "RESOURCES", href: "/guides" },
+  { label: "FAQ", href: "/faq" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export function Nav() {
@@ -26,26 +20,53 @@ export function Nav() {
 
   return (
     <div className="sticky top-0 z-20">
-      <div className="bg-white hidden md:flex justify-end items-center gap-6 px-8 py-2.5 text-[13px]">
-        <span className="text-teal-500 font-bold">☎ 02 8503 4444</span>
-        <span className="text-ink-800 font-bold">✉ hello@movera.com.au</span>
-        <span className="text-ink-800 font-bold">Contact Us</span>
-        <div className="flex gap-3 items-center">
-          {socials.map((s) => (
-            <a key={s.label} href={s.href} aria-label={s.label} className="relative h-4 w-4 shrink-0">
-              <Image src={s.icon} alt={s.label} fill className="object-contain" />
-            </a>
-          ))}
-        </div>
-      </div>
-      <div className="bg-ink-900">
-        <div className="max-w-[1180px] mx-auto flex items-center gap-9 px-8 py-4.5">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 no-underline" aria-label="Movera — home">
-            <div className="relative h-10 w-10 bg-white rounded-sm overflow-hidden shrink-0">
+      {/* Top info bar with diagonal accent */}
+      <div className="relative bg-white overflow-hidden">
+        <div
+          className="absolute inset-y-0 left-0 w-[60%] md:w-[46%] bg-teal-500"
+          style={{ clipPath: "polygon(0 0, 100% 0, 78% 100%, 0 100%)" }}
+        />
+        <div className="relative max-w-[1180px] mx-auto px-8 py-3 flex items-center justify-between gap-6">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 no-underline">
+            <div className="relative h-11 w-11 bg-white rounded-sm overflow-hidden shrink-0 border border-border">
               <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" priority />
             </div>
-            <div className="font-display font-bold text-base tracking-[2px] text-white leading-none">MOVERA</div>
+            <div className="font-display font-bold text-lg tracking-[1px] text-white leading-none">MOVERA</div>
           </Link>
+
+          <div className="hidden md:flex items-center gap-8 text-[13px]">
+            <div className="flex items-center gap-2.5">
+              <span className="text-teal-500">⏱</span>
+              <div className="leading-tight">
+                <div className="font-display font-semibold text-ink-800">7 days a week!</div>
+                <div className="text-ink-400">7:00 AM – 7:00 PM</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-teal-500">✉</span>
+              <div className="leading-tight">
+                <div className="font-display font-semibold text-ink-800">Email</div>
+                <a href="mailto:hello@movera.com.au" className="text-ink-400 no-underline hover:text-teal-500">
+                  hello@movera.com.au
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <span className="text-teal-500">☎</span>
+              <div className="leading-tight">
+                <div className="font-display font-semibold text-ink-800">Call Us</div>
+                <a href="tel:0285034444" className="text-ink-400 no-underline hover:text-teal-500">
+                  02 8503 4444
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark nav bar */}
+      <div className="bg-ink-900">
+        <div className="max-w-[1180px] mx-auto flex items-center gap-9 px-8 py-4">
           <nav className="hidden lg:flex gap-7 flex-1 items-center">
             <Link
               href="/"
@@ -82,7 +103,7 @@ export function Nav() {
               )}
             </div>
 
-            {navItems.slice(1).map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
@@ -93,9 +114,12 @@ export function Nav() {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-3">
-            <button className="font-display font-semibold text-xs tracking-wide text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-sm px-4.5 py-2.5 cursor-pointer whitespace-nowrap">
+            <Link
+              href="/contact"
+              className="font-display font-semibold text-xs tracking-wide text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-sm px-4.5 py-2.5 cursor-pointer whitespace-nowrap no-underline"
+            >
               GET A QUOTE
-            </button>
+            </Link>
             <button
               className="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-9 shrink-0 bg-transparent border-0 cursor-pointer"
               aria-label="Toggle menu"
@@ -129,7 +153,7 @@ export function Nav() {
             >
               SERVICES
             </Link>
-            {navItems.slice(1).map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
@@ -141,6 +165,20 @@ export function Nav() {
             ))}
           </nav>
         )}
+      </div>
+
+      {/* Scrolling announcement banner */}
+      <div className="bg-clay-500 overflow-hidden whitespace-nowrap py-2.5">
+        <div className="flex animate-marquee w-max">
+          {[0, 1].map((i) => (
+            <div key={i} className="flex items-center shrink-0 pr-16">
+              <span className="font-display font-bold text-[13px] tracking-wide text-white flex items-center gap-2 pl-16">
+                🚚 <strong>Welcome to Movera</strong> — Melbourne&apos;s most reliable removalists · Upfront
+                pricing, no hidden fees · $80,000 goods-in-transit cover on every move
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

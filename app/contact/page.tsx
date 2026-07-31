@@ -4,13 +4,13 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 export const metadata = {
   title: "Contact Us | Movera Removals & Storage",
-  description: "Get in touch with Movera Removals & Storage — call, email, or visit us in Sydney, Melbourne or Brisbane.",
+  description: "Get in touch with Movera Removals & Storage — call, email, or visit us in Melbourne.",
 };
 
 const locations = [
-  { city: "Sydney", address: ["27 Allen Street,", "Wolli Creek NSW 2205"] },
-  { city: "Melbourne", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
-  { city: "Brisbane", address: ["26 Murdoch Circuit,", "Acacia Ridge QLD 4110"] },
+  { city: "Bayside & South-East", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
+  { city: "Melbourne CBD & Inner", address: ["Servicing Fitzroy, Richmond,", "South Yarra & Carlton"] },
+  { city: "Eastern & Northern Suburbs", address: ["Servicing Box Hill, Doncaster,", "Preston & Reservoir"] },
 ];
 
 export default function ContactPage() {
@@ -26,8 +26,8 @@ export default function ContactPage() {
           Get in touch.
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[640px]">
-          Questions about your move, a quote, or an existing booking? Our team is on hand across Sydney, Melbourne
-          and Brisbane.
+          Questions about your move, a quote, or an existing booking? Our team is on hand across Melbourne and
+          surrounding suburbs.
         </p>
       </section>
 

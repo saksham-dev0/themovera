@@ -67,11 +67,11 @@ const spacing = [
 const tabItems = [
   {
     label: "Local Moves",
-    body: "Complete local removals across Sydney, Melbourne and Brisbane — planned, packed and delivered by our own trained crews.",
+    body: "Complete local removals across Melbourne and surrounding suburbs — planned, packed and delivered by our own trained crews.",
   },
   {
-    label: "Interstate",
-    body: "Extensive rail network and secure mobile storage safely deliver your belongings to destinations all across Australia.",
+    label: "Office Moves",
+    body: "After-hours and weekend business relocations, planned around your operating hours so there's zero downtime.",
   },
   {
     label: "Storage",
@@ -80,7 +80,7 @@ const tabItems = [
 ];
 
 const faqs = [
-  { q: "How is my quote calculated?", a: "By volume, distance and access — fixed or hourly, always transparent before you commit." },
+  { q: "How is my quote calculated?", a: "By volume, distance and access — a no-surprise quote, always transparent before you commit." },
   { q: "Are my belongings insured?", a: "Yes — full transit cover is included, with optional comprehensive cover available." },
   { q: "Can I store items mid-move?", a: "Absolutely. Mobile storage modules can hold your things for days or months." },
 ];
@@ -177,7 +177,7 @@ export default function DesignSystemPage() {
             <div className="grid grid-cols-[210px_1fr] gap-6 items-baseline">
               <div className="font-mono text-xs text-ink-400">nav label · Poppins 600 · 14 · +1px caps</div>
               <div className="font-display font-semibold text-sm tracking-[1px] text-ink-800">
-                LOCAL REMOVALISTS &nbsp;·&nbsp; INTERSTATE &nbsp;·&nbsp; STORAGE
+                LOCAL REMOVALISTS &nbsp;·&nbsp; OFFICE MOVES &nbsp;·&nbsp; STORAGE
               </div>
             </div>
             <div className="grid grid-cols-[210px_1fr] gap-6 items-baseline">
@@ -391,9 +391,9 @@ export default function DesignSystemPage() {
                 team / location photo
               </div>
               <div className="px-6 py-5">
-                <div className="font-display font-semibold text-[17px] text-ink-800 mb-1.5">Sydney</div>
+                <div className="font-display font-semibold text-[17px] text-ink-800 mb-1.5">Melbourne</div>
                 <a href="#" className="text-sm font-bold text-teal-500">
-                  Sydney Removalists ›
+                  Melbourne Removalists ›
                 </a>
               </div>
             </div>
@@ -422,7 +422,7 @@ export default function DesignSystemPage() {
                 <br />
                 Movera
               </div>
-              <div className="text-sm leading-[1.6] text-teal-50">Transparent fixed or hourly pricing</div>
+              <div className="text-sm leading-[1.6] text-teal-50">A transparent, no-surprise quote</div>
               <div className="font-mono text-[11px] text-teal-100 mt-4.5">compare · highlighted</div>
             </div>
           </div>
@@ -454,8 +454,8 @@ export default function DesignSystemPage() {
             <div className="px-7 pt-4.5 pb-7">
               <div className="font-display font-bold text-[22px] text-ink-800 mb-2">Ready for a quote?</div>
               <p className="m-0 mb-5.5 text-[15px] leading-[1.65]">
-                Tell us where you&apos;re moving and we&apos;ll get back to you within one business day with
-                transparent, fixed pricing.
+                Tell us where you&apos;re moving and we&apos;ll get back to you within one business day with a
+                transparent, no-surprise quote.
               </p>
               <div className="flex gap-3">
                 <Button variant="primary" className="flex-1">
@@ -497,7 +497,7 @@ export default function DesignSystemPage() {
                 <Label>Service</Label>
                 <Select defaultValue="Local move">
                   <option>Local move</option>
-                  <option>Interstate move</option>
+                  <option>Office move</option>
                   <option>Storage</option>
                 </Select>
               </div>
@@ -530,7 +530,7 @@ export default function DesignSystemPage() {
               <strong>Quote sent!</strong> We&apos;ll be in touch within one business day.
             </Alert>
             <Alert tone="danger">
-              <strong>Something went wrong.</strong> Please try again or call 1300 465 569.
+              <strong>Something went wrong.</strong> Please try again or call 02 8503 4444.
             </Alert>
             <Toast>Booking confirmed</Toast>
           </Card>
@@ -544,7 +544,7 @@ export default function DesignSystemPage() {
               <div className="font-mono text-xs text-ink-400 mb-4">tabs · underline style</div>
               <Tabs items={tabItems} />
               <div className="font-mono text-xs text-ink-400 mt-6 mb-3">tooltip</div>
-              <Tooltip label="Fixed pricing, no surprises">
+              <Tooltip label="No-surprise quote, transparent every time">
                 <button className="font-display font-semibold text-sm text-teal-500 bg-teal-50 border-none rounded-pill px-5 py-2.5 cursor-default">
                   Transparent pricing ⓘ
                 </button>

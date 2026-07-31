@@ -56,7 +56,7 @@ export const services: Service[] = [
       "Specialist care for fragile and valuable items",
       "Unpacking support at your new destination",
     ],
-    idealFor: ["Full-service packing", "Fragile items", "Time-poor movers"],
+    idealFor: ["Full-service packing", "Fragile items", "Timely movings"],
   },
   {
     slug: "furniture-removals",
@@ -76,7 +76,7 @@ export const services: Service[] = [
   },
   {
     slug: "specialty-item-removals",
-    image: "/movera.jpeg",
+    image: "/special-move.png",
     caption: "Specialty items handled with purpose-built care",
     title: "Specialty Item Removals",
     tagline: "Extra care for the items that can't be replaced.",
