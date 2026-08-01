@@ -2,18 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, IconTile } from "@/components/ui/Card";
-import { Input, Label } from "@/components/ui/Input";
 import { Accordion } from "@/components/ui/Accordion";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
+import { QuoteForm } from "@/components/ui/QuoteForm";
 import { services } from "@/app/services/data";
 
 const stats = [
   { value: "10,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 876+ REVIEWS" },
+  { value: "4.8★", label: "FROM 2,500+ REVIEWS" },
   { value: "10+ yrs", label: "COMBINED EXPERIENCE" },
-  { value: "$80k", label: "GOODS-IN-TRANSIT COVER" },
+  { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
 const areas = [
@@ -34,7 +34,7 @@ const serviceImages: Record<string, string> = {
   "packing-unpacking": "/movera_storage.png",
   "furniture-removals": "/House_removalist.png",
   "specialty-item-removals": "/special-move.png",
-  "loading-unloading": "/house_removal2.png",
+  "loading-unloading": "/loading-unloading.png",
 };
 
 const steps = [
@@ -56,11 +56,11 @@ const steps = [
 ];
 
 const checklist = [
-  "A genuine quote based on your move's requirements, confirmed before the day — no bidding war, no surprise charges.",
+  "A genuine quote based on your move's requirements — fixed-price or hourly rate — confirmed before the day, no surprise charges.",
   "Every crew on the job — ours or a trusted local partner — is trained, background-checked and insured to the same standard.",
-  "All equipment included — furniture blankets, trolleys, straps and floor protection.",
+  "All equipment included — furniture blankets, trolleys and straps.",
   "One dedicated Movera coordinator manages your move start to finish, whoever's on the truck.",
-  "$80,000 goods-in-transit insurance included on every move.",
+  "$100,000 goods-in-transit insurance included on every move.",
 ];
 
 const reviews = [
@@ -89,10 +89,10 @@ const reviews = [
 
 const faqs = [
   { q: "How much does a removalist in Melbourne cost?", a: "It depends on the size of your move, distance and access — a one-bedroom unit in Fitzroy costs less than a four-bedroom house in the eastern suburbs. We assess your move first and give you one clear, affordable quote upfront, confirmed before the day." },
-  { q: "Do you charge by the hour or give an upfront quote?", a: "We quote upfront as standard. We assess volume, distance and access first, so the number we quote is the number on the invoice — no surprise hourly blowouts on the day." },
+  { q: "Do you charge by the hour or give an upfront quote?", a: "Both — we offer a fixed upfront quote as well as hourly rates, whichever suits your move. Either way, we assess volume, distance and access first, so the number we agree is the number on the invoice — no surprise blowouts on the day." },
   { q: "Can you handle office and commercial relocations?", a: "Yes — office relocation is one of our specialties. We schedule after-hours or weekend moves so your Melbourne business has zero downtime, with IT equipment and workstations handled with care." },
   { q: "Do you do last-minute or same-day moves?", a: "Yes — subject to crew availability. Call us and we'll do our best to get a Melbourne crew and truck to you the same day." },
-  { q: "Are my belongings insured during the move?", a: "Every move includes $80,000 goods-in-transit cover as standard, with optional comprehensive cover available for higher-value moves." },
+  { q: "Are my belongings insured during the move?", a: "Every move includes $100,000 goods-in-transit cover as standard, with optional comprehensive cover available for higher-value moves." },
   { q: "What areas of Melbourne do you service?", a: "Bayside and the south-east, the CBD and inner-city suburbs, and the eastern and northern suburbs — all with our own trained crew and trucks, based out of Cheltenham." },
   { q: "Do you handle packing, fragile items, and pianos?", a: "Yes. As experienced packers and movers we supply materials for full or partial packing and specialise in pianos, pool tables, antiques and other fragile items." },
 ];
@@ -121,7 +121,7 @@ export default function Home() {
             </h1>
             <p className="text-[17px] leading-[1.65] max-w-[520px] mb-8 text-white/85">
               Affordable, professional removalists across Melbourne and nearby suburbs — bayside, inner-city,
-              eastern and northern. 4.8★ from 876+ reviews, 10,000+ moves completed. Get your free quote in 60
+              eastern and northern. 4.8★ from 2,500+ reviews, 10,000+ moves completed. Get your free quote in 60
               seconds.
             </p>
             <div className="flex flex-wrap items-center gap-4">
@@ -136,38 +136,7 @@ export default function Home() {
           </div>
 
           {/* Quote card */}
-          <Card className="rounded-md p-8 shadow-floating">
-            <div className="font-display font-bold text-2xl text-ink-800 mb-1.5">
-              Get your free upfront quote
-            </div>
-            <p className="m-0 mb-6 text-sm text-ink-400 leading-[1.5]">
-              A genuine quote based on your move. No callbacks from 5 competing movers. Back to you in under 2 hours.
-            </p>
-            <div className="grid gap-4">
-              <div className="grid gap-1.5">
-                <Label className="text-xs uppercase tracking-wide">Full name</Label>
-                <Input placeholder="Your name" className="bg-white" />
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="grid gap-1.5">
-                  <Label className="text-xs uppercase tracking-wide">Phone number</Label>
-                  <Input type="tel" placeholder="04XX XXX XXX" className="bg-white" />
-                </div>
-                <div className="grid gap-1.5">
-                  <Label className="text-xs uppercase tracking-wide">Email</Label>
-                  <Input type="email" placeholder="you@example.com" className="bg-white" />
-                </div>
-              </div>
-              <div className="grid gap-1.5">
-                <Label className="text-xs uppercase tracking-wide">Move date</Label>
-                <Input type="date" className="bg-white" />
-              </div>
-              <Button variant="primary" className="w-full mt-1">
-                Get My Free Quote →
-              </Button>
-              <div className="text-center text-xs text-ink-400">No obligation · Fully insured · $80k cover</div>
-            </div>
-          </Card>
+          <QuoteForm />
         </div>
       </section>
 
@@ -265,7 +234,7 @@ export default function Home() {
       <section className="bg-ink-900">
         <div className="max-w-[1180px] mx-auto px-8 py-16 grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative rounded-md overflow-hidden h-[380px]">
-            <Image src="/house_removal2.png" alt="Movera crew loading truck" fill className="object-cover" />
+            <Image src="/loading-unloading.png" alt="Movera crew loading truck" fill className="object-cover" />
           </div>
           <div>
             <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-teal-500 mb-3">
@@ -339,7 +308,7 @@ export default function Home() {
       </section>
 
       {/* Reviews */}
-      <section className="max-w-[1180px] mx-auto px-8 py-16">
+      {/* <section className="max-w-[1180px] mx-auto px-8 py-16">
         <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
           Reviews
         </div>
@@ -362,7 +331,7 @@ export default function Home() {
             </Card>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ */}
       <section className="bg-white">

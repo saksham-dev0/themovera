@@ -101,7 +101,7 @@ export default function ReviewsPage() {
         <div className="flex items-center justify-center gap-3 text-lg">
           <span className="text-gold-400">★★★★★</span>
           <span className="font-display font-bold text-ink-800">4.8</span>
-          <span className="text-ink-400 text-sm">from 876+ reviews</span>
+          <span className="text-ink-400 text-sm">from 2,500+ reviews</span>
         </div>
       </section>
 

@@ -50,7 +50,7 @@ const sections: Section[] = [
       },
       {
         title: "How claims are resolved",
-        text: "Confirmed claims are covered by our standard $80,000 goods-in-transit insurance. We reserve the right to offer monetary compensation instead of repair or replacement.",
+        text: "Confirmed claims are covered by our standard $100,000 goods-in-transit insurance. We reserve the right to offer monetary compensation instead of repair or replacement.",
       },
       {
         title: "What isn't covered",

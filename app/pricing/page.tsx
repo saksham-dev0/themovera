@@ -18,17 +18,17 @@ const comparison = [
   },
   {
     title: "Movera",
-    points: ["One dedicated, trained crew", "Quote based on your move's actual requirements", "$80,000 goods-in-transit cover included"],
+    points: ["One dedicated, trained crew", "Quote based on your move's actual requirements", "$100,000 goods-in-transit cover included"],
     highlight: true,
   },
 ];
 
 const included = [
   "Volume, distance and access assessed before you're quoted",
-  "Furniture wrap and floor protection",
+  "Furniture wrap and blanket protection",
   "Trained, background-checked moving teams — own crews and vetted partners",
-  "$80,000 goods-in-transit insurance",
-  "SMS tracking on moving day",
+  "$100,000 goods-in-transit insurance",
+  "Live phone support — call your coordinator for a real-time update on moving day",
   "A dedicated coordinator for your move",
 ];
 
@@ -46,8 +46,8 @@ export default function PricingPage() {
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">
           Every quote is calculated from your move&rsquo;s actual requirements — volume, distance and access —
-          not a guess or a generic hourly rate. What we assess is what we quote, and what we quote is what&rsquo;s
-          on the invoice. No depot-to-depot charges, no bidding war.
+          not a guess. Choose a fixed price or an hourly rate, whichever suits your move: what we assess is what
+          we quote, and what we quote is what&rsquo;s on the invoice. No depot-to-depot charges, no bidding war.
         </p>
         <Button variant="primary">Get My Free Quote →</Button>
       </section>

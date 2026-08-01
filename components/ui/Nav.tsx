@@ -174,7 +174,7 @@ export function Nav() {
             <div key={i} className="flex items-center shrink-0 pr-16">
               <span className="font-display font-bold text-[13px] tracking-wide text-white flex items-center gap-2 pl-16">
                 🚚 <strong>Welcome to Movera</strong> — Melbourne&apos;s most reliable removalists · Upfront
-                pricing, no hidden fees · $80,000 goods-in-transit cover on every move
+                pricing, no hidden fees · $100,000 goods-in-transit cover on every move
               </span>
             </div>
           ))}

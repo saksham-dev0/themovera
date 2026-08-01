@@ -9,9 +9,9 @@ export const metadata = {
 
 const stats = [
   { value: "10,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 876+ REVIEWS" },
+  { value: "4.8★", label: "FROM 2,500+ REVIEWS" },
   { value: "10+ yrs", label: "COMBINED EXPERIENCE" },
-  { value: "$80k", label: "GOODS-IN-TRANSIT COVER" },
+  { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
 const values = [

@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import type { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input, Label, Textarea } from "@/components/ui/Input";
@@ -10,32 +13,78 @@ export function FeedbackForm() {
   const [fileName, setFileName] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [previewType, setPreviewType] = useState<"image" | "video" | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const generateUploadUrl = useMutation(api.feedback.generateUploadUrl);
+  const submitFeedback = useMutation(api.feedback.submit);
+
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) {
+    const selected = e.target.files?.[0];
+    if (!selected) {
+      setFile(null);
       setFileName(null);
       setPreviewUrl(null);
       setPreviewType(null);
       return;
     }
-    setFileName(file.name);
-    setPreviewUrl(URL.createObjectURL(file));
-    setPreviewType(file.type.startsWith("video") ? "video" : "image");
+    setFile(selected);
+    setFileName(selected.name);
+    setPreviewUrl(URL.createObjectURL(selected));
+    setPreviewType(selected.type.startsWith("video") ? "video" : "image");
   }
 
   function clearFile() {
+    setFile(null);
     setFileName(null);
     setPreviewUrl(null);
     setPreviewType(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const name = String(formData.get("name") ?? "");
+      const email = String(formData.get("email") ?? "");
+      const comment = String(formData.get("comment") ?? "");
+
+      let mediaStorageId: Id<"_storage"> | undefined;
+      let mediaType: "image" | "video" | undefined;
+
+      if (file) {
+        const uploadUrl = await generateUploadUrl();
+        const result = await fetch(uploadUrl, {
+          method: "POST",
+          headers: { "Content-Type": file.type },
+          body: file,
+        });
+        if (!result.ok) throw new Error("Upload failed");
+        const { storageId } = (await result.json()) as { storageId: Id<"_storage"> };
+        mediaStorageId = storageId;
+        mediaType = file.type.startsWith("video") ? "video" : "image";
+      }
+
+      await submitFeedback({
+        name,
+        email,
+        comment,
+        ...(mediaStorageId ? { mediaStorageId, mediaType } : {}),
+      });
+
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong submitting your feedback. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -54,15 +103,15 @@ export function FeedbackForm() {
 
   return (
     <Card className="rounded-md p-8 shadow-floating max-w-[560px] mx-auto">
-      <form className="grid gap-5" onSubmit={handleSubmit}>
-        <div className="grid gap-1.5">
+      <form className="grid grid-cols-1 gap-5" onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 gap-1.5">
           <Label htmlFor="feedback-name" className="text-xs uppercase tracking-wide">
             Full name
           </Label>
           <Input id="feedback-name" name="name" placeholder="Your name" required className="bg-white" />
         </div>
 
-        <div className="grid gap-1.5">
+        <div className="grid grid-cols-1 gap-1.5">
           <Label htmlFor="feedback-email" className="text-xs uppercase tracking-wide">
             Email
           </Label>
@@ -76,7 +125,7 @@ export function FeedbackForm() {
           />
         </div>
 
-        <div className="grid gap-1.5">
+        <div className="grid grid-cols-1 gap-1.5">
           <Label htmlFor="feedback-comment" className="text-xs uppercase tracking-wide">
             Your feedback
           </Label>
@@ -90,7 +139,7 @@ export function FeedbackForm() {
           />
         </div>
 
-        <div className="grid gap-1.5">
+        <div className="grid grid-cols-1 gap-1.5">
           <Label htmlFor="feedback-media" className="text-xs uppercase tracking-wide">
             Photo or video (optional)
           </Label>
@@ -98,7 +147,7 @@ export function FeedbackForm() {
             htmlFor="feedback-media"
             className="flex items-center justify-between gap-3 border-[1.5px] border-dashed border-border rounded-md px-5 py-4 bg-gray-100 cursor-pointer hover:border-teal-500 transition-colors"
           >
-            <span className="text-sm text-ink-400 truncate">
+            <span className="text-sm text-ink-400 truncate min-w-0">
               {fileName ?? "Click to upload an image or video of your feedback"}
             </span>
             <span className="text-sm font-display font-semibold text-teal-500 shrink-0">Browse</span>
@@ -132,8 +181,10 @@ export function FeedbackForm() {
           )}
         </div>
 
-        <Button type="submit" variant="primary" className="w-full mt-1">
-          Submit Feedback
+        {error && <div className="text-sm text-danger">{error}</div>}
+
+        <Button type="submit" variant="primary" className="w-full mt-1" disabled={submitting}>
+          {submitting ? "Submitting…" : "Submit Feedback"}
         </Button>
       </form>
     </Card>

@@ -92,7 +92,7 @@ export const services: Service[] = [
   },
   {
     slug: "loading-unloading",
-    image: "/house_removal2.png",
+    image: "/loading-unloading.png",
     caption: "Loading crew maximising every truck",
     title: "Loading & Unloading Services",
     tagline: "Labour-only support for your own truck, trailer or container.",
