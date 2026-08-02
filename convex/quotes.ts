@@ -7,6 +7,7 @@ export const submit = mutation({
     phone: v.string(),
     email: v.string(),
     moveDate: v.string(),
+    movingFrom: v.string(),
   },
   returns: v.id("quoteRequests"),
   handler: async (ctx, args) => {

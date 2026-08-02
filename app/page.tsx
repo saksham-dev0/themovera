@@ -1,18 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { Card, IconTile } from "@/components/ui/Card";
 import { Accordion } from "@/components/ui/Accordion";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
-import { QuoteForm } from "@/components/ui/QuoteForm";
+import { HeroQuoteForm } from "@/components/ui/HeroQuoteForm";
 import { services } from "@/app/services/data";
 
 const stats = [
-  { value: "10,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 2,500+ REVIEWS" },
-  { value: "10+ yrs", label: "COMBINED EXPERIENCE" },
+  { value: "3,000+", label: "MOVES COMPLETED" },
+  { value: "4.8★", label: "FROM 800+ REVIEWS" },
+  { value: "5+ yrs", label: "IN BUSINESS" },
   { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
@@ -105,38 +104,32 @@ export default function Home() {
       {/* Hero */}
       <section className="relative">
         <div className="absolute inset-0">
-          <Image src="/banner.png" alt="Movera crew moving furniture" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/55 to-ink-900/20" />
+          <Image
+            src="/mobile-banner.png"
+            alt="Movera crew moving furniture"
+            fill
+            className="object-cover sm:hidden"
+            priority
+          />
+          <Image
+            src="/banner.png"
+            alt="Movera crew moving furniture"
+            fill
+            className="object-cover hidden sm:block"
+            priority
+          />
+          <div className="absolute inset-0 bg-ink-900/45" />
         </div>
 
-        <div className="relative max-w-[1180px] mx-auto px-8 pt-14 pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
-          <div>
-            {/* <div className="inline-flex items-center gap-2 bg-white/95 rounded-pill px-4 py-2 mb-6">
-              <span className="text-gold-400">★</span>
-              <span className="font-display font-bold text-sm text-ink-800">4.9 on ProductReview</span>
-            </div> */}
-            <h1 className="font-display font-bold text-5xl leading-[1.1] text-white m-0 mb-6">
-              Removalists Melbourne Trusts for<br />
-              House &amp; Office Moves.
-            </h1>
-            <p className="text-[17px] leading-[1.65] max-w-[520px] mb-8 text-white/85">
-              Affordable, professional removalists across Melbourne and nearby suburbs — bayside, inner-city,
-              eastern and northern. 4.8★ from 2,500+ reviews, 10,000+ moves completed. Get your free quote in 60
-              seconds.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button variant="primary">Our Services</Button>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center justify-center gap-2 font-display font-semibold text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-md text-[13px] tracking-wide px-[22px] py-3 no-underline transition-colors"
-              >
-                See How It Works
-              </Link>
-            </div>
-          </div>
+        <div className="relative max-w-[1180px] mx-auto px-8 pt-24 pb-28 flex flex-col items-center text-center gap-8">
+          <h1 className="font-display font-bold text-5xl leading-[1.1] text-white m-0 max-w-[720px]">
+            Move Right with Movera
+          </h1>
+          <p className="text-[17px] leading-[1.6] max-w-[480px] text-white/85 m-0">
+            4.8★ from 800+ reviews. Get your free quote in 60 seconds.
+          </p>
 
-          {/* Quote card */}
-          <QuoteForm />
+          <HeroQuoteForm />
         </div>
       </section>
 

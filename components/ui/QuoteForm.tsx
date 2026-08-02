@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input, Label } from "@/components/ui/Input";
 
-export function QuoteForm() {
+export function QuoteForm({ defaultLocation = "" }: { defaultLocation?: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,6 +26,7 @@ export function QuoteForm() {
         phone: String(formData.get("phone") ?? ""),
         email: String(formData.get("email") ?? ""),
         moveDate: String(formData.get("moveDate") ?? ""),
+        movingFrom: String(formData.get("movingFrom") ?? ""),
       });
       setSubmitted(true);
     } catch {
@@ -51,11 +52,24 @@ export function QuoteForm() {
 
   return (
     <Card className="rounded-md p-8 shadow-floating">
-      <div className="font-display font-bold text-2xl text-ink-800 mb-1.5">Get your free upfront quote</div>
+      <h1 className="font-display font-bold text-2xl text-ink-800 m-0 mb-1.5">Get your free upfront quote</h1>
       <p className="m-0 mb-6 text-sm text-ink-400 leading-[1.5]">
         A genuine quote based on your move. No callbacks from 5 competing movers. Back to you in under 2 hours.
       </p>
       <form className="grid gap-4" onSubmit={handleSubmit}>
+        <div className="grid gap-1.5">
+          <Label htmlFor="quote-moving-from" className="text-xs uppercase tracking-wide">
+            Moving from
+          </Label>
+          <Input
+            id="quote-moving-from"
+            name="movingFrom"
+            placeholder="Suburb"
+            defaultValue={defaultLocation}
+            required
+            className="bg-white"
+          />
+        </div>
         <div className="grid gap-1.5">
           <Label htmlFor="quote-name" className="text-xs uppercase tracking-wide">
             Full name

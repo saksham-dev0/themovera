@@ -15,6 +15,7 @@ export default defineSchema({
     phone: v.string(),
     email: v.string(),
     moveDate: v.string(),
+    movingFrom: v.string(),
   }),
 
   jobApplications: defineTable({
