@@ -34,13 +34,13 @@ const locations = [
 
 export function CTABand() {
   return (
-    <div className="bg-teal-400 text-center py-14 px-8 rounded-md overflow-hidden">
-      <div className="font-display font-bold text-[32px] leading-[1.25] text-white mb-6">
-        Move the right way
-        <br />
-        Move with Movera
+    <div className="relative text-center py-14 px-8 rounded-md overflow-hidden">
+      <Image src="/movera.jpeg" alt="" fill className="object-cover" />
+      <div className="absolute inset-0 bg-blue-900/70" />
+      <div className="relative font-display font-bold text-[32px] leading-[1.25] text-white mb-6">
+        Move Right with Movera
       </div>
-      <div className="flex justify-center gap-4 flex-wrap">
+      <div className="relative flex justify-center gap-4 flex-wrap">
         <button className="font-display font-semibold text-[15px] text-white bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer">
           Get a Quote ›
         </button>

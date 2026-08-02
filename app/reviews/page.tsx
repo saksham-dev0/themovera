@@ -5,7 +5,7 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 export const metadata = {
   title: "Reviews | Movera Removals & Storage",
-  description: "4.9 stars from 5,527+ reviews — see what customers say about moving with Movera.",
+  description: "4.9 stars from 2,700+ reviews — see what customers say about moving with Movera.",
 };
 
 type VideoTestimonial = {
@@ -101,7 +101,7 @@ export default function ReviewsPage() {
         <div className="flex items-center justify-center gap-3 text-lg">
           <span className="text-gold-400">★★★★★</span>
           <span className="font-display font-bold text-ink-800">4.8</span>
-          <span className="text-ink-400 text-sm">from 800+ reviews</span>
+          <span className="text-ink-400 text-sm">from 2,700+ reviews</span>
         </div>
       </section>
 

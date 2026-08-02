@@ -4,13 +4,13 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 
 export const metadata = {
   title: "About Us | Movera Removals & Storage",
-  description: "Family owned removalists with 5+ years serving Melbourne and surrounding suburbs.",
+  description: "Family owned removalists with 8+ years serving Melbourne and surrounding suburbs.",
 };
 
 const stats = [
-  { value: "3,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 800+ REVIEWS" },
-  { value: "5+ yrs", label: "IN BUSINESS" },
+  { value: "5,000+", label: "MOVES COMPLETED" },
+  { value: "4.8★", label: "FROM 2,700+ REVIEWS" },
+  { value: "8+ yrs", label: "IN BUSINESS" },
   { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
 ];
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[640px]">
           Movera is a family owned and operated removals company serving Melbourne and surrounding suburbs. Over
-          5+ years in business, our trained crews and partner teams have completed 3,000+ moves — homes, offices,
+          8+ years in business, our trained crews and partner teams have completed 5,000+ moves — homes, offices,
           and everything in between — always with a quote based on the actual work involved, and one point of
           accountability.
         </p>

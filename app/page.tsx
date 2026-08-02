@@ -9,16 +9,10 @@ import { HeroQuoteForm } from "@/components/ui/HeroQuoteForm";
 import { services } from "@/app/services/data";
 
 const stats = [
-  { value: "3,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 800+ REVIEWS" },
-  { value: "5+ yrs", label: "IN BUSINESS" },
+  { value: "5,000+", label: "MOVES COMPLETED" },
+  { value: "4.8★", label: "FROM 2,700+ REVIEWS" },
+  { value: "8+ yrs", label: "IN BUSINESS" },
   { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
-];
-
-const areas = [
-  { city: "Bayside & South-East", note: "Based at 32-44 Keys Road, Cheltenham — servicing Brighton, Sandringham, Mentone, Frankston and surrounds" },
-  { city: "Melbourne CBD & Inner", note: "Fitzroy, Richmond, South Yarra, Carlton, St Kilda and every inner-city suburb in between" },
-  { city: "Eastern & Northern Suburbs", note: "Box Hill, Doncaster, Preston, Reservoir, Epping and the growth corridors beyond" },
 ];
 
 const fleet = [
@@ -102,34 +96,35 @@ export default function Home() {
       <Nav />
 
       {/* Hero */}
-      <section className="relative">
-        <div className="absolute inset-0">
+      <section className="max-w-[1180px] mx-auto px-4 sm:px-8 pt-8">
+        <div className="relative rounded-2xl overflow-hidden h-[420px] sm:h-[560px]">
           <Image
-            src="/mobile-banner.png"
-            alt="Movera crew moving furniture"
+            src="/movera.jpeg"
+            alt="Movera truck and containers"
             fill
-            className="object-cover sm:hidden"
+            className="object-cover"
             priority
           />
-          <Image
-            src="/banner.png"
-            alt="Movera crew moving furniture"
-            fill
-            className="object-cover hidden sm:block"
-            priority
-          />
-          <div className="absolute inset-0 bg-ink-900/45" />
+          <div className="absolute inset-0 bg-ink-900/40" />
+          <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-14">
+            <h1 className="font-display font-bold text-4xl sm:text-6xl leading-[1.1] text-white m-0 max-w-[640px]">
+              Move Right
+              <span className="relative block w-fit mt-1">
+                with Movera
+                <span className="absolute left-0 right-0 -bottom-2 h-[6px] bg-teal-400 rounded-full" />
+              </span>
+            </h1>
+          </div>
         </div>
 
-        <div className="relative max-w-[1180px] mx-auto px-8 pt-24 pb-28 flex flex-col items-center text-center gap-8">
-          <h1 className="font-display font-bold text-5xl leading-[1.1] text-white m-0 max-w-[720px]">
-            Move Right with Movera
-          </h1>
-          <p className="text-[17px] leading-[1.6] max-w-[480px] text-white/85 m-0">
-            4.8★ from 800+ reviews. Get your free quote in 60 seconds.
-          </p>
-
+        <div className="relative z-10 -mt-10 sm:-mt-14 flex justify-center px-2">
           <HeroQuoteForm />
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 pt-8 pb-4 text-base sm:text-lg text-center">
+          <span className="text-gold-400">★★★★★</span>
+          <span className="font-display font-bold text-ink-800">4.8 stars,</span>
+          <span className="text-ink-600">from 2,700+ reviews</span>
         </div>
       </section>
 
@@ -254,24 +249,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Areas We Service */}
-      <section className="max-w-[1180px] mx-auto px-8 py-16">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
-          Areas We Service
-        </div>
-        <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
-          Local movers servicing Melbourne and surrounding suburbs
-        </h2>
-        <div className="grid sm:grid-cols-3 gap-6">
-          {areas.map((a) => (
-            <Card key={a.city}>
-              <div className="font-display font-semibold text-lg text-ink-800 mb-2">{a.city}</div>
-              <p className="m-0 text-sm leading-[1.6]">{a.note}</p>
-            </Card>
-          ))}
         </div>
       </section>
 

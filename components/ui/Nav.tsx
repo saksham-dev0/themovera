@@ -20,13 +20,9 @@ export function Nav() {
 
   return (
     <div className="sticky top-0 z-20">
-      {/* Top info bar with diagonal accent */}
-      <div className="relative bg-white overflow-hidden">
-        <div
-          className="absolute inset-y-0 left-0 w-[60%] md:w-[46%] bg-teal-500"
-          style={{ clipPath: "polygon(0 0, 100% 0, 78% 100%, 0 100%)" }}
-        />
-        <div className="relative max-w-[1180px] mx-auto px-8 py-3 flex items-center justify-between gap-6">
+      {/* Dark nav bar */}
+      <div className="bg-ink-900">
+        <div className="max-w-[1180px] mx-auto flex items-center gap-9 px-8 py-4">
           <Link href="/" className="flex items-center gap-2.5 shrink-0 no-underline">
             <div className="relative h-11 w-11 bg-white rounded-sm overflow-hidden shrink-0 border border-border">
               <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" priority />
@@ -34,39 +30,6 @@ export function Nav() {
             <div className="font-display font-bold text-lg tracking-[1px] text-white leading-none">MOVERA</div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 text-[13px]">
-            <div className="flex items-center gap-2.5">
-              <span className="text-teal-500">⏱</span>
-              <div className="leading-tight">
-                <div className="font-display font-semibold text-ink-800">7 days a week!</div>
-                <div className="text-ink-400">7:00 AM – 7:00 PM</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="text-teal-500">✉</span>
-              <div className="leading-tight">
-                <div className="font-display font-semibold text-ink-800">Email</div>
-                <a href="mailto:hello@movera.com.au" className="text-ink-400 no-underline hover:text-teal-500">
-                  hello@movera.com.au
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <span className="text-teal-500">☎</span>
-              <div className="leading-tight">
-                <div className="font-display font-semibold text-ink-800">Call Us</div>
-                <a href="tel:0285034444" className="text-ink-400 no-underline hover:text-teal-500">
-                  02 8503 4444
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Dark nav bar */}
-      <div className="bg-ink-900">
-        <div className="max-w-[1180px] mx-auto flex items-center gap-9 px-8 py-4">
           <nav className="hidden lg:flex gap-7 flex-1 items-center">
             <Link
               href="/"

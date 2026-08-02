@@ -14,10 +14,10 @@ export const services: Service[] = [
     slug: "local-removals",
     image: "/House.png",
     caption: "Local move · packed and loaded with care",
-    title: "Local Removals",
+    title: "Local Removalists",
     tagline: "Across the street or across the city — simple, efficient, stress-free.",
     description:
-      "Whether you're moving across the street or to the other side of the city, our local removals service is designed to make the process simple, efficient, and stress-free. From apartments and family homes to townhouses and units, our experienced movers handle every move with professionalism and care. We carefully plan each relocation, protect your furniture during transport, and ensure every item arrives safely at its new destination.",
+      "Whether you're moving across the street or to the other side of the city, our local removalists service is designed to make the process simple, efficient, and stress-free. From apartments and family homes to townhouses and units, our experienced movers handle every move with professionalism and care. We carefully plan each relocation, protect your furniture during transport, and ensure every item arrives safely at its new destination.",
     features: [
       "Careful move planning tailored to your property type",
       "Furniture wrapping and protection as standard",
@@ -62,7 +62,7 @@ export const services: Service[] = [
     slug: "furniture-removals",
     image: "/House_removalist.png",
     caption: "Furniture wrapped and carried with care",
-    title: "Furniture Removals",
+    title: "Furniture Removalists",
     tagline: "Everyday and oversized pieces, moved without the worry.",
     description:
       "From everyday household furniture to oversized or delicate pieces, we move every item with care using professional equipment, protective wrapping, and safe handling techniques to minimise the risk of damage.",
@@ -78,7 +78,7 @@ export const services: Service[] = [
     slug: "specialty-item-removals",
     image: "/special-move.png",
     caption: "Specialty items handled with purpose-built care",
-    title: "Specialty Item Removals",
+    title: "Specialty Item Removalists",
     tagline: "Extra care for the items that can't be replaced.",
     description:
       "We safely transport items that require extra care, including pianos, artwork, mirrors, antiques, large televisions, gym equipment, pool tables, and other fragile or valuable belongings.",
