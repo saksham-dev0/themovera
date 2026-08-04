@@ -44,7 +44,7 @@ export const services: Service[] = [
   },
   {
     slug: "packing-unpacking",
-    image: "/movera_storage.png",
+    image: "/Packing.png",
     caption: "Boxes, wrap and materials ready to go",
     title: "Packing & Unpacking",
     tagline: "Quality materials, proven technique, everything secured for transport.",

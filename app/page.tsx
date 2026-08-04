@@ -16,15 +16,15 @@ const stats = [
 ];
 
 const fleet = [
-  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/Interstate.png" },
+  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/desktop-fleet.png", mobileImage: "/mobile-fleet.png" },
   { title: "Trained crew", caption: "Background-checked moving teams — our own crews and trusted local partners, held to the same standard.", image: "/office_removal.png" },
-  { title: "Packing materials", caption: "Boxes, blankets, straps and trolleys loaded on every truck, so your crew is never caught short on the day.", image: "/movera_storage.png" },
+  { title: "Packing materials", caption: "Boxes, blankets, straps and trolleys loaded on every truck, so your crew is never caught short on the day.", image: "/Packing.png" },
 ];
 
 const serviceImages: Record<string, string> = {
   "local-removals": "/House.png",
   "office-commercial-relocations": "/office_removal.png",
-  "packing-unpacking": "/movera_storage.png",
+  "packing-unpacking": "/Packing.png",
   "furniture-removals": "/House_removalist.png",
   "specialty-item-removals": "/special-move.png",
   "loading-unloading": "/loading-unloading.png",
@@ -266,7 +266,14 @@ export default function Home() {
             {fleet.map((f) => (
               <div key={f.title} className="rounded-md overflow-hidden border border-border">
                 <div className="relative h-[160px]">
-                  <Image src={f.image} alt={f.title} fill className="object-cover" />
+                  {f.mobileImage ? (
+                    <>
+                      <Image src={f.mobileImage} alt={f.title} fill className="object-cover sm:hidden" />
+                      <Image src={f.image} alt={f.title} fill className="object-cover hidden sm:block" />
+                    </>
+                  ) : (
+                    <Image src={f.image} alt={f.title} fill className="object-cover" />
+                  )}
                 </div>
                 <div className="p-5">
                   <div className="font-display font-semibold text-[15px] text-ink-800 mb-1.5">{f.title}</div>
