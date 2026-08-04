@@ -123,7 +123,7 @@ export function Footer() {
 
         <div className="border-t border-white/10 mt-10 pt-8 flex flex-col items-center gap-4 text-center">
           <div className="font-display font-bold text-lg text-teal-500">
-            MOVE THE RIGHT WAY <span className="text-white">MOVE WITH MOVERA</span>
+            move right with movera
           </div>
           <div className="flex gap-4 text-xs text-white/60">
             <a href="/privacy" className="hover:text-white">Privacy Policy</a>

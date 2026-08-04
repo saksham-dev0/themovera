@@ -28,7 +28,7 @@ export default function ServicesIndexPage() {
         </p>
 
         <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[300px] mb-12">
-          <Image src="/banner.png" alt="Movera crew moving furniture" fill className="object-cover" priority />
+          <Image src="/movera.jpeg" alt="Movera crew moving furniture" fill className="object-cover" priority />
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

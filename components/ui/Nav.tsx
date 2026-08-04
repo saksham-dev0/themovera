@@ -14,6 +14,24 @@ const navItems = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+export function InfoBar() {
+  return (
+    <div className="bg-ink-800 text-white/80">
+      <div className="max-w-[1180px] mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1.5 px-8 py-2 text-xs font-display font-medium">
+        <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-1.5">
+          <a href="mailto:hello@movera.com.au" className="hover:text-teal-500">
+            hello@movera.com.au
+          </a>
+          <a href="tel:0285034444" className="hover:text-teal-500">
+            ☎ 02 8503 4444
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Nav() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -81,7 +99,7 @@ export function Nav() {
               href="/contact"
               className="font-display font-semibold text-xs tracking-wide text-white bg-transparent border-2 border-sage-500 hover:bg-sage-500/15 rounded-sm px-4.5 py-2.5 cursor-pointer whitespace-nowrap no-underline"
             >
-              GET A QUOTE
+              CALL NOW
             </Link>
             <button
               className="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-9 shrink-0 bg-transparent border-0 cursor-pointer"

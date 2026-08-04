@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, IconTile } from "@/components/ui/Card";
 import { Accordion } from "@/components/ui/Accordion";
-import { Nav } from "@/components/ui/Nav";
+import { InfoBar, Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
 import { HeroQuoteForm } from "@/components/ui/HeroQuoteForm";
@@ -16,7 +16,7 @@ const stats = [
 ];
 
 const fleet = [
-  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 2-tonne to 12-tonne, matched to your move — no wasted space, no second trip.", image: "/Interstate.png" },
+  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/Interstate.png" },
   { title: "Trained crew", caption: "Background-checked moving teams — our own crews and trusted local partners, held to the same standard.", image: "/office_removal.png" },
   { title: "Packing materials", caption: "Boxes, blankets, straps and trolleys loaded on every truck, so your crew is never caught short on the day.", image: "/movera_storage.png" },
 ];
@@ -34,7 +34,7 @@ const steps = [
   {
     n: "1",
     title: "Get Your Free Quote",
-    body: "Tell us your suburbs, move date and rough inventory online or by phone. We'll come back with one transparent, upfront price — no hidden fees, no obligation.",
+    body: "Tell us your suburbs, move date and rough inventory online or by phone. We'll come back with one transparent, Best price — no hidden fees, no obligation.",
   },
   {
     n: "2",
@@ -59,7 +59,7 @@ const checklist = [
 const reviews = [
   {
     quote:
-      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. Upfront pricing, on time, careful with our piano and antiques.",
+      "I'd been burned by a comparison-site mover before — hidden fees, no-show crew, a nightmare. Movera was the opposite. genuine pricing, on time, careful with our piano and antiques.",
     initials: "SM",
     name: "Sarah M.",
     suburb: "South Yarra",
@@ -73,7 +73,7 @@ const reviews = [
   },
   {
     quote:
-      "Called at 6am needing a same-day move. They gave us an upfront quote, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
+      "Called at 6am needing a same-day move. They gave us an best quote, confirmed by 7am, crew there by 1pm. No drama, no surprises on the invoice.",
     initials: "PD",
     name: "Portia D.",
     suburb: "Brunswick",
@@ -81,8 +81,8 @@ const reviews = [
 ];
 
 const faqs = [
-  { q: "How much does a removalist in Melbourne cost?", a: "It depends on the size of your move, distance and access — a one-bedroom unit in Fitzroy costs less than a four-bedroom house in the eastern suburbs. We assess your move first and give you one clear, affordable quote upfront, confirmed before the day." },
-  { q: "Do you charge by the hour or give an upfront quote?", a: "Both — we offer a fixed upfront quote as well as hourly rates, whichever suits your move. Either way, we assess volume, distance and access first, so the number we agree is the number on the invoice — no surprise blowouts on the day." },
+  { q: "How much does a removalist in Melbourne cost?", a: "It depends on the size of your move, distance and access — a one-bedroom unit in Fitzroy costs less than a four-bedroom house in the eastern suburbs. We assess your move first and give you one clear, affordable quote, confirmed before the day." },
+  // { q: "Do you charge by the hour or give an upfront quote?", a: "Both — we offer a fixed upfront quote as well as hourly rates, whichever suits your move. Either way, we assess volume, distance and access first, so the number we agree is the number on the invoice — no surprise blowouts on the day." },
   { q: "Can you handle office and commercial relocations?", a: "Yes — office relocation is one of our specialties. We schedule after-hours or weekend moves so your Melbourne business has zero downtime, with IT equipment and workstations handled with care." },
   { q: "Do you do last-minute or same-day moves?", a: "Yes — subject to crew availability. Call us and we'll do our best to get a Melbourne crew and truck to you the same day." },
   { q: "Are my belongings insured during the move?", a: "Every move includes $100,000 goods-in-transit cover as standard, with optional comprehensive cover available for higher-value moves." },
@@ -93,6 +93,7 @@ const faqs = [
 export default function Home() {
   return (
     <div className="bg-gray-50 font-sans text-ink-600">
+      <InfoBar />
       <Nav />
 
       {/* Hero */}
@@ -234,7 +235,7 @@ export default function Home() {
             <p className="text-[15px] leading-[1.7] text-white/70 mb-7 max-w-[480px]">
               Comparison sites collect your details and sell them to 4-5 movers who bid against each other —
               you don&apos;t find out who&apos;s actually turning up until moving day. With Movera, you book with
-              us and deal with us throughout: one upfront price, one coordinator managing the job, and every
+              us and deal with us throughout: one price with no hidden fees, one coordinator managing the job, and every
               crew we put on your move — our own team or a vetted local partner — held to the same standard of
               training, background checks and insurance.
             </p>
