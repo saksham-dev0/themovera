@@ -16,6 +16,9 @@ export default defineSchema({
     email: v.string(),
     moveDate: v.string(),
     movingFrom: v.string(),
+    movingTo: v.optional(v.string()),
+    source: v.optional(v.string()),
+    thankYouEmailSent: v.optional(v.boolean()),
   }),
 
   jobApplications: defineTable({

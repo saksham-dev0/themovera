@@ -9,7 +9,9 @@
  */
 
 import type * as careers from "../careers.js";
+import type * as emails from "../emails.js";
 import type * as feedback from "../feedback.js";
+import type * as http from "../http.js";
 import type * as quotes from "../quotes.js";
 
 import type {
@@ -20,7 +22,9 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   careers: typeof careers;
+  emails: typeof emails;
   feedback: typeof feedback;
+  http: typeof http;
   quotes: typeof quotes;
 }>;
 

@@ -17,7 +17,7 @@ const navItems = [
 export function InfoBar() {
   return (
     <div className="bg-ink-800 text-white/80">
-      <div className="max-w-[1180px] mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1.5 px-8 py-2 text-xs font-display font-medium">
+      <div className="max-w-[1180px] mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1.5 px-8 py-2 text-xs font-display font-semibold">
         <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-1.5">
           <a href="mailto:hello@movera.com.au" className="hover:text-teal-500">
@@ -74,7 +74,7 @@ export function Nav() {
                       <Link
                         key={s.slug}
                         href={`/services/${s.slug}`}
-                        className="block px-4 py-2.5 text-[13px] font-display font-medium text-ink-800 no-underline hover:bg-gray-50 hover:text-teal-500"
+                        className="block px-4 py-2.5 text-[13px] font-display font-semibold text-ink-800 no-underline hover:bg-gray-50 hover:text-teal-500"
                       >
                         {s.title}
                       </Link>

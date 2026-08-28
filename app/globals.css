@@ -88,3 +88,13 @@ body {
 .animate-marquee-ltr {
   animation: marquee-ltr 36s linear infinite;
 }
+
+/*
+ * Skips render work for sections that start below the fold. `auto` on
+ * contain-intrinsic-size lets the browser remember each section's real height
+ * after first paint, so no layout shift is introduced.
+ */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}

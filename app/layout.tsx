@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins, Mulish } from "next/font/google";
 import "./globals.css";
-import { ConvexClientProvider } from "./ConvexClientProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
 });
 
 const mulish = Mulish({
@@ -32,7 +31,7 @@ export default function RootLayout({
       className={`${poppins.variable} ${mulish.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+        {children}
       </body>
     </html>
   );

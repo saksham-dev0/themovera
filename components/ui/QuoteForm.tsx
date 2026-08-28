@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { useMutation } from "convex/react";
+import { ConvexClientProvider } from "@/app/ConvexClientProvider";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input, Label } from "@/components/ui/Input";
 
-export function QuoteForm({ defaultLocation = "" }: { defaultLocation?: string }) {
+function QuoteFormInner({ defaultLocation = "" }: { defaultLocation?: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -103,5 +104,14 @@ export function QuoteForm({ defaultLocation = "" }: { defaultLocation?: string }
         <div className="text-center text-xs text-ink-400">No obligation · Fully insured · $100k cover</div>
       </form>
     </Card>
+  );
+}
+
+/** Mounts the Convex client only on routes that actually render this form. */
+export function QuoteForm(props: { defaultLocation?: string }) {
+  return (
+    <ConvexClientProvider>
+      <QuoteFormInner {...props} />
+    </ConvexClientProvider>
   );
 }

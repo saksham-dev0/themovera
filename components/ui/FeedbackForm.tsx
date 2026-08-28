@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useMutation } from "convex/react";
+import { ConvexClientProvider } from "@/app/ConvexClientProvider";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input, Label, Textarea } from "@/components/ui/Input";
 
-export function FeedbackForm() {
+function FeedbackFormInner() {
   const [fileName, setFileName] = useState<string | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [previewType, setPreviewType] = useState<"image" | "video" | null>(null);
@@ -188,5 +189,14 @@ export function FeedbackForm() {
         </Button>
       </form>
     </Card>
+  );
+}
+
+/** Mounts the Convex client only on routes that actually render this form. */
+export function FeedbackForm() {
+  return (
+    <ConvexClientProvider>
+      <FeedbackFormInner />
+    </ConvexClientProvider>
   );
 }

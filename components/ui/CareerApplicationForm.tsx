@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useMutation } from "convex/react";
+import { ConvexClientProvider } from "@/app/ConvexClientProvider";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { Button } from "@/components/ui/Button";
@@ -16,7 +17,7 @@ const roleParamMap: Record<string, Role> = {
   "sub-contractor": "Sub-Contractor",
 };
 
-export function CareerApplicationForm() {
+function CareerApplicationFormInner() {
   const searchParams = useSearchParams();
   const defaultRole = roleParamMap[searchParams.get("role") ?? ""] ?? "Ground Supervisor";
 
@@ -234,5 +235,14 @@ export function CareerApplicationForm() {
         </Button>
       </form>
     </Card>
+  );
+}
+
+/** Mounts the Convex client only on routes that actually render this form. */
+export function CareerApplicationForm() {
+  return (
+    <ConvexClientProvider>
+      <CareerApplicationFormInner />
+    </ConvexClientProvider>
   );
 }
