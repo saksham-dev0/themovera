@@ -4,6 +4,20 @@ import { LandingQuoteForm } from "@/components/landing/LandingQuoteForm";
 import { MobileCallBar } from "@/components/landing/MobileCallBar";
 import { FaqDialog } from "@/components/landing/FaqDialog";
 import { ServiceAreaTabs } from "@/components/landing/ServiceAreaTabs";
+import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
+import {
+  IconCalendar,
+  IconClock,
+  IconGoogle,
+  IconInsurance,
+  IconMapPin,
+  IconPhone,
+  IconShield,
+  IconStar,
+  IconTag,
+  IconTeam,
+  IconTruck,
+} from "@/components/landing/Icons";
 import {
   HOURLY_RATE,
   PHONE_DISPLAY,
@@ -34,27 +48,66 @@ const navLinks = [
 ];
 
 const sectionLabel = "mb-3 font-display text-xs font-semibold uppercase tracking-[1.5px] text-teal-500";
-const sectionTitle = "m-0 mb-8 font-display text-[26px] leading-[1.25] font-bold text-ink-800 sm:text-[30px]";
+const sectionTitle =
+  "m-0 mb-8 font-display text-[26px] leading-[1.25] font-bold text-ink-800 sm:text-[30px] lg:whitespace-nowrap";
+
+const icons = {
+  tag: IconTag,
+  shield: IconShield,
+  clock: IconClock,
+  team: IconTeam,
+  insurance: IconInsurance,
+  star: IconStar,
+  truck: IconTruck,
+  pin: IconMapPin,
+  calendar: IconCalendar,
+  google: IconGoogle,
+} as const;
+
+function Icon({ name, className }: { name: string; className?: string }) {
+  const Component = icons[name as keyof typeof icons] ?? IconStar;
+  return <Component className={className} />;
+}
+
+/**
+ * Call button: "CALL NOW" sits above the box as a small label so the phone
+ * number itself gets the largest type on the button.
+ */
+function CallButton({ tone = "light", className = "" }: { tone?: "light" | "dark"; className?: string }) {
+  return (
+    <a
+      href={`tel:${PHONE_TEL}`}
+      className={`inline-flex flex-col items-center rounded-sm border-2 px-3 py-2 no-underline transition-colors sm:px-5 ${
+        tone === "dark"
+          ? "border-sage-500 text-white hover:bg-sage-500/15"
+          : "border-teal-500 text-teal-500 hover:bg-teal-50"
+      } ${className}`}
+    >
+      <span
+        className={`font-display text-[10px] font-semibold uppercase tracking-[1.5px] ${
+          tone === "dark" ? "text-sage-500" : "text-teal-500/80"
+        }`}
+      >
+        Call Now
+      </span>
+      <span className="flex items-center gap-2 font-display text-[20px] font-bold leading-tight sm:text-[22px]">
+        <IconPhone className="h-4 w-4" />
+        {PHONE_DISPLAY}
+      </span>
+    </a>
+  );
+}
 
 function CtaPair({ tone = "light" }: { tone?: "light" | "dark" }) {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap items-stretch gap-3">
       <a
         href="#quote-form"
-        className="cursor-pointer rounded-sm bg-clay-500 px-6 py-3.5 font-display text-[15px] font-semibold text-white no-underline transition-colors hover:bg-clay-600"
+        className="flex items-center rounded-sm bg-clay-500 px-6 py-3.5 font-display text-[15px] font-semibold text-white no-underline transition-colors hover:bg-clay-600"
       >
         GET A FREE QUOTE →
       </a>
-      <a
-        href={`tel:${PHONE_TEL}`}
-        className={`cursor-pointer rounded-sm border-2 px-6 py-3 font-display text-[15px] font-semibold no-underline transition-colors ${
-          tone === "dark"
-            ? "border-white/70 text-white hover:bg-white/10"
-            : "border-teal-500 text-teal-500 hover:bg-teal-50"
-        }`}
-      >
-        ☎ CALL NOW {PHONE_DISPLAY}
-      </a>
+      <CallButton tone={tone} />
     </div>
   );
 }
@@ -62,16 +115,6 @@ function CtaPair({ tone = "light" }: { tone?: "light" | "dark" }) {
 export default function LocalMoversMelbourne() {
   return (
     <div id="top" className="bg-gray-50 font-sans text-ink-600">
-      {/* Top info bar */}
-      <div className="bg-ink-800 text-white/80">
-        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-x-6 gap-y-1 px-5 py-2 font-display text-xs font-semibold sm:justify-between">
-          <span>Mon – Sat: 7:00 AM – 8:00 PM · Melbourne Removalists</span>
-          <a href={`tel:${PHONE_TEL}`} className="no-underline hover:text-teal-500">
-            ☎ {PHONE_DISPLAY}
-          </a>
-        </div>
-      </div>
-
       {/* Nav — anchors only, no outbound links */}
       <header className="sticky top-0 z-30 bg-ink-900">
         <div className="mx-auto flex max-w-[1180px] items-center gap-6 px-5 py-3.5">
@@ -86,7 +129,7 @@ export default function LocalMoversMelbourne() {
                 className="h-full w-full object-contain"
               />
             </div>
-            <div className="font-display text-lg font-bold leading-none tracking-[1px] text-white">
+            <div className="hidden font-display text-lg font-bold leading-none tracking-[1px] text-white sm:block">
               MOVERA
             </div>
           </div>
@@ -103,12 +146,7 @@ export default function LocalMoversMelbourne() {
             ))}
           </nav>
 
-          <a
-            href={`tel:${PHONE_TEL}`}
-            className="ml-auto whitespace-nowrap rounded-sm border-2 border-sage-500 px-4 py-2 font-display text-xs font-semibold tracking-wide text-white no-underline hover:bg-sage-500/15"
-          >
-            ☎ CALL NOW {PHONE_DISPLAY}
-          </a>
+          <CallButton tone="dark" className="ml-auto shrink-0" />
         </div>
       </header>
 
@@ -125,11 +163,11 @@ export default function LocalMoversMelbourne() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-ink-900/75" />
-        <div className="relative mx-auto grid max-w-[1180px] items-start gap-10 px-5 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
+        <div className="relative mx-auto grid max-w-[1180px] items-start gap-10 px-5 py-12 lg:grid-cols-[1fr_400px] lg:py-16">
           <div>
-            <h1 className="m-0 font-display text-[34px] font-bold leading-[1.15] text-white sm:text-[46px]">
-              Two Men and a Truck,
-              <span className="block text-sage-500">Starts From {HOURLY_RATE}*</span>
+            <h1 className="m-0 font-display text-[24px] font-bold leading-[1.2] text-white min-[400px]:text-[30px] sm:text-[42px] lg:text-[46px]">
+              <span className="block whitespace-nowrap">Two Men and a Truck,</span>
+              <span className="block whitespace-nowrap text-sage-500">Starts From {HOURLY_RATE}*</span>
             </h1>
             <p className="mt-4 mb-6 max-w-[560px] text-[15px] leading-[1.7] text-white/80">
               Hire local removalists who actually turn up. Movera moves Melbourne homes and offices
@@ -138,9 +176,13 @@ export default function LocalMoversMelbourne() {
             </p>
 
             {/* 2 · Trust factor strip, directly under the hero quote */}
-            <div className="mb-7 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="mb-7 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-3">
               {trustBadges.map((badge) => (
-                <div key={badge.label} className="bg-ink-900/70 px-3 py-4 text-center">
+                <div
+                  key={badge.label}
+                  className="flex flex-col items-center bg-ink-900/70 px-3 py-4 text-center"
+                >
+                  <Icon name={badge.icon} className="mb-2 h-6 w-6 text-sage-500" />
                   <div className="font-display text-[15px] font-bold leading-tight text-sage-500">
                     {badge.value}
                   </div>
@@ -158,37 +200,16 @@ export default function LocalMoversMelbourne() {
         </div>
       </section>
 
-      {/* 3 · Features */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14 text-center">
-          <div className={sectionLabel}>Why Movera</div>
-          <h2 className={`${sectionTitle} mx-auto max-w-[640px]`}>
-            Trusted removalists Melbourne families keep re-booking
-          </h2>
-          <div className="grid grid-cols-2 gap-5 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="rounded-md border border-border bg-gray-50 px-5 py-7 text-center transition-shadow hover:shadow-raised"
-              >
-                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-pill bg-teal-100 font-display text-2xl font-bold text-teal-500">
-                  {feature.icon}
-                </div>
-                <div className="mb-2 font-display text-[14px] font-bold uppercase tracking-wide text-ink-800">
-                  {feature.title}
-                </div>
-                <p className="m-0 text-[13px] leading-[1.6] text-ink-600">{feature.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4 · Rating band */}
+      {/* 3 · Social proof: rating band + reviews slider, straight under the hero */}
+      {/* Rating band */}
       <section className="bg-ink-900">
         <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-6 px-5 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
-            <div className="font-display text-[34px] font-bold leading-none text-sage-500">4.8 ★</div>
+            <div className="flex items-center justify-center gap-2.5 font-display text-[34px] font-bold leading-none text-sage-500 sm:justify-start">
+              4.8
+              <IconStar className="h-7 w-7" />
+              <IconGoogle className="h-7 w-7" />
+            </div>
             <div className="mt-1 text-sm text-white/70">Based on 2,700+ verified reviews</div>
           </div>
           <div className="max-w-[520px] text-[15px] leading-[1.7] text-white/80">
@@ -204,11 +225,48 @@ export default function LocalMoversMelbourne() {
         </div>
       </section>
 
+
+      <section className="overflow-hidden bg-white py-12">
+        <div className="mx-auto mb-7 max-w-[1180px] px-5 text-center">
+          <div className={sectionLabel}>Customer Reviews</div>
+          <h2 className={`${sectionTitle} mb-0 text-center`}>
+            Real Melbourne moves, in our customers&apos; own words
+          </h2>
+        </div>
+        <ReviewsMarquee />
+      </section>
+
+      {/* 4 · Features */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1180px] px-5 py-14 text-center">
+          <div className={sectionLabel}>Why Movera</div>
+          <h2 className={sectionTitle}>
+            Trusted removalists Melbourne families keep re-booking
+          </h2>
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-3">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-md border border-border bg-gray-50 px-5 py-7 text-center transition-shadow hover:shadow-raised"
+              >
+                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-pill bg-teal-100 text-teal-500">
+                  <Icon name={feature.icon} className="h-7 w-7" />
+                </div>
+                <div className="mb-2 font-display text-[14px] font-bold uppercase tracking-wide text-ink-800">
+                  {feature.title}
+                </div>
+                <p className="m-0 text-[13px] leading-[1.6] text-ink-600">{feature.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 5 · Why choose us */}
       <section id="why-us" className="cv-auto scroll-mt-24 bg-gray-50">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={sectionLabel}>Why Choose Us?</div>
-          <h2 className={`${sectionTitle} max-w-[680px]`}>
+          <h2 className={sectionTitle}>
             Hire local removalists, not a lead-generation website
           </h2>
           <div className="grid gap-5 sm:grid-cols-2">
@@ -233,7 +291,7 @@ export default function LocalMoversMelbourne() {
       <section id="services" className="cv-auto scroll-mt-24 bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={sectionLabel}>Our Services</div>
-          <h2 className={`${sectionTitle} max-w-[680px]`}>
+          <h2 className={sectionTitle}>
             Removalists in Melbourne for every kind of move
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -270,7 +328,7 @@ export default function LocalMoversMelbourne() {
       <section className="cv-auto bg-gray-50">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={sectionLabel}>Our Process</div>
-          <h2 className={`${sectionTitle} max-w-[680px]`}>
+          <h2 className={sectionTitle}>
             Moving house in Melbourne in three simple steps
           </h2>
           <div className="grid gap-8 sm:grid-cols-3">
@@ -296,7 +354,7 @@ export default function LocalMoversMelbourne() {
       <section id="reviews" className="cv-auto scroll-mt-24 bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={sectionLabel}>Client Testimonials</div>
-          <h2 className={`${sectionTitle} max-w-[680px]`}>Real Melbourne moves, in their words</h2>
+          <h2 className={sectionTitle}>Real Melbourne moves, in their words</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {testimonials.map((review) => (
               <div key={review.name} className="rounded-md border border-border bg-gray-50 p-6">
@@ -367,7 +425,7 @@ export default function LocalMoversMelbourne() {
       <section id="faq" className="cv-auto scroll-mt-24 bg-gray-50">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={`${sectionLabel} text-center`}>Frequently Asked Questions</div>
-          <h2 className={`${sectionTitle} mx-auto max-w-[680px] text-center`}>
+          <h2 className={`${sectionTitle} text-center`}>
             Removalists near me — your questions, answered
           </h2>
           <div className="mx-auto grid max-w-[820px] gap-3">
@@ -401,30 +459,38 @@ export default function LocalMoversMelbourne() {
       <section id="areas" className="cv-auto scroll-mt-24 bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-14">
           <div className={`${sectionLabel} text-center`}>Areas We Service</div>
-          <h2 className={`${sectionTitle} mx-auto max-w-[680px] text-center`}>
+          <h2 className={`${sectionTitle} text-center`}>
             Local removalists across every corner of Melbourne
           </h2>
           <ServiceAreaTabs areas={serviceAreas} />
         </div>
       </section>
 
-      {/* 12 · Closing quote form */}
-      <section className="cv-auto bg-gray-50">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-14 lg:grid-cols-2">
+      {/* 12 · Closing quote form, over a customer-service backdrop */}
+      <section className="cv-auto relative overflow-hidden bg-ink-900">
+        <Image
+          src="/landing/support.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={60}
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-ink-900/80" />
+        <div className="relative mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-14 lg:grid-cols-[1fr_400px]">
           <div>
-            <div className={sectionLabel}>Get a Free Quote</div>
-            <h2 className={`${sectionTitle} max-w-[520px]`}>
+            <div className="mb-3 font-display text-xs font-semibold uppercase tracking-[1.5px] text-sage-500">
+              Get a Free Quote
+            </div>
+            <h2 className="m-0 mb-6 max-w-[560px] font-display text-[26px] font-bold leading-[1.25] text-white sm:text-[30px]">
               We make your move stress-free — starting with the price
             </h2>
-            <p className="mb-6 max-w-[520px] text-[15px] leading-[1.75] text-ink-600">
+            <p className="mb-6 max-w-[520px] text-[15px] leading-[1.75] text-white/75">
               Send us your pickup and drop-off suburbs and we&apos;ll come back with an affordable
-              removalists quote for your date. Prefer to talk it through? Call{" "}
-              <a href={`tel:${PHONE_TEL}`} className="font-semibold text-teal-500 no-underline">
-                {PHONE_DISPLAY}
-              </a>{" "}
-              and speak to a real coordinator.
+              removalists quote for your date. Prefer to talk it through? Our Melbourne coordinators
+              answer the phone seven days a week.
             </p>
-            <CtaPair />
+            <CtaPair tone="dark" />
           </div>
           <LandingQuoteForm
             heading="Book Two Men and a Truck"
@@ -435,7 +501,7 @@ export default function LocalMoversMelbourne() {
       </section>
 
       {/* Footer — self-contained, no outbound links */}
-      <footer className="bg-ink-900 pb-20 md:pb-0">
+      <footer className="bg-ink-900 pb-24 md:pb-0">
         <div className="mx-auto max-w-[1180px] px-5 pt-12 pb-8">
           <div className="grid gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -507,9 +573,10 @@ export default function LocalMoversMelbourne() {
               <div className="mb-3.5 font-display text-sm font-semibold text-teal-500">Contact</div>
               <a
                 href={`tel:${PHONE_TEL}`}
-                className="mb-2 block font-display text-xl font-bold text-white no-underline hover:text-teal-500"
+                className="mb-2 flex items-center gap-2 font-display text-[26px] font-bold text-white no-underline hover:text-teal-500"
               >
-                ☎ {PHONE_DISPLAY}
+                <IconPhone className="h-5 w-5" />
+                {PHONE_DISPLAY}
               </a>
               <div className="text-sm leading-[1.8] text-white/70">
                 Mon – Sat: 7:00 AM – 8:00 PM

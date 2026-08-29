@@ -13,41 +13,42 @@ export const PHONE_TEL = "0385034444";
 export const HOURLY_RATE = "$60/hr";
 
 export const trustBadges = [
-  { label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
-  { label: "Google Rating", value: "4.8 ★★★★★" },
-  { label: "Verified Reviews", value: "2,700+ moves rated" },
-  { label: "Goods-in-Transit Cover", value: "$100,000 included" },
-  { label: "Years Moving Melbourne", value: "8+ years" },
+  { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
+  { icon: "google", label: "Google Rating", value: "4.8 ★★★★★" },
+  { icon: "star", label: "Verified Reviews", value: "2,700+ moves rated" },
+  { icon: "shield", label: "Goods-in-Transit Cover", value: "$100,000 included" },
+  { icon: "clock", label: "Years Moving Melbourne", value: "8+ years" },
+  { icon: "pin", label: "Suburbs Covered", value: "All Melbourne" },
 ];
 
 export const features = [
   {
-    icon: "$",
+    icon: "tag",
     title: "AFFORDABLE PRICING",
     body: "Budget removalists rates with no hidden fees — the number we quote is the number you pay.",
   },
   {
-    icon: "◈",
+    icon: "shield",
     title: "CARE & PROTECTION",
     body: "Blankets, straps and shrink wrap on every job. We treat your furniture like it's our own.",
   },
   {
-    icon: "◷",
+    icon: "clock",
     title: "ON TIME, EVERY TIME",
     body: "Your two men and a truck arrive in the booked window, loaded and ready to work.",
   },
   {
-    icon: "◆",
+    icon: "team",
     title: "EXPERT TEAM",
     body: "Trained, background-checked local removalists who move Melbourne homes every single day.",
   },
   {
-    icon: "◉",
+    icon: "insurance",
     title: "FULLY INSURED",
     body: "$100,000 goods-in-transit cover included as standard on every Melbourne move.",
   },
   {
-    icon: "★",
+    icon: "star",
     title: "5 STAR SERVICE",
     body: "4.8 stars from 2,700+ reviews — reliable and efficient removalists you can actually reach.",
   },

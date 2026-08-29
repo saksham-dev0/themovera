@@ -2,8 +2,47 @@ import { v } from "convex/values";
 import { internalAction, internalMutation } from "./_generated/server";
 import { internal } from "./_generated/api";
 
-const FROM_ADDRESS = process.env.RESEND_FROM_ADDRESS ?? "Movera <hello@movera.com.au>";
+// Must be an address on a domain verified in Resend, or every send 403s.
+const FROM_ADDRESS = process.env.RESEND_FROM_ADDRESS ?? "Movera <noreply@themovera.com.au>";
+const SALES_ADDRESS = process.env.SALES_EMAIL_ADDRESS ?? "admin@themovera.com.au";
 const PHONE_DISPLAY = "03 8503 4444";
+
+/** Minimal HTML escaping — every value below is customer-supplied. */
+function esc(value: unknown) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function sendEmail(payload: {
+  to: string[];
+  subject: string;
+  html: string;
+  replyTo?: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY not set — skipping email:", payload.subject);
+    return false;
+  }
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: FROM_ADDRESS,
+      to: payload.to,
+      subject: payload.subject,
+      html: payload.html,
+      ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
+    }),
+  });
+  if (!response.ok) {
+    throw new Error(`Resend request failed (${response.status}): ${await response.text()}`);
+  }
+  return true;
+}
 
 function thankYouHtml(name: string, movingFrom: string, movingTo: string, moveDate: string) {
   const firstName = name.trim().split(/\s+/)[0] || "there";
@@ -74,32 +113,105 @@ export const sendQuoteThankYou = internalAction({
   },
   returns: v.null(),
   handler: async (ctx, args) => {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.warn("RESEND_API_KEY not set — skipping thank-you email");
-      return null;
-    }
-
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: FROM_ADDRESS,
-        to: [args.email],
-        subject: "Thanks for your quote request — Movera Removalists Melbourne",
-        html: thankYouHtml(args.name, args.movingFrom, args.movingTo, args.moveDate),
-      }),
+    const sent = await sendEmail({
+      to: [args.email],
+      subject: "Thanks for your quote request — Movera Removalists Melbourne",
+      html: thankYouHtml(args.name, args.movingFrom, args.movingTo, args.moveDate),
     });
-
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`Resend request failed (${response.status}): ${body}`);
+    if (sent) {
+      await ctx.runMutation(internal.emails.markThankYouSent, { quoteId: args.quoteId });
     }
+    return null;
+  },
+});
 
-    await ctx.runMutation(internal.emails.markThankYouSent, { quoteId: args.quoteId });
+function row(label: string, value: unknown) {
+  return `<tr>
+    <td style="padding:6px 12px 6px 0;font-size:14px;color:#7c8790;white-space:nowrap;vertical-align:top;">${esc(label)}</td>
+    <td style="padding:6px 0;font-size:14px;color:#22303d;"><strong>${esc(value) || "—"}</strong></td>
+  </tr>`;
+}
+
+/**
+ * Notifies the sales team. Fires twice per customer — once the moment step 1 is
+ * submitted, again when the step-2 detail arrives — both under the same
+ * incrementing reference number so the two emails are obviously one job.
+ */
+export const sendSalesNotification = internalAction({
+  args: {
+    quoteId: v.id("quoteRequests"),
+    stage: v.union(v.literal("step1"), v.literal("step2")),
+  },
+  returns: v.null(),
+  handler: async (ctx, args) => {
+    const quote = await ctx.runQuery(internal.quotes.getQuote, { quoteId: args.quoteId });
+    if (quote === null) return null;
+
+    const ref = `MOV-${quote.reference ?? 0}`;
+    const isStepTwo = args.stage === "step2";
+    const two = quote.stepTwo;
+
+    const heading = isStepTwo
+      ? `${ref} · Step 2 complete — full move detail`
+      : `${ref} · New lead (step 1)`;
+
+    const detailRows = isStepTwo && two
+      ? [
+          row("Property type", two.propertyType),
+          row("Bedrooms / size", two.bedrooms),
+          row("Pickup access", two.pickupAccess),
+          row("Drop-off access", two.dropoffAccess),
+          row("Preferred time", two.preferredTime),
+          row("Packing help", two.packingHelp),
+          row("Special items", two.specialItems),
+          row("Notes", two.notes),
+        ].join("")
+      : "";
+
+    const html = `<!doctype html>
+<html>
+  <body style="margin:0;padding:0;background:#f7f6f3;font-family:Helvetica,Arial,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f6f3;padding:24px 12px;">
+      <tr><td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;background:#ffffff;border:1px solid #e2dcc9;border-radius:14px;overflow:hidden;">
+          <tr><td style="background:${isStepTwo ? "#1a7f72" : "#1b2a38"};padding:20px 26px;">
+            <div style="font-size:12px;letter-spacing:1.5px;color:#c9d1cc;text-transform:uppercase;">Movera Sales — Local Movers Melbourne</div>
+            <div style="font-size:20px;font-weight:700;color:#ffffff;margin-top:6px;">${esc(heading)}</div>
+          </td></tr>
+          <tr><td style="padding:24px 26px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+              ${row("Reference", ref)}
+              ${row("Name", quote.name)}
+              ${row("Phone", quote.phone)}
+              ${row("Email", quote.email)}
+              ${row("Moving from", quote.movingFrom)}
+              ${row("Moving to", quote.movingTo)}
+              ${row("Move date", quote.moveDate)}
+              ${detailRows}
+            </table>
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-top:18px;border-top:1px solid #e2dcc9;padding-top:12px;">
+              ${row("IP address", quote.ipAddress)}
+              ${row("Source", quote.source)}
+              ${row("Browser", quote.userAgent)}
+            </table>
+            ${
+              isStepTwo
+                ? ""
+                : `<p style="margin:18px 0 0;font-size:13px;color:#7c8790;line-height:1.6;">Step 2 detail will follow in a second email under this same reference (${esc(ref)}) if the customer completes it.</p>`
+            }
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+</html>`;
+
+    await sendEmail({
+      to: [SALES_ADDRESS],
+      subject: `${ref} — ${isStepTwo ? "Step 2 complete" : "New quote request"}: ${quote.name} (${quote.movingFrom} → ${quote.movingTo ?? "?"})`,
+      html,
+      replyTo: quote.email,
+    });
     return null;
   },
 });

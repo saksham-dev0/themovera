@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-type VideoItem = { type: "video"; src: string };
+type VideoItem = { type: "video"; src: string; poster?: string };
 type QuoteItem = { type: "quote"; quote: string; name: string; suburb: string; initials: string };
 type MarqueeItem = VideoItem | QuoteItem;
 
 const items: MarqueeItem[] = [
-  { type: "video", src: "/review1.mp4" },
+  { type: "video", src: "/review1.mp4", poster: "/landing/review-poster-b.webp" },
   {
     type: "quote",
     quote:
@@ -23,7 +23,7 @@ const items: MarqueeItem[] = [
     suburb: "Fitzroy",
     initials: "JK",
   },
-  { type: "video", src: "/review.mp4" },
+  { type: "video", src: "/review.mp4", poster: "/landing/review-poster-a.webp" },
   {
     type: "quote",
     quote: "Called at 6am needing a same-day move. Confirmed by 7am, crew there by 1pm. No drama.",
@@ -65,10 +65,11 @@ function MarqueeCard({ item }: { item: MarqueeItem }) {
     <div className="relative w-[240px] sm:w-[280px] h-[360px] shrink-0 rounded-md overflow-hidden border border-border bg-ink-900 shadow-raised">
       <video
         src={item.src}
+        poster={item.poster}
         controls
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="pointer-events-none absolute top-3 left-3 bg-white/95 rounded-pill px-3 py-1 text-[11px] font-display font-semibold text-ink-800 flex items-center gap-1.5">

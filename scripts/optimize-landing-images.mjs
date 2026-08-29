@@ -8,6 +8,7 @@
  *
  * Run: node scripts/optimize-landing-images.mjs
  */
+import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
@@ -26,6 +27,12 @@ const targets = [
   ["special-move.png", "specialty.webp", 800, 68],
   ["desktop-fleet.png", "fleet-desktop.webp", 1200, 68],
   ["mobile-fleet.png", "fleet-mobile.webp", 900, 68],
+  // Background for the closing "get a quote" band. Swap the source for a real
+  // customer-service / call-centre photo and re-run this script.
+  ["support-source.png", "support.webp", 1600, 58],
+  // Video posters for the reviews slider — cards render at 280px wide.
+  ["review.jpeg", "review-poster-a.webp", 560, 66],
+  ["review1.jpeg", "review-poster-b.webp", 560, 66],
   ["Logo.png", "logo.webp", 96, 88],
   ["facebook.png", "facebook.webp", 72, 88],
   ["twitter.png", "twitter.webp", 72, 88],
@@ -37,6 +44,10 @@ await mkdir(OUT_DIR, { recursive: true });
 
 for (const [source, output, width, quality] of targets) {
   const inputPath = path.join(PUBLIC_DIR, source);
+  if (!existsSync(inputPath)) {
+    console.warn(`skip ${source} — not found`);
+    continue;
+  }
   const outputPath = path.join(OUT_DIR, output);
 
   const info = await sharp(inputPath)
