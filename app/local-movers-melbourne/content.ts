@@ -11,6 +11,8 @@
 export const PHONE_DISPLAY = "03 8503 4444";
 export const PHONE_TEL = "0385034444";
 export const HOURLY_RATE = "$60/hr";
+/** Headline casing — used where the rate sits in a title, not mid-sentence. */
+export const HOURLY_RATE_DISPLAY = "$60/Hr";
 
 export const trustBadges = [
   { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },

@@ -133,7 +133,7 @@ export function FaqDialog({
               </button>
             </div>
 
-            <div className="grid gap-2.5 overflow-y-auto overscroll-contain px-5 py-4 sm:px-6 sm:py-5">
+            <div className="grid min-h-0 flex-1 auto-rows-min gap-2.5 overflow-y-auto overscroll-contain px-5 py-4 sm:px-6 sm:py-5">
               {items.map((item, i) => {
                 const isOpen = expanded === i;
                 return (
@@ -144,7 +144,7 @@ export function FaqDialog({
                     <button
                       type="button"
                       onClick={() => setExpanded(isOpen ? null : i)}
-                      className={`flex w-full cursor-pointer items-center justify-between gap-3 border-none px-4 py-3.5 text-left font-display text-sm font-semibold text-ink-800 ${
+                      className={`flex w-full cursor-pointer items-center justify-between gap-3 border-none px-4 py-3.5 text-left font-display text-sm font-semibold leading-snug text-ink-800 transition-colors ${
                         isOpen ? "bg-teal-50" : "bg-white"
                       }`}
                     >
@@ -152,7 +152,7 @@ export function FaqDialog({
                       <span className="shrink-0 text-base text-teal-500">{isOpen ? "▴" : "▾"}</span>
                     </button>
                     {isOpen && (
-                      <div className="bg-teal-50 px-4 pb-4 text-sm leading-[1.65] text-ink-600">
+                      <div className="border-t border-teal-200 bg-teal-50 px-4 py-3.5 text-sm leading-[1.65] text-ink-600">
                         {item.a}
                       </div>
                     )}

@@ -20,6 +20,7 @@ import {
 } from "@/components/landing/Icons";
 import {
   HOURLY_RATE,
+  HOURLY_RATE_DISPLAY,
   PHONE_DISPLAY,
   PHONE_TEL,
   faqs,
@@ -47,9 +48,9 @@ const navLinks = [
   { label: "AREAS", href: "#areas" },
 ];
 
-const sectionLabel = "mb-3 font-display text-xs font-semibold uppercase tracking-[1.5px] text-teal-500";
+const sectionLabel = "mb-3 font-display text-sm font-semibold uppercase tracking-[1.5px] text-teal-500 sm:text-[15px]";
 const sectionTitle =
-  "m-0 mb-8 font-display text-[26px] leading-[1.25] font-bold text-ink-800 sm:text-[30px] lg:whitespace-nowrap";
+  "m-0 mb-6 font-display text-[28px] leading-[1.25] font-bold text-ink-800 sm:text-[34px] lg:whitespace-nowrap";
 
 const icons = {
   tag: IconTag,
@@ -163,11 +164,11 @@ export default function LocalMoversMelbourne() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-ink-900/75" />
-        <div className="relative mx-auto grid max-w-[1180px] items-start gap-10 px-5 py-12 lg:grid-cols-[1fr_400px] lg:py-16">
+        <div className="relative mx-auto grid max-w-[1180px] items-start gap-10 px-5 py-10 lg:grid-cols-[1fr_400px] lg:py-14">
           <div>
             <h1 className="m-0 font-display text-[24px] font-bold leading-[1.2] text-white min-[400px]:text-[30px] sm:text-[42px] lg:text-[46px]">
               <span className="block whitespace-nowrap">Two Men and a Truck,</span>
-              <span className="block whitespace-nowrap text-sage-500">Starts From {HOURLY_RATE}*</span>
+              <span className="block whitespace-nowrap text-sage-500">Starts From {HOURLY_RATE_DISPLAY}*</span>
             </h1>
             <p className="mt-4 mb-6 max-w-[560px] text-[15px] leading-[1.7] text-white/80">
               Hire local removalists who actually turn up. Movera moves Melbourne homes and offices
@@ -226,7 +227,7 @@ export default function LocalMoversMelbourne() {
       </section>
 
 
-      <section className="overflow-hidden bg-white py-12">
+      <section className="overflow-hidden bg-white py-9">
         <div className="mx-auto mb-7 max-w-[1180px] px-5 text-center">
           <div className={sectionLabel}>Customer Reviews</div>
           <h2 className={`${sectionTitle} mb-0 text-center`}>
@@ -238,7 +239,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 4 · Features */}
       <section className="bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14 text-center">
+        <div className="mx-auto max-w-[1180px] px-5 py-10 text-center">
           <div className={sectionLabel}>Why Movera</div>
           <h2 className={sectionTitle}>
             Trusted removalists Melbourne families keep re-booking
@@ -264,7 +265,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 5 · Why choose us */}
       <section id="why-us" className="cv-auto scroll-mt-24 bg-gray-50">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={sectionLabel}>Why Choose Us?</div>
           <h2 className={sectionTitle}>
             Hire local removalists, not a lead-generation website
@@ -289,7 +290,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 6 · Services */}
       <section id="services" className="cv-auto scroll-mt-24 bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={sectionLabel}>Our Services</div>
           <h2 className={sectionTitle}>
             Removalists in Melbourne for every kind of move
@@ -326,7 +327,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 7 · How it works */}
       <section className="cv-auto bg-gray-50">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={sectionLabel}>Our Process</div>
           <h2 className={sectionTitle}>
             Moving house in Melbourne in three simple steps
@@ -352,7 +353,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 8 · Testimonials */}
       <section id="reviews" className="cv-auto scroll-mt-24 bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={sectionLabel}>Client Testimonials</div>
           <h2 className={sectionTitle}>Real Melbourne moves, in their words</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -381,12 +382,12 @@ export default function LocalMoversMelbourne() {
 
       {/* 9 · Who we are */}
       <section className="cv-auto bg-ink-900">
-        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-14 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-10 lg:grid-cols-2">
           <div>
-            <div className="mb-3 font-display text-xs font-semibold uppercase tracking-[1.5px] text-sage-500">
+            <div className="mb-3 font-display text-sm font-semibold uppercase tracking-[1.5px] text-sage-500 sm:text-[15px]">
               Who We Are
             </div>
-            <h2 className="m-0 mb-5 font-display text-[26px] font-bold leading-[1.25] text-white sm:text-[30px]">
+            <h2 className="m-0 mb-5 font-display text-[28px] font-bold leading-[1.25] text-white sm:text-[34px]">
               Melbourne removalists you can call, not a quote comparison form
             </h2>
             <p className="mb-4 text-[15px] leading-[1.75] text-white/75">
@@ -423,7 +424,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 10 · FAQ */}
       <section id="faq" className="cv-auto scroll-mt-24 bg-gray-50">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={`${sectionLabel} text-center`}>Frequently Asked Questions</div>
           <h2 className={`${sectionTitle} text-center`}>
             Removalists near me — your questions, answered
@@ -457,7 +458,7 @@ export default function LocalMoversMelbourne() {
 
       {/* 11 · Areas we service */}
       <section id="areas" className="cv-auto scroll-mt-24 bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14">
+        <div className="mx-auto max-w-[1180px] px-5 py-10">
           <div className={`${sectionLabel} text-center`}>Areas We Service</div>
           <h2 className={`${sectionTitle} text-center`}>
             Local removalists across every corner of Melbourne
@@ -477,12 +478,12 @@ export default function LocalMoversMelbourne() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-ink-900/80" />
-        <div className="relative mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-14 lg:grid-cols-[1fr_400px]">
+        <div className="relative mx-auto grid max-w-[1180px] items-center gap-10 px-5 py-10 lg:grid-cols-[1fr_400px]">
           <div>
-            <div className="mb-3 font-display text-xs font-semibold uppercase tracking-[1.5px] text-sage-500">
+            <div className="mb-3 font-display text-sm font-semibold uppercase tracking-[1.5px] text-sage-500 sm:text-[15px]">
               Get a Free Quote
             </div>
-            <h2 className="m-0 mb-6 max-w-[560px] font-display text-[26px] font-bold leading-[1.25] text-white sm:text-[30px]">
+            <h2 className="m-0 mb-6 max-w-[560px] font-display text-[28px] font-bold leading-[1.25] text-white sm:text-[34px]">
               We make your move stress-free — starting with the price
             </h2>
             <p className="mb-6 max-w-[520px] text-[15px] leading-[1.75] text-white/75">
@@ -502,7 +503,7 @@ export default function LocalMoversMelbourne() {
 
       {/* Footer — self-contained, no outbound links */}
       <footer className="bg-ink-900 pb-24 md:pb-0">
-        <div className="mx-auto max-w-[1180px] px-5 pt-12 pb-8">
+        <div className="mx-auto max-w-[1180px] px-5 pt-10 pb-8">
           <div className="grid gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <div className="mb-4 flex items-center gap-2.5">
@@ -565,7 +566,6 @@ export default function LocalMoversMelbourne() {
                     {link.label}
                   </a>
                 ))}
-                <FaqDialog items={faqs} />
               </div>
             </div>
 
