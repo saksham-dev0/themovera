@@ -64,6 +64,7 @@ export function Footer() {
             <div className="font-display font-bold text-2xl text-white mb-2">☎ 02 8503 4444</div>
             <div className="flex gap-6 text-sm text-white/80">
               <a href="/feedback" className="hover:text-teal-500">Give Feedback</a>
+              <a href="/grievances" className="hover:text-teal-500">Share Your Grievance</a>
               <a href="#" className="hover:text-teal-500">Contact Us</a>
               <a href="#" className="hover:text-teal-500">Meet the Team</a>
             </div>

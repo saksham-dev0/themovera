@@ -22,6 +22,36 @@ export default defineSchema({
     mediaType: v.optional(v.union(v.literal("image"), v.literal("video"))),
   }),
 
+  /** Formal complaints raised from the home-page footer grievance form. */
+  grievances: defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    altPhone: v.optional(v.string()),
+    address: v.string(),
+    city: v.string(),
+    state: v.string(),
+    postcode: v.optional(v.string()),
+    pickupAddress: v.string(),
+    dropoffAddress: v.string(),
+    pickupDate: v.string(),
+    deliveryDate: v.optional(v.string()),
+    bookingNumber: v.optional(v.string()),
+    issueType: v.union(
+      v.literal("Damage"),
+      v.literal("Overcharged"),
+      v.literal("Delay"),
+      v.literal("Cancellation"),
+      v.literal("Movers Behaviour"),
+      v.literal("Other"),
+    ),
+    comments: v.string(),
+    /** Customer ticked the "everything above is true" declaration. */
+    declarationAccepted: v.boolean(),
+    attachmentStorageId: v.optional(v.id("_storage")),
+    attachmentName: v.optional(v.string()),
+  }),
+
   quoteRequests: defineTable({
     name: v.string(),
     phone: v.string(),

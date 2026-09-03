@@ -224,3 +224,68 @@ export const markThankYouSent = internalMutation({
     return null;
   },
 });
+
+/**
+ * Notifies the team of a grievance submitted from the home-page footer form.
+ * Reply-to is the complainant so a coordinator can respond directly.
+ */
+export const sendGrievanceNotification = internalAction({
+  args: { grievanceId: v.id("grievances") },
+  returns: v.null(),
+  handler: async (ctx, args) => {
+    const g = await ctx.runQuery(internal.grievances.getGrievance, {
+      grievanceId: args.grievanceId,
+    });
+    if (g === null) return null;
+
+    const html = `<!doctype html>
+<html>
+  <body style="margin:0;padding:0;background:#f7f6f3;font-family:Helvetica,Arial,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f6f3;padding:24px 12px;">
+      <tr><td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;background:#ffffff;border:1px solid #e2dcc9;border-radius:14px;overflow:hidden;">
+          <tr><td style="background:#8c3b2f;padding:20px 26px;">
+            <div style="font-size:12px;letter-spacing:1.5px;color:#f1d9d4;text-transform:uppercase;">Movera — Customer Grievance</div>
+            <div style="font-size:20px;font-weight:700;color:#ffffff;margin-top:6px;">${esc(g.issueType)} — ${esc(g.name)}</div>
+          </td></tr>
+          <tr><td style="padding:24px 26px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+              ${row("Issue type", g.issueType)}
+              ${row("Booking number", g.bookingNumber)}
+              ${row("Name", g.name)}
+              ${row("Email", g.email)}
+              ${row("Phone", g.phone)}
+              ${row("Alternate phone", g.altPhone)}
+              ${row("Current address", `${g.address}, ${g.city} ${g.state} ${g.postcode ?? ""}`.trim())}
+              ${row("Pick-up address", g.pickupAddress)}
+              ${row("Drop-off address", g.dropoffAddress)}
+              ${row("Pick-up date", g.pickupDate)}
+              ${row("Delivery date", g.deliveryDate)}
+              ${row("Declaration signed", g.declarationAccepted ? "Yes" : "No")}
+            </table>
+            <div style="margin-top:18px;border-top:1px solid #e2dcc9;padding-top:14px;">
+              <div style="font-size:14px;color:#7c8790;margin-bottom:6px;">Comments</div>
+              <div style="font-size:14px;color:#22303d;line-height:1.6;white-space:pre-wrap;">${esc(g.comments)}</div>
+            </div>
+            ${
+              g.attachmentUrl
+                ? `<p style="margin:18px 0 0;font-size:14px;"><a href="${esc(g.attachmentUrl)}" style="color:#1a7f72;">View attachment${g.attachmentName ? ` (${esc(g.attachmentName)})` : ""}</a></p>`
+                : ""
+            }
+            <p style="margin:18px 0 0;font-size:13px;color:#7c8790;line-height:1.6;">Reply to this email to reach the customer directly. Phone: ${esc(PHONE_DISPLAY)}</p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+</html>`;
+
+    await sendEmail({
+      to: [SALES_ADDRESS],
+      subject: `Grievance — ${g.issueType}: ${g.name}${g.bookingNumber ? ` (Booking ${g.bookingNumber})` : ""}`,
+      html,
+      replyTo: g.email,
+    });
+    return null;
+  },
+});
