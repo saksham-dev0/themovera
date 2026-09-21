@@ -7,6 +7,12 @@ import { CareerApplicationForm } from "@/components/ui/CareerApplicationForm";
 export const metadata = {
   title: "Careers | Movera Removals & Storage",
   description: "Join the Movera team — ground supervisor and sub-contractor roles across Melbourne and surrounding suburbs.",
+  alternates: { canonical: "/careers" },
+  openGraph: {
+    title: "Careers | Movera Removals & Storage",
+    description: "Join the Movera team — ground supervisor and sub-contractor roles across Melbourne and surrounding suburbs.",
+    url: "/careers",
+  },
 };
 
 const roles = [

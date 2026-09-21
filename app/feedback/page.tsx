@@ -5,6 +5,12 @@ import { FeedbackForm } from "@/components/ui/FeedbackForm";
 export const metadata = {
   title: "Give Feedback | Movera Removals & Storage",
   description: "Tell us about your move with Movera — share your name, email, comments, and a photo or video if you have one.",
+  alternates: { canonical: "/feedback" },
+  openGraph: {
+    title: "Give Feedback | Movera Removals & Storage",
+    description: "Tell us about your move with Movera — share your name, email, comments, and a photo or video if you have one.",
+    url: "/feedback",
+  },
 };
 
 export default function FeedbackPage() {

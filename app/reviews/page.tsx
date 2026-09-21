@@ -6,6 +6,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "Reviews | Movera Removals & Storage",
   description: "4.9 stars from 2,700+ reviews — see what customers say about moving with Movera.",
+  alternates: { canonical: "/reviews" },
+  openGraph: {
+    title: "Reviews | Movera Removals & Storage",
+    description: "4.9 stars from 2,700+ reviews — see what customers say about moving with Movera.",
+    url: "/reviews",
+  },
 };
 
 type VideoTestimonial = {

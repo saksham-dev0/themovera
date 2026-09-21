@@ -5,6 +5,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "About Us | Movera Removals & Storage",
   description: "Family owned removalists with 8+ years serving Melbourne and surrounding suburbs.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us | Movera Removals & Storage",
+    description: "Family owned removalists with 8+ years serving Melbourne and surrounding suburbs.",
+    url: "/about",
+  },
 };
 
 const stats = [

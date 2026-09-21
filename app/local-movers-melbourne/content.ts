@@ -10,9 +10,9 @@
 
 export const PHONE_DISPLAY = "03 8503 4444";
 export const PHONE_TEL = "0385034444";
-export const HOURLY_RATE = "$60/hr";
+export const HOURLY_RATE = "$65/hr";
 /** Headline casing — used where the rate sits in a title, not mid-sentence. */
-export const HOURLY_RATE_DISPLAY = "$60/Hr";
+export const HOURLY_RATE_DISPLAY = "$65/Hr";
 
 export const trustBadges = [
   { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
@@ -155,6 +155,73 @@ export const testimonials = [
     quote:
       "Used them as packers and movers for a full house. The packing crew was fast and careful, and nothing arrived broken. Would hire local removalists like this again tomorrow.",
   },
+];
+
+/**
+ * Hourly pricing table. The two-men-and-a-truck rate is the headline rate used
+ * across the page; the larger crews scale from it.
+ */
+export const pricingPlans = [
+  {
+    name: "2 Men + Truck",
+    rate: "$65",
+    unit: "/hr*",
+    bestFor: "Studio, 1 & 2 bedroom moves",
+    popular: true,
+    includes: [
+      "2 trained removalists",
+      "Fully equipped truck",
+      "Trolleys, blankets & straps",
+      "$100,000 goods-in-transit cover",
+    ],
+  },
+  {
+    name: "3 Men + Truck",
+    rate: "$95",
+    unit: "/hr*",
+    bestFor: "2 & 3 bedroom homes, tight timeframes",
+    popular: false,
+    includes: [
+      "3 trained removalists",
+      "Fully equipped truck",
+      "Faster load & unload",
+      "$100,000 goods-in-transit cover",
+    ],
+  },
+  {
+    name: "4 Men + Truck",
+    rate: "$125",
+    unit: "/hr*",
+    bestFor: "4+ bedroom homes & office relocations",
+    popular: false,
+    includes: [
+      "4 trained removalists",
+      "Large truck for bulky loads",
+      "Same-day completion on big jobs",
+      "$100,000 goods-in-transit cover",
+    ],
+  },
+  {
+    name: "4 Men + 2 Trucks",
+    rate: "$155",
+    unit: "/hr*",
+    bestFor: "Large houses, double garages, split sites",
+    popular: false,
+    includes: [
+      "4 removalists across 2 trucks",
+      "Two pickups or drop-offs in one booking",
+      "Ideal for storage runs",
+      "$100,000 goods-in-transit cover",
+    ],
+  },
+];
+
+/** Fine print shown under the pricing table. */
+export const pricingNotes = [
+  "Minimum booking of 2 hours, then charged in 15-minute increments.",
+  "A one-hour call-out fee covers depot-to-site travel — no depot-to-depot charges.",
+  "Rates are GST inclusive. Weekend and public-holiday rates may vary.",
+  "Packing materials, piano and pool-table handling quoted separately.",
 ];
 
 export const faqs = [

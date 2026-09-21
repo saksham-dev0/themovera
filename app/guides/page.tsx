@@ -6,6 +6,12 @@ import { guides } from "@/app/guides/data";
 export const metadata = {
   title: "Moving Guides | Movera Removals & Storage",
   description: "Practical, no-nonsense guides for planning and executing your move.",
+  alternates: { canonical: "/guides" },
+  openGraph: {
+    title: "Moving Guides | Movera Removals & Storage",
+    description: "Practical, no-nonsense guides for planning and executing your move.",
+    url: "/guides",
+  },
 };
 
 export default function GuidesIndexPage() {

@@ -6,6 +6,12 @@ import { QuoteFormSection } from "./QuoteFormSection";
 export const metadata = {
   title: "Get a Free Quote | Movera Removals & Storage",
   description: "Tell us about your move and get a genuine upfront quote from Movera, confirmed before the day.",
+  alternates: { canonical: "/quote" },
+  openGraph: {
+    title: "Get a Free Quote | Movera Removals & Storage",
+    description: "Tell us about your move and get a genuine upfront quote from Movera, confirmed before the day.",
+    url: "/quote",
+  },
 };
 
 export default function QuotePage() {

@@ -1,10 +1,18 @@
 import { Accordion } from "@/components/ui/Accordion";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqSchema } from "@/lib/schema";
 
 export const metadata = {
   title: "FAQ | Movera Removals & Storage",
   description: "Answers to common questions about pricing, insurance, packing, and moving day.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ | Movera Removals & Storage",
+    description: "Answers to common questions about pricing, insurance, packing, and moving day.",
+    url: "/faq",
+  },
 };
 
 const faqs = [
@@ -25,6 +33,7 @@ const faqs = [
 export default function FaqPage() {
   return (
     <div className="bg-gray-50 font-sans text-ink-600">
+      <JsonLd data={faqSchema(faqs)} />
       <Nav />
 
       <section className="bg-white">

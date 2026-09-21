@@ -5,6 +5,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "Pricing | Movera Removals & Storage",
   description: "An accurate quote based on your move's actual volume, distance and access — confirmed before the day, no depot-to-depot tricks.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing | Movera Removals & Storage",
+    description: "An accurate quote based on your move's actual volume, distance and access — confirmed before the day, no depot-to-depot tricks.",
+    url: "/pricing",
+  },
 };
 
 const comparison = [

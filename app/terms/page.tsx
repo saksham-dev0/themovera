@@ -4,6 +4,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "Terms & Conditions | Movera Removals & Storage",
   description: "The terms and conditions that apply when you book or use Movera's removal services.",
+  alternates: { canonical: "/terms" },
+  openGraph: {
+    title: "Terms & Conditions | Movera Removals & Storage",
+    description: "The terms and conditions that apply when you book or use Movera's removal services.",
+    url: "/terms",
+  },
 };
 
 type Clause = { num: string; title?: string; text: string };

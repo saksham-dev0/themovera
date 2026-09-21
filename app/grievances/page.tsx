@@ -6,6 +6,12 @@ export const metadata = {
   title: "Share Your Grievance | Movera Removals & Storage",
   description:
     "Something went wrong on your move? Lodge a formal grievance with Movera — customer details, move details, issue type and supporting photos or documents.",
+  alternates: { canonical: "/grievances" },
+  openGraph: {
+    title: "Share Your Grievance | Movera Removals & Storage",
+    description: "Something went wrong on your move? Lodge a formal grievance with Movera — customer details, move details, issue type and supporting photos or documents.",
+    url: "/grievances",
+  },
 };
 
 const disclaimer = [

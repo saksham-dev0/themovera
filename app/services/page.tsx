@@ -8,6 +8,12 @@ import { services } from "@/app/services/data";
 export const metadata = {
   title: "Our Services | Movera Removals & Storage",
   description: "Every type of move, handled by our own trained crew.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Our Services | Movera Removals & Storage",
+    description: "Every type of move, handled by our own trained crew.",
+    url: "/services",
+  },
 };
 
 export default function ServicesIndexPage() {

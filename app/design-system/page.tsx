@@ -11,6 +11,12 @@ import { Dialog, DialogHeader } from "@/components/ui/Dialog";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 
+// Internal component gallery — never index it.
+export const metadata = {
+  title: "Design System | Movera (internal)",
+  robots: { index: false, follow: false },
+};
+
 const colorGroups = [
   {
     name: "Brand · Harbour Blue",

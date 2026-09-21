@@ -4,6 +4,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "Privacy Policy | Movera Removals & Storage",
   description: "How Movera collects, uses, and safeguards your personal information.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy | Movera Removals & Storage",
+    description: "How Movera collects, uses, and safeguards your personal information.",
+    url: "/privacy",
+  },
 };
 
 type Section = {

@@ -4,6 +4,12 @@ import { CTABand, Footer } from "@/components/ui/Footer";
 export const metadata = {
   title: "Returns & Refunds Policy | Movera Removals & Storage",
   description: "When deposits, payments and charges are refundable, and how to request a refund from Movera.",
+  alternates: { canonical: "/returns-refunds" },
+  openGraph: {
+    title: "Returns & Refunds Policy | Movera Removals & Storage",
+    description: "When deposits, payments and charges are refundable, and how to request a refund from Movera.",
+    url: "/returns-refunds",
+  },
 };
 
 type Clause = { title: string; text: string };

@@ -41,7 +41,17 @@ const items: MarqueeItem[] = [
   },
 ];
 
-const track = [...items, ...items];
+/**
+ * The section renders video reviews and written reviews as two separate rows,
+ * so `variant` picks which half of the list a given row shows.
+ */
+type Variant = "all" | "video" | "written";
+
+function itemsFor(variant: Variant): MarqueeItem[] {
+  if (variant === "video") return items.filter((item) => item.type === "video");
+  if (variant === "written") return items.filter((item) => item.type === "quote");
+  return items;
+}
 
 function MarqueeCard({ item }: { item: MarqueeItem }) {
   if (item.type === "quote") {
@@ -80,8 +90,20 @@ function MarqueeCard({ item }: { item: MarqueeItem }) {
   );
 }
 
-export function ReviewsMarquee() {
+export function ReviewsMarquee({
+  variant = "all",
+  direction = "ltr",
+}: {
+  variant?: Variant;
+  direction?: "ltr" | "rtl";
+}) {
   const [paused, setPaused] = useState(false);
+  const row = itemsFor(variant);
+  // Each half of the track must be wider than the viewport or the loop shows a
+  // gap, so short rows (the three videos) repeat before being doubled.
+  const repeats = Math.max(1, Math.ceil(8 / row.length));
+  const half = Array.from({ length: repeats }, () => row).flat();
+  const track = [...half, ...half];
 
   return (
     <div
@@ -91,7 +113,7 @@ export function ReviewsMarquee() {
       onTouchStart={() => setPaused((v) => !v)}
     >
       <div
-        className="flex gap-5 w-max animate-marquee-ltr"
+        className={`flex gap-5 w-max ${direction === "rtl" ? "animate-marquee" : "animate-marquee-ltr"}`}
         style={{ animationPlayState: paused ? "paused" : "running" }}
       >
         {track.map((item, i) => (

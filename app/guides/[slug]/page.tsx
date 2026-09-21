@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { guides, getGuide } from "@/app/guides/data";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, ORGANIZATION_ID } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -16,9 +19,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return {};
+  const title = `${guide.title} | Movera Removals & Storage`;
+  const url = `/guides/${slug}`;
   return {
-    title: `${guide.title} | Movera Removals & Storage`,
+    title,
     description: guide.summary,
+    alternates: { canonical: url },
+    openGraph: { type: "article", title, description: guide.summary, url },
   };
 }
 
@@ -33,6 +40,24 @@ export default async function GuidePage({
 
   return (
     <div className="bg-gray-50 font-sans text-ink-600">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: guide.title,
+            description: guide.summary,
+            mainEntityOfPage: absoluteUrl(`/guides/${slug}`),
+            author: { "@id": ORGANIZATION_ID },
+            publisher: { "@id": ORGANIZATION_ID },
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Moving Guides", path: "/guides" },
+            { name: guide.title, path: `/guides/${slug}` },
+          ]),
+        ]}
+      />
       <Nav />
 
       <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10">

@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { services, getService } from "@/app/services/data";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 const trustStrip = [
   "A genuine quote based on your move — fixed-price or hourly rate, confirmed before the day, no surprises.",
@@ -25,9 +27,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
+  const title = `${service.title} | Movera Removals & Storage`;
+  const url = `/services/${slug}`;
   return {
-    title: `${service.title} | Movera Removals & Storage`,
+    title,
     description: service.tagline,
+    alternates: { canonical: url },
+    openGraph: { title, description: service.tagline, url },
   };
 }
 
@@ -42,6 +48,20 @@ export default async function ServicePage({
 
   return (
     <div className="bg-gray-50 font-sans text-ink-600">
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: service.title,
+            description: service.tagline,
+            path: `/services/${slug}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: service.title, path: `/services/${slug}` },
+          ]),
+        ]}
+      />
       <Nav />
 
       {/* Hero */}

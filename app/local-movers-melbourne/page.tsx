@@ -19,7 +19,6 @@ import {
   IconTruck,
 } from "@/components/landing/Icons";
 import {
-  HOURLY_RATE,
   HOURLY_RATE_DISPLAY,
   PHONE_DISPLAY,
   PHONE_TEL,
@@ -27,16 +26,25 @@ import {
   features,
   serviceAreas,
   services,
+  pricingNotes,
+  pricingPlans,
   steps,
-  testimonials,
   trustBadges,
   whyChooseUs,
 } from "./content";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqSchema, organizationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Local Movers Melbourne | Two Men and a Truck from $60/hr — Movera",
+  title: "Local Movers Melbourne | Two Men and a Truck from $65/hr — Movera",
   description:
-    "Hire local removalists in Melbourne. Two Men and a Truck from $60/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    "Hire local removalists in Melbourne. Two Men and a Truck from $65/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+  alternates: { canonical: "/local-movers-melbourne" },
+  openGraph: {
+    title: "Local Movers Melbourne | Two Men and a Truck from $65/hr — Movera",
+    description: "Hire local removalists in Melbourne. Two Men and a Truck from $65/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    url: "/local-movers-melbourne",
+  },
 };
 
 const navLinks = [
@@ -44,6 +52,7 @@ const navLinks = [
   { label: "SERVICES", href: "#services" },
   { label: "WHY US", href: "#why-us" },
   { label: "REVIEWS", href: "#reviews" },
+  { label: "PRICING", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
   { label: "AREAS", href: "#areas" },
 ];
@@ -99,9 +108,19 @@ function CallButton({ tone = "light", className = "" }: { tone?: "light" | "dark
   );
 }
 
-function CtaPair({ tone = "light" }: { tone?: "light" | "dark" }) {
+function CtaPair({
+  tone = "light",
+  align = "left",
+}: {
+  tone?: "light" | "dark";
+  align?: "left" | "center";
+}) {
   return (
-    <div className="flex flex-wrap items-stretch gap-3">
+    <div
+      className={`flex flex-wrap items-stretch gap-3 ${
+        align === "center" ? "justify-center" : ""
+      }`}
+    >
       <a
         href="#quote-form"
         className="flex items-center rounded-sm bg-clay-500 px-6 py-3.5 font-display text-[15px] font-semibold text-white no-underline transition-colors hover:bg-clay-600"
@@ -116,6 +135,7 @@ function CtaPair({ tone = "light" }: { tone?: "light" | "dark" }) {
 export default function LocalMoversMelbourne() {
   return (
     <div id="top" className="bg-gray-50 font-sans text-ink-600">
+      <JsonLd data={[organizationSchema, faqSchema(faqs)]} />
       {/* Nav — anchors only, no outbound links */}
       <header className="sticky top-0 z-30 bg-ink-900">
         <div className="mx-auto flex max-w-[1180px] items-center gap-6 px-5 py-3.5">
@@ -170,10 +190,14 @@ export default function LocalMoversMelbourne() {
               <span className="block whitespace-nowrap">Two Men and a Truck,</span>
               <span className="block whitespace-nowrap text-sage-500">Starts From {HOURLY_RATE_DISPLAY}*</span>
             </h1>
+            {/* Disclaimer sits with the headline above it — small and faded. */}
+            <p className="m-0 mt-1.5 font-sans text-[11px] leading-none tracking-wide text-white/45 sm:text-[12px]">
+              *T&amp;Cs apply.
+            </p>
             <p className="mt-4 mb-6 max-w-[560px] text-[15px] leading-[1.7] text-white/80">
               Hire local removalists who actually turn up. Movera moves Melbourne homes and offices
               every day — cheap furniture removals, full packers and movers service, and one honest
-              price with no hidden fees. <span className="text-white/60">*T&amp;Cs apply.</span>
+              price with no hidden fees.
             </p>
 
             {/* 2 · Trust factor strip, directly under the hero quote */}
@@ -217,24 +241,44 @@ export default function LocalMoversMelbourne() {
             Reliable and efficient removalists across Melbourne — 5,000+ moves completed, $100,000
             goods-in-transit cover on every job.
           </div>
-          <a
-            href="#quote-form"
-            className="whitespace-nowrap rounded-sm bg-clay-500 px-6 py-3.5 font-display text-[15px] font-semibold text-white no-underline hover:bg-clay-600"
-          >
-            GET A FREE QUOTE →
-          </a>
+          <CtaPair tone="dark" />
         </div>
       </section>
 
 
-      <section className="overflow-hidden bg-white py-9">
-        <div className="mx-auto mb-7 max-w-[1180px] px-5 text-center">
+      <section id="reviews" className="cv-auto scroll-mt-24 overflow-hidden bg-white py-9">
+        <div className="mx-auto mb-8 max-w-[1180px] px-5 text-center">
           <div className={sectionLabel}>Customer Reviews</div>
           <h2 className={`${sectionTitle} mb-0 text-center`}>
             Real Melbourne moves, in our customers&apos; own words
           </h2>
         </div>
-        <ReviewsMarquee />
+
+        {/* 4a · Video reviews first */}
+        <div className="mx-auto mb-4 max-w-[1180px] px-5 text-center">
+          <h3 className="m-0 mb-1.5 font-display text-[20px] font-bold text-ink-800 sm:text-[24px]">
+            Video Reviews
+          </h3>
+          <p className="m-0 text-sm leading-[1.65] text-ink-600">
+            Melbourne customers filmed on moving day — unscripted, unedited.
+          </p>
+        </div>
+        <ReviewsMarquee variant="video" />
+
+        {/* 4b · Written reviews second */}
+        <div className="mx-auto mb-4 mt-10 max-w-[1180px] px-5 text-center">
+          <h3 className="m-0 mb-1.5 font-display text-[20px] font-bold text-ink-800 sm:text-[24px]">
+            Written Reviews
+          </h3>
+          <p className="m-0 text-sm leading-[1.65] text-ink-600">
+            4.8 stars from 2,700+ verified reviews across Melbourne.
+          </p>
+        </div>
+        <ReviewsMarquee variant="written" direction="rtl" />
+
+        <div className="mx-auto mt-9 max-w-[1180px] px-5">
+          <CtaPair align="center" />
+        </div>
       </section>
 
       {/* 4 · Features */}
@@ -260,6 +304,9 @@ export default function LocalMoversMelbourne() {
               </div>
             ))}
           </div>
+          <div className="mt-8">
+            <CtaPair align="center" />
+          </div>
         </div>
       </section>
 
@@ -284,6 +331,9 @@ export default function LocalMoversMelbourne() {
                 <p className="m-0 text-sm leading-[1.7] text-ink-600">{item.body}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8">
+            <CtaPair />
           </div>
         </div>
       </section>
@@ -348,34 +398,94 @@ export default function LocalMoversMelbourne() {
               </div>
             ))}
           </div>
+          <div className="mt-8">
+            <CtaPair />
+          </div>
         </div>
       </section>
 
-      {/* 8 · Testimonials */}
-      <section id="reviews" className="cv-auto scroll-mt-24 bg-white">
+      {/* 8 · Our Pricing */}
+      <section id="pricing" className="cv-auto scroll-mt-24 bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-10">
-          <div className={sectionLabel}>Client Testimonials</div>
-          <h2 className={sectionTitle}>Real Melbourne moves, in their words</h2>
+          <div className={`${sectionLabel} text-center`}>Our Pricing</div>
+          <h2 className={`${sectionTitle} text-center`}>
+            Straightforward hourly rates, no hidden fees
+          </h2>
+          <p className="mx-auto -mt-2 mb-8 max-w-[640px] text-center text-[15px] leading-[1.7] text-ink-600">
+            Pick the crew size that fits your move. Every rate below includes the truck, the
+            equipment and $100,000 goods-in-transit cover — the number we quote is the number on
+            your invoice.
+          </p>
+
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {testimonials.map((review) => (
-              <div key={review.name} className="rounded-md border border-border bg-gray-50 p-6">
-                <div className="mb-3 text-lg text-gold-400">★★★★★</div>
-                <p className="m-0 mb-5 text-sm leading-[1.65] text-ink-600">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-pill bg-teal-500 font-display text-xs font-semibold text-white">
-                    {review.initials}
+            {pricingPlans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative flex flex-col rounded-md border bg-white p-6 transition-shadow hover:shadow-raised ${
+                  plan.popular ? "border-teal-500 bg-teal-50 shadow-raised" : "border-border"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-pill bg-clay-500 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[1.5px] text-white">
+                    Most Booked
                   </div>
-                  <div className="font-display text-sm font-semibold text-ink-800">
-                    {review.name}
-                    <span className="block font-sans text-xs font-normal text-ink-400">
-                      {review.suburb}
-                    </span>
-                  </div>
+                )}
+                <div className="mb-3 font-display text-[15px] font-bold uppercase tracking-wide text-ink-800">
+                  {plan.name}
                 </div>
+                <div className="mb-1 flex items-baseline gap-1">
+                  <span className="font-display text-[38px] font-bold leading-none text-teal-500">
+                    {plan.rate}
+                  </span>
+                  <span className="font-display text-sm font-semibold text-ink-400">
+                    {plan.unit}
+                  </span>
+                </div>
+                <p className="m-0 mb-4 text-[13px] leading-[1.6] text-ink-600">{plan.bestFor}</p>
+                <div className="mb-5 grid gap-2.5 border-t border-border pt-4">
+                  {plan.includes.map((item) => (
+                    <div key={item} className="flex items-start gap-2 text-[13px] leading-[1.5]">
+                      <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-pill bg-teal-500 text-[9px] text-white">
+                        ✓
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="#quote-form"
+                  className={`mt-auto block rounded-sm px-4 py-3 text-center font-display text-sm font-semibold no-underline transition-colors ${
+                    plan.popular
+                      ? "bg-clay-500 text-white hover:bg-clay-600"
+                      : "border-2 border-teal-500 text-teal-500 hover:bg-teal-50"
+                  }`}
+                >
+                  GET A FREE QUOTE →
+                </a>
               </div>
             ))}
+          </div>
+
+          <div className="mt-7 rounded-md border border-border bg-gray-50 px-5 py-5">
+            <div className="mb-2.5 font-display text-xs font-semibold uppercase tracking-[1.5px] text-ink-400">
+              What the rate covers
+            </div>
+            <ul className="m-0 grid list-none gap-2 p-0 sm:grid-cols-2">
+              {pricingNotes.map((note) => (
+                <li key={note} className="flex items-start gap-2 text-[13px] leading-[1.6]">
+                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-pill bg-teal-500" />
+                  {note}
+                </li>
+              ))}
+            </ul>
+            <p className="m-0 mt-3 text-[11px] leading-[1.5] text-ink-400">
+              *Rates shown are starting rates and depend on access, distance and date. T&amp;Cs
+              apply.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <CtaPair align="center" />
           </div>
         </div>
       </section>
@@ -453,6 +563,9 @@ export default function LocalMoversMelbourne() {
               triggerClassName="cursor-pointer rounded-sm border-2 border-teal-500 bg-white px-6 py-3 font-display text-[15px] font-semibold text-teal-500 transition-colors hover:bg-teal-50"
             />
           </div>
+          <div className="mt-6">
+            <CtaPair align="center" />
+          </div>
         </div>
       </section>
 
@@ -464,6 +577,9 @@ export default function LocalMoversMelbourne() {
             Local removalists across every corner of Melbourne
           </h2>
           <ServiceAreaTabs areas={serviceAreas} />
+          <div className="mt-8">
+            <CtaPair align="center" />
+          </div>
         </div>
       </section>
 
