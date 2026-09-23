@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { SuburbInput } from "@/components/landing/SuburbInput";
 
 /**
  * Submissions go over plain HTTP to the Convex /landing-quote endpoint rather
@@ -97,19 +96,23 @@ export function LandingQuoteForm({
           {subheading}
         </p>
 
-        <SuburbInput
+        <input
           name="movingFrom"
-          label="Pickup suburb"
-          placeholder="Pickup suburb"
+          required
+          placeholder="Pickup Location"
+          aria-label="Pickup Location"
           value={movingFrom}
-          onChange={setMovingFrom}
+          onChange={(e) => setMovingFrom(e.target.value)}
+          className="w-full min-w-0 rounded-sm border-[1.5px] border-border bg-white px-3.5 py-2.5 font-sans text-[15px] text-ink-800 outline-none transition-shadow placeholder:text-ink-400 focus:border-teal-500 focus:shadow-[0_0_0_4px_rgba(44,95,138,0.15)]"
         />
-        <SuburbInput
+        <input
           name="movingTo"
-          label="Drop-off suburb"
-          placeholder="Drop-off suburb"
+          required
+          placeholder="Drop-Off Location"
+          aria-label="Drop-Off Location"
           value={movingTo}
-          onChange={setMovingTo}
+          onChange={(e) => setMovingTo(e.target.value)}
+          className="w-full min-w-0 rounded-sm border-[1.5px] border-border bg-white px-3.5 py-2.5 font-sans text-[15px] text-ink-800 outline-none transition-shadow placeholder:text-ink-400 focus:border-teal-500 focus:shadow-[0_0_0_4px_rgba(44,95,138,0.15)]"
         />
 
         <input

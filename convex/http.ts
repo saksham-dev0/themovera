@@ -97,8 +97,8 @@ http.route({
     const phone = requiredString(raw.phone, 30);
     const email = requiredString(raw.email, 200);
     const moveDate = requiredString(raw.moveDate, 20);
-    const movingFrom = requiredString(raw.movingFrom, 200);
-    const movingTo = requiredString(raw.movingTo, 200);
+    const movingFrom = requiredString(raw.movingFrom, Infinity);
+    const movingTo = requiredString(raw.movingTo, Infinity);
     const source = requiredString(raw.source, 80) ?? "local-movers-melbourne";
 
     if (!name || !phone || !email || !moveDate || !movingFrom || !movingTo) {

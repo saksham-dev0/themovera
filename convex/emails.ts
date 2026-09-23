@@ -61,16 +61,16 @@ function thankYouHtml(name: string, movingFrom: string, movingTo: string, moveDa
             </tr>
             <tr>
               <td style="padding:28px;">
-                <h1 style="margin:0 0 12px;font-size:22px;color:#22303d;">Thanks, ${firstName} — we've got your request.</h1>
+                <h1 style="margin:0 0 12px;font-size:22px;color:#22303d;">Thanks, ${esc(firstName)} — we've got your request.</h1>
                 <p style="margin:0 0 18px;font-size:15px;line-height:1.65;">
                   One of our Melbourne removalists will call you back with a genuine, no-obligation quote.
                   We don't sell your details to five competing movers — you deal with Movera, start to finish.
                 </p>
                 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#eef4f8;border:1px solid #c6d8e5;border-radius:10px;padding:16px;margin-bottom:20px;">
                   <tr><td style="font-size:14px;line-height:1.9;color:#22303d;">
-                    <strong>Moving from:</strong> ${movingFrom || "—"}<br />
-                    <strong>Moving to:</strong> ${movingTo || "—"}<br />
-                    <strong>Preferred date:</strong> ${moveDate || "—"}
+                    <strong>Moving from:</strong> ${esc(movingFrom) || "—"}<br />
+                    <strong>Moving to:</strong> ${esc(movingTo) || "—"}<br />
+                    <strong>Preferred date:</strong> ${esc(moveDate) || "—"}
                   </td></tr>
                 </table>
                 <p style="margin:0 0 8px;font-size:15px;line-height:1.65;">
