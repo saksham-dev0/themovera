@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Mulish } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -16,6 +17,12 @@ const mulish = Mulish({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
+
+// Google tag (gtag.js), loaded on every route via the root layout.
+// One gtag.js load serves both the Analytics and Ads IDs.
+const GOOGLE_ANALYTICS_ID = "G-S2KBYP9ZMN";
+const GOOGLE_ADS_ID = "AW-18470170169";
+const GOOGLE_SITE_VERIFICATION = "Nhq-XZ65njsEGpLASrNwVb34hLunEi_bpaneCAC3dLc";
 
 const title = "Removalists Melbourne | Movera — Furniture & House Movers";
 const description =
@@ -55,11 +62,10 @@ export const metadata: Metadata = {
     description,
     images: [OG_IMAGE],
   },
-  // Ownership is verified via a DNS TXT record; this env var is only a
-  // fallback if a meta-tag property is ever added in Search Console.
-  verification: process.env.GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  // Search Console meta-tag verification (env var overrides if set).
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
@@ -75,6 +81,19 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <JsonLd data={[organizationSchema, websiteSchema]} />
         {children}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ANALYTICS_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );
