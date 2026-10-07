@@ -107,7 +107,7 @@ const sections: Section[] = [
     title: "Unsubscribing from Our Communications",
     paragraphs: ["If at any time you would like to stop receiving future emails or services from us, you may:"],
     bullets: [
-      "Email us directly at: hello@movera.com.au",
+      "Email us directly at: sales@themovera.com.au",
       "Follow the unsubscribe link at the bottom of any of our emails",
       "Unfollow or unsubscribe from the specific service you've signed up for",
     ],

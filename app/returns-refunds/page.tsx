@@ -92,7 +92,7 @@ const sections: Section[] = [
     num: "8",
     title: "Contact Us",
     intro:
-      "To request a refund or query a charge, email hello@movera.com.au or call 02 8503 4444 with your booking details and we'll respond as soon as possible.",
+      "To request a refund or query a charge, email sales@themovera.com.au or call 03 7074 1820 with your booking details and we'll respond as soon as possible.",
   },
 ];
 

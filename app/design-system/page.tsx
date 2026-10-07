@@ -270,7 +270,7 @@ export default function DesignSystemPage() {
             </div>
             <div className="flex flex-wrap items-center gap-5 bg-ink-900 rounded-md px-7 py-6">
               <Button variant="dark-outline">GET A QUOTE</Button>
-              <Button variant="dark-sage">☎ 02 8503 4444</Button>
+              <Button variant="dark-sage">☎ 03 7074 1820</Button>
               <div className="font-mono text-xs text-ink-400">on ink-900 surfaces</div>
             </div>
             <div className="flex flex-wrap items-center gap-5">
@@ -536,7 +536,7 @@ export default function DesignSystemPage() {
               <strong>Quote sent!</strong> We&apos;ll be in touch within one business day.
             </Alert>
             <Alert tone="danger">
-              <strong>Something went wrong.</strong> Please try again or call 02 8503 4444.
+              <strong>Something went wrong.</strong> Please try again or call 03 7074 1820.
             </Alert>
             <Toast>Booking confirmed</Toast>
           </Card>

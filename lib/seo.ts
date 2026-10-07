@@ -13,9 +13,9 @@ export const SITE_URL = RAW_SITE_URL.replace(/\/+$/, "");
 
 export const SITE_NAME = "Movera";
 
-export const PHONE_DISPLAY = "02 8503 4444";
-export const PHONE_E164 = "+61285034444";
-export const EMAIL = "hello@movera.com.au";
+export const PHONE_DISPLAY = "03 7074 1820";
+export const PHONE_E164 = "+61370741820";
+export const EMAIL = "sales@themovera.com.au";
 
 /** Default social share image (1200x630-ish source in /public). */
 export const OG_IMAGE = "/banner.png";

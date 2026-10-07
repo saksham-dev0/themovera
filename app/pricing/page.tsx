@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
+import { TruckRates } from "@/components/ui/TruckRates";
 
 export const metadata = {
   title: "Pricing | Movera Removals & Storage",
@@ -56,6 +57,22 @@ export default function PricingPage() {
           we quote, and what we quote is what&rsquo;s on the invoice. No depot-to-depot charges, no bidding war.
         </p>
         <Button variant="primary">Get My Free Quote →</Button>
+      </section>
+
+      <section className="border-t border-border">
+        <div className="max-w-[1180px] mx-auto px-8 py-16">
+          <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
+            Our Hourly Rates
+          </div>
+          <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-3 max-w-[640px]">
+            Pick the truck that fits your move
+          </h2>
+          <p className="text-[15px] leading-[1.65] max-w-[620px] m-0 mb-10">
+            Every rate includes two trained removalists, a fully equipped truck and $100,000 goods-in-transit
+            cover. Not sure which size you need? We&rsquo;ll recommend one when we quote.
+          </p>
+          <TruckRates />
+        </div>
       </section>
 
       <section className="bg-white">

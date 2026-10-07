@@ -38,8 +38,8 @@ export default function GrievancesPage() {
         <p className="text-[17px] leading-[1.65] max-w-[620px] mx-auto">
           Fill in the form below with as much detail as you can. A Movera coordinator reviews every
           grievance and will come back to you. If it&apos;s urgent, call{" "}
-          <a href="tel:0285034444" className="text-teal-500 font-display font-semibold">
-            02 8503 4444
+          <a href="tel:0370741820" className="text-teal-500 font-display font-semibold">
+            03 7074 1820
           </a>
           .
         </p>

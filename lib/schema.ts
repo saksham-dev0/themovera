@@ -8,8 +8,7 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
  * The business itself. MovingCompany is a LocalBusiness subtype, which is what
  * Google uses for the local pack / knowledge panel.
  *
- * TODO: add `streetAddress` + `postalCode` once the public office address is
- * confirmed, and keep NAP identical to the Google Business Profile listing.
+ * Keep NAP identical to the Google Business Profile listing.
  */
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -24,8 +23,10 @@ export const organizationSchema = {
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Suite 1208/530 Little Collins Street",
     addressLocality: "Melbourne",
     addressRegion: "VIC",
+    postalCode: "3000",
     addressCountry: "AU",
   },
   areaServed: [

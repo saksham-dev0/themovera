@@ -63,6 +63,18 @@ export function IconStar({ className = "" }: IconProps) {
   );
 }
 
+export function IconBed({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={`${base} ${className}`}>
+      <path d="M2.8 19V6" />
+      <path d="M2.8 15.2h18.4V19" />
+      <path d="M2.8 11.6h7.4v3.6" />
+      <path d="M10.2 11.6h7.6a3.4 3.4 0 0 1 3.4 3.4v.2" />
+      <circle cx="6.4" cy="8.8" r="1.6" />
+    </svg>
+  );
+}
+
 export function IconTruck({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={`${base} ${className}`}>

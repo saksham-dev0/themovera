@@ -17,7 +17,7 @@ export const metadata = {
 
 const faqs = [
   { q: "How much does a removalist cost?", a: "It depends on the size of your move, distance and access — every move is different. We assess your specific requirements and give you a genuine, itemised quote upfront, confirmed before the day." },
-  { q: "Do you charge by the hour, or give a quote upfront?", a: "Both — we offer a fixed upfront quote as well as hourly rates, whichever suits your move. We assess volume, distance and access first, so your quote reflects the actual work involved — and that's the number that appears on the invoice." },
+  { q: "Do you charge by the hour, or give a quote upfront?", a: "Both — we offer a fixed upfront quote as well as hourly rates, whichever suits your move. Hourly rates with two removalists are $140/hr for a 4.5-tonne truck, $150/hr for a 6-tonne, $160/hr for an 8-tonne and $170–180/hr for a 10-tonne. We assess volume, distance and access first, so your quote reflects the actual work involved — and that's the number that appears on the invoice." },
   { q: "Do you do last-minute or same-day moves?", a: "Yes — subject to crew availability. Call us and we'll do our best to get a truck to you the same day." },
   { q: "Are my belongings insured during the move?", a: "Every move includes $100,000 goods-in-transit cover as standard, with optional comprehensive cover available." },
   { q: "What areas do you service?", a: "We're a Melbourne-based removalist, servicing the metro area and surrounding suburbs — bayside, inner-city, eastern and northern." },

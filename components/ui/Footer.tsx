@@ -27,7 +27,7 @@ const columns = [
 ];
 
 const locations = [
-  { city: "Bayside & South-East", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
+  { city: "Head Office", address: ["Suite 1208/530 Little Collins Street,", "Melbourne VIC 3000"] },
   { city: "Melbourne CBD & Inner", address: ["Servicing Fitzroy, Richmond,", "South Yarra & Carlton"] },
   { city: "Eastern & Northern Suburbs", address: ["Servicing Box Hill, Doncaster,", "Preston & Reservoir"] },
 ];
@@ -45,7 +45,7 @@ export function CTABand() {
           Get a Quote ›
         </button>
         <button className="font-display font-semibold text-[15px] text-white bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer">
-          Call 02 8503 4444
+          Call 03 7074 1820
         </button>
       </div>
     </div>
@@ -61,7 +61,7 @@ export function Footer() {
             <Image src="/Logo.png" alt="Movera" fill className="object-contain p-1" />
           </div>
           <div className="text-right">
-            <div className="font-display font-bold text-2xl text-white mb-2">☎ 02 8503 4444</div>
+            <div className="font-display font-bold text-2xl text-white mb-2">☎ 03 7074 1820</div>
             <div className="flex gap-6 text-sm text-white/80">
               <a href="/feedback" className="hover:text-teal-500">Give Feedback</a>
               <a href="/grievances" className="hover:text-teal-500">Share Your Grievance</a>

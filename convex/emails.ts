@@ -4,8 +4,8 @@ import { internal } from "./_generated/api";
 
 // Must be an address on a domain verified in Resend, or every send 403s.
 const FROM_ADDRESS = process.env.RESEND_FROM_ADDRESS ?? "Movera <noreply@themovera.com.au>";
-const SALES_ADDRESS = process.env.SALES_EMAIL_ADDRESS ?? "admin@themovera.com.au";
-const PHONE_DISPLAY = "03 8503 4444";
+const SALES_ADDRESS = process.env.SALES_EMAIL_ADDRESS ?? "sales@themovera.com.au";
+const PHONE_DISPLAY = "03 7074 1820";
 
 /** Minimal HTML escaping — every value below is customer-supplied. */
 function esc(value: unknown) {
@@ -85,7 +85,7 @@ function thankYouHtml(name: string, movingFrom: string, movingTo: string, moveDa
             </tr>
             <tr>
               <td style="background:#f7f6f3;border-top:1px solid #e2dcc9;padding:18px 28px;font-size:12px;color:#7c8790;">
-                Movera · Melbourne, VIC · ${PHONE_DISPLAY}
+                Movera · Suite 1208/530 Little Collins Street, Melbourne VIC 3000 · ${PHONE_DISPLAY}
               </td>
             </tr>
           </table>

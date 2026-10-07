@@ -8,11 +8,13 @@
  * 2 Guys 1 Truck, Trusted Removalists, Reliable and Efficient Removalists.
  */
 
-export const PHONE_DISPLAY = "03 8503 4444";
-export const PHONE_TEL = "0385034444";
-export const HOURLY_RATE = "$65/hr";
+import { STARTING_RATE } from "@/lib/pricing";
+
+export const PHONE_DISPLAY = "03 7074 1820";
+export const PHONE_TEL = "0370741820";
+export const HOURLY_RATE = STARTING_RATE;
 /** Headline casing — used where the rate sits in a title, not mid-sentence. */
-export const HOURLY_RATE_DISPLAY = "$65/HHr";
+export const HOURLY_RATE_DISPLAY = "$140/Hr";
 
 export const trustBadges = [
   { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
@@ -154,65 +156,6 @@ export const testimonials = [
     suburb: "Box Hill",
     quote:
       "Used them as packers and movers for a full house. The packing crew was fast and careful, and nothing arrived broken. Would hire local removalists like this again tomorrow.",
-  },
-];
-
-/**
- * Hourly pricing table. The two-men-and-a-truck rate is the headline rate used
- * across the page; the larger crews scale from it.
- */
-export const pricingPlans = [
-  {
-    name: "2 Men + Truck",
-    rate: "$65",
-    unit: "/hr*",
-    bestFor: "Studio, 1 & 2 bedroom moves",
-    popular: true,
-    includes: [
-      "2 trained removalists",
-      "Fully equipped truck",
-      "Trolleys, blankets & straps",
-      "$100,000 goods-in-transit cover",
-    ],
-  },
-  {
-    name: "3 Men + Truck",
-    rate: "$95",
-    unit: "/hr*",
-    bestFor: "2 & 3 bedroom homes, tight timeframes",
-    popular: false,
-    includes: [
-      "3 trained removalists",
-      "Fully equipped truck",
-      "Faster load & unload",
-      "$100,000 goods-in-transit cover",
-    ],
-  },
-  {
-    name: "4 Men + Truck",
-    rate: "$125",
-    unit: "/hr*",
-    bestFor: "4+ bedroom homes & office relocations",
-    popular: false,
-    includes: [
-      "4 trained removalists",
-      "Large truck for bulky loads",
-      "Same-day completion on big jobs",
-      "$100,000 goods-in-transit cover",
-    ],
-  },
-  {
-    name: "4 Men + 2 Trucks",
-    rate: "$155",
-    unit: "/hr*",
-    bestFor: "Large houses, double garages, split sites",
-    popular: false,
-    includes: [
-      "4 removalists across 2 trucks",
-      "Two pickups or drop-offs in one booking",
-      "Ideal for storage runs",
-      "$100,000 goods-in-transit cover",
-    ],
   },
 ];
 

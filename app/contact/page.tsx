@@ -14,9 +14,7 @@ export const metadata = {
 };
 
 const locations = [
-  { city: "Bayside & South-East", address: ["32-44 Keys Road,", "Cheltenham VIC 3192"] },
-  { city: "Melbourne CBD & Inner", address: ["Servicing Fitzroy, Richmond,", "South Yarra & Carlton"] },
-  { city: "Eastern & Northern Suburbs", address: ["Servicing Box Hill, Doncaster,", "Preston & Reservoir"] },
+  { city: "Head Office", address: ["Suite 1208/530 Little Collins Street,", "Melbourne VIC 3000"] },
 ];
 
 export default function ContactPage() {
@@ -41,16 +39,16 @@ export default function ContactPage() {
         <Card>
           <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">Call Us</div>
           <p className="m-0 text-sm leading-[1.6]">
-            <a href="tel:0285034444" className="text-teal-500 no-underline hover:underline">
-              02 8503 4444
+            <a href="tel:0370741820" className="text-teal-500 no-underline hover:underline">
+              03 7074 1820
             </a>
           </p>
         </Card>
         <Card>
           <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">Email Us</div>
           <p className="m-0 text-sm leading-[1.6]">
-            <a href="mailto:hello@movera.com.au" className="text-teal-500 no-underline hover:underline">
-              hello@movera.com.au
+            <a href="mailto:sales@themovera.com.au" className="text-teal-500 no-underline hover:underline">
+              sales@themovera.com.au
             </a>
           </p>
         </Card>
@@ -62,7 +60,7 @@ export default function ContactPage() {
             Find Us
           </div>
           <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
-            Our locations
+            Our office
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {locations.map((loc) => (

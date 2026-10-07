@@ -5,6 +5,7 @@ import { MobileCallBar } from "@/components/landing/MobileCallBar";
 import { FaqDialog } from "@/components/landing/FaqDialog";
 import { ServiceAreaTabs } from "@/components/landing/ServiceAreaTabs";
 import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
+import { TruckRates } from "@/components/ui/TruckRates";
 import {
   IconCalendar,
   IconClock,
@@ -27,7 +28,6 @@ import {
   serviceAreas,
   services,
   pricingNotes,
-  pricingPlans,
   steps,
   trustBadges,
   whyChooseUs,
@@ -36,13 +36,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, organizationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Local Movers Melbourne | Two Men and a Truck from $65/hr — Movera",
+  title: "Local Movers Melbourne | Two Men and a Truck from $140/hr — Movera",
   description:
-    "Hire local removalists in Melbourne. Two Men and a Truck from $65/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    "Hire local removalists in Melbourne. Two Men and a Truck from $140/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
   alternates: { canonical: "/local-movers-melbourne" },
   openGraph: {
-    title: "Local Movers Melbourne | Two Men and a Truck from $65/hr — Movera",
-    description: "Hire local removalists in Melbourne. Two Men and a Truck from $65/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    title: "Local Movers Melbourne | Two Men and a Truck from $140/hr — Movera",
+    description: "Hire local removalists in Melbourne. Two Men and a Truck from $140/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
     url: "/local-movers-melbourne",
   },
 };
@@ -412,59 +412,12 @@ export default function LocalMoversMelbourne() {
             Straightforward hourly rates, no hidden fees
           </h2>
           <p className="mx-auto -mt-2 mb-8 max-w-[640px] text-center text-[15px] leading-[1.7] text-ink-600">
-            Pick the crew size that fits your move. Every rate below includes the truck, the
+            Pick the truck size that fits your move. Every rate below includes two removalists, the
             equipment and $100,000 goods-in-transit cover — the number we quote is the number on
             your invoice.
           </p>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {pricingPlans.map((plan) => (
-              <div
-                key={plan.name}
-                className={`relative flex flex-col rounded-md border bg-white p-6 transition-shadow hover:shadow-raised ${
-                  plan.popular ? "border-teal-500 bg-teal-50 shadow-raised" : "border-border"
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-pill bg-clay-500 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-[1.5px] text-white">
-                    Most Booked
-                  </div>
-                )}
-                <div className="mb-3 font-display text-[15px] font-bold uppercase tracking-wide text-ink-800">
-                  {plan.name}
-                </div>
-                <div className="mb-1 flex items-baseline gap-1">
-                  <span className="font-display text-[38px] font-bold leading-none text-teal-500">
-                    {plan.rate}
-                  </span>
-                  <span className="font-display text-sm font-semibold text-ink-400">
-                    {plan.unit}
-                  </span>
-                </div>
-                <p className="m-0 mb-4 text-[13px] leading-[1.6] text-ink-600">{plan.bestFor}</p>
-                <div className="mb-5 grid gap-2.5 border-t border-border pt-4">
-                  {plan.includes.map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-[13px] leading-[1.5]">
-                      <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-pill bg-teal-500 text-[9px] text-white">
-                        ✓
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="#quote-form"
-                  className={`mt-auto block rounded-sm px-4 py-3 text-center font-display text-sm font-semibold no-underline transition-colors ${
-                    plan.popular
-                      ? "bg-clay-500 text-white hover:bg-clay-600"
-                      : "border-2 border-teal-500 text-teal-500 hover:bg-teal-50"
-                  }`}
-                >
-                  GET A FREE QUOTE →
-                </a>
-              </div>
-            ))}
-          </div>
+          <TruckRates quoteHref="#quote-form" />
 
           <div className="mt-7 rounded-md border border-border bg-gray-50 px-5 py-5">
             <div className="mb-2.5 font-display text-xs font-semibold uppercase tracking-[1.5px] text-ink-400">
@@ -697,7 +650,7 @@ export default function LocalMoversMelbourne() {
               <div className="text-sm leading-[1.8] text-white/70">
                 Mon – Sat: 7:00 AM – 8:00 PM
                 <br />
-                32-44 Keys Road, Cheltenham VIC 3192
+                Suite 1208/530 Little Collins Street, Melbourne VIC 3000
                 <br />
                 Servicing all Melbourne suburbs
               </div>

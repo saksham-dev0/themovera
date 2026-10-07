@@ -119,7 +119,7 @@ function GrievanceFormInner() {
 
       setSubmitted(true);
     } catch {
-      setError("Something went wrong submitting your grievance. Please try again or call 02 8503 4444.");
+      setError("Something went wrong submitting your grievance. Please try again or call 03 7074 1820.");
     } finally {
       setSubmitting(false);
     }
@@ -135,7 +135,7 @@ function GrievanceFormInner() {
           We&apos;ve received your grievance
         </div>
         <p className="m-0 text-sm text-ink-400 leading-[1.6]">
-          A coordinator will review the details and get back to you. If it&apos;s urgent, call 02 8503 4444.
+          A coordinator will review the details and get back to you. If it&apos;s urgent, call 03 7074 1820.
         </p>
       </Card>
     );

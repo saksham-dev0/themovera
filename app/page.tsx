@@ -6,6 +6,7 @@ import { InfoBar, Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { ReviewsMarquee } from "@/components/ui/ReviewsMarquee";
 import { HeroQuoteForm } from "@/components/ui/HeroQuoteForm";
+import { TruckRates } from "@/components/ui/TruckRates";
 import { services } from "@/app/services/data";
 
 const stats = [
@@ -16,7 +17,7 @@ const stats = [
 ];
 
 const fleet = [
-  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/desktop-fleet.png", mobileImage: "/mobile-fleet.png" },
+  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4.5-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/desktop-fleet.png", mobileImage: "/mobile-fleet.png" },
   { title: "Trained crew", caption: "Background-checked moving teams — our own crews and trusted local partners, held to the same standard.", image: "/office_removal.png" },
   { title: "Packing materials", caption: "Boxes, blankets, straps and trolleys loaded on every truck, so your crew is never caught short on the day.", image: "/Packing.png" },
 ];
@@ -282,6 +283,23 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Hourly rates */}
+      <section id="rates" className="border-t border-border">
+        <div className="max-w-[1180px] mx-auto px-8 py-16">
+          <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
+            Our Hourly Rates
+          </div>
+          <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-3 max-w-[640px]">
+            Pick the truck that fits your move
+          </h2>
+          <p className="text-[15px] leading-[1.65] max-w-[620px] m-0 mb-10">
+            Every rate includes two trained removalists, a fully equipped truck and $100,000 goods-in-transit
+            cover. Not sure which size you need? We&rsquo;ll recommend one when we quote.
+          </p>
+          <TruckRates />
         </div>
       </section>
 

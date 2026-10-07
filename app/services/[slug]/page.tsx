@@ -74,7 +74,7 @@ export default async function ServicePage({
         </h1>
         <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">{service.tagline}</p>
         <div className="flex flex-wrap items-center gap-4">
-          <Button variant="secondary">☎ 02 8503 4444</Button>
+          <Button variant="secondary">☎ 03 7074 1820</Button>
           <Button variant="primary">Get My Free Quote →</Button>
         </div>
       </section>

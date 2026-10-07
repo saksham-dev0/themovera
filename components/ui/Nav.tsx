@@ -20,11 +20,11 @@ export function InfoBar() {
       <div className="max-w-[1180px] mx-auto flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1.5 px-8 py-2 text-xs font-display font-semibold">
         <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-1.5">
-          <a href="mailto:hello@movera.com.au" className="hover:text-teal-500">
-            hello@movera.com.au
+          <a href="mailto:sales@themovera.com.au" className="hover:text-teal-500">
+            sales@themovera.com.au
           </a>
-          <a href="tel:0285034444" className="hover:text-teal-500">
-            ☎ 02 8503 4444
+          <a href="tel:0370741820" className="hover:text-teal-500">
+            ☎ 03 7074 1820
           </a>
         </div>
       </div>
