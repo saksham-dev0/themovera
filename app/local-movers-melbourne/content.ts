@@ -14,7 +14,7 @@ export const PHONE_DISPLAY = "03 7074 1820";
 export const PHONE_TEL = "0370741820";
 export const HOURLY_RATE = STARTING_RATE;
 /** Headline casing — used where the rate sits in a title, not mid-sentence. */
-export const HOURLY_RATE_DISPLAY = "$65/Hr";
+export const HOURLY_RATE_DISPLAY = "$65/HHr";
 
 /** Two-men-and-a-truck rates listed under the hero headline. */
 export const heroRates = [
