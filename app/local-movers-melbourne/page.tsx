@@ -25,6 +25,7 @@ import {
   PHONE_TEL,
   faqs,
   features,
+  heroRates,
   serviceAreas,
   services,
   pricingNotes,
@@ -36,13 +37,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, organizationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Local Movers Melbourne | Two Men and a Truck from $140/hr — Movera",
+  title: "Local Movers Melbourne | Two Men and a Truck from $130/hr — Movera",
   description:
-    "Hire local removalists in Melbourne. Two Men and a Truck from $140/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    "Hire local removalists in Melbourne. Two Men and a Truck from $130/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
   alternates: { canonical: "/local-movers-melbourne" },
   openGraph: {
-    title: "Local Movers Melbourne | Two Men and a Truck from $140/hr — Movera",
-    description: "Hire local removalists in Melbourne. Two Men and a Truck from $140/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    title: "Local Movers Melbourne | Two Men and a Truck from $130/hr — Movera",
+    description: "Hire local removalists in Melbourne. Two Men and a Truck from $130/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
     url: "/local-movers-melbourne",
   },
 };
@@ -194,6 +195,20 @@ export default function LocalMoversMelbourne() {
             <p className="m-0 mt-1.5 font-sans text-[11px] leading-none tracking-wide text-white/45 sm:text-[12px]">
               *T&amp;Cs apply.
             </p>
+            <ul className="m-0 mt-5 grid max-w-[560px] list-none gap-x-6 gap-y-2 p-0 sm:grid-cols-2">
+              {heroRates.map((item) => (
+                <li
+                  key={item.label}
+                  className="flex items-center gap-2 text-[14px] leading-snug text-white/85 sm:text-[15px]"
+                >
+                  <IconTruck className="h-4 w-4 shrink-0 text-sage-500" />
+                  <span>
+                    {item.label} from{" "}
+                    <span className="font-display font-bold text-sage-500">{item.rate}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
             <p className="mt-4 mb-6 max-w-[560px] text-[15px] leading-[1.7] text-white/80">
               Hire local removalists who actually turn up. Movera moves Melbourne homes and offices
               every day — cheap furniture removals, full packers and movers service, and one honest

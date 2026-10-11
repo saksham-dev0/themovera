@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { StepTwoForm } from "@/components/landing/StepTwoForm";
+import { AdsConversion } from "@/components/landing/AdsConversion";
 import { MobileCallBar } from "@/components/landing/MobileCallBar";
 import { IconPhone } from "@/components/landing/Icons";
 import { PHONE_DISPLAY, PHONE_TEL } from "../content";
@@ -21,6 +22,8 @@ export default async function ThankYouPage({
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-ink-600">
+      {/* Google Ads conversion: "thank you page" event */}
+      <AdsConversion />
       <header className="bg-ink-900">
         <div className="mx-auto flex max-w-[900px] items-center gap-3 px-5 py-3.5">
           <Link href="/local-movers-melbourne" className="flex shrink-0 items-center gap-2.5 no-underline">

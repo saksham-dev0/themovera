@@ -17,7 +17,7 @@ const stats = [
 ];
 
 const fleet = [
-  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from 4.5-tonne to 10-tonne, matched to your move — no wasted space, no second trip.", image: "/desktop-fleet.png", mobileImage: "/mobile-fleet.png" },
+  { title: "Our truck fleet", caption: "A range of well-maintained trucks, from small to extra-large, matched to your move — no wasted space, no second trip.", image: "/desktop-fleet.png", mobileImage: "/mobile-fleet.png" },
   { title: "Trained crew", caption: "Background-checked moving teams — our own crews and trusted local partners, held to the same standard.", image: "/office_removal.png" },
   { title: "Packing materials", caption: "Boxes, blankets, straps and trolleys loaded on every truck, so your crew is never caught short on the day.", image: "/Packing.png" },
 ];

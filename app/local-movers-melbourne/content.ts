@@ -14,7 +14,15 @@ export const PHONE_DISPLAY = "03 7074 1820";
 export const PHONE_TEL = "0370741820";
 export const HOURLY_RATE = STARTING_RATE;
 /** Headline casing — used where the rate sits in a title, not mid-sentence. */
-export const HOURLY_RATE_DISPLAY = "$140/Hr";
+export const HOURLY_RATE_DISPLAY = "$65/Hr";
+
+/** Two-men-and-a-truck rates listed under the hero headline. */
+export const heroRates = [
+  { label: "2 Men & Small Truck", rate: "$130" },
+  { label: "2 Men & Medium Truck", rate: "$140" },
+  { label: "2 Men & Large Truck", rate: "$150" },
+  { label: "2 Men & Extra-Large Truck", rate: "$160" },
+];
 
 export const trustBadges = [
   { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
@@ -65,7 +73,7 @@ export const whyChooseUs = [
   },
   {
     title: "Two Men and a Truck, ready to go",
-    body: `Our most-booked option: 2 men and a truck from ${HOURLY_RATE}*, with trolleys, blankets and straps already loaded. Need a bigger crew or a 10-tonne truck? We scale to the job.`,
+    body: `Our most-booked option: 2 men and a truck from ${HOURLY_RATE}*, with trolleys, blankets and straps already loaded. Need a bigger crew or an extra-large truck? We scale to the job.`,
   },
   {
     title: "Local removalists near me",
