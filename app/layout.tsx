@@ -92,6 +92,32 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', '${GOOGLE_ANALYTICS_ID}');
             gtag('config', '${GOOGLE_ADS_ID}');
+
+            // Google Ads call tracking: swaps the displayed number for a forwarding number.
+            gtag('config', '${GOOGLE_ADS_ID}/cluNCNm0g5UdELncoedE', {
+              'phone_conversion_number': '03 7074 1820'
+            });
+
+            // Google Ads click conversion; fired on every tel: link click below.
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': '${GOOGLE_ADS_ID}/16LvCNy0g5UdELncoedE',
+                'value': 1.0,
+                'currency': 'AUD',
+                'event_callback': callback
+              });
+              return false;
+            }
+
+            document.addEventListener('click', function (e) {
+              var link = e.target instanceof Element && e.target.closest('a[href^="tel:"]');
+              if (link) gtag_report_conversion();
+            });
           `}
         </Script>
       </body>

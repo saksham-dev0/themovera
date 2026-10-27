@@ -16,14 +16,6 @@ export const HOURLY_RATE = STARTING_RATE;
 /** Headline casing — used where the rate sits in a title, not mid-sentence. */
 export const HOURLY_RATE_DISPLAY = "$65/HHr";
 
-/** Two-men-and-a-truck rates listed under the hero headline. */
-export const heroRates = [
-  { label: "2 Men & Small Truck", rate: "$130" },
-  { label: "2 Men & Medium Truck", rate: "$140" },
-  { label: "2 Men & Large Truck", rate: "$150" },
-  { label: "2 Men & Extra-Large Truck", rate: "$160" },
-];
-
 export const trustBadges = [
   { icon: "truck", label: "Australian Owned & Operated", value: "Melbourne based, Melbourne crews" },
   { icon: "google", label: "Google Rating", value: "4.8 ★★★★★" },
@@ -169,8 +161,8 @@ export const testimonials = [
 
 /** Fine print shown under the pricing table. */
 export const pricingNotes = [
-  "Minimum booking of 2 hours, then charged in 15-minute increments.",
-  "A one-hour call-out fee covers depot-to-site travel — no depot-to-depot charges.",
+  "Minimum booking of 2 hours, then charged in 30-minute increments.",
+  "A half-hour call-out fee covers depot-to-site travel — no depot-to-depot charges.",
   "Rates are GST inclusive. Weekend and public-holiday rates may vary.",
   "Packing materials, piano and pool-table handling quoted separately.",
 ];
