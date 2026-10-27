@@ -36,11 +36,11 @@ export function TruckRates({ quoteHref = "/quote" }: { quoteHref?: string }) {
             <div className="mb-5 grid gap-3 border-t border-border pt-4">
               {specs.map(({ label, value, Icon }) => (
                 <div key={label} className="flex items-center justify-between gap-3 text-[13px]">
-                  <span className="flex items-center gap-2 text-ink-600">
-                    <Icon className="h-4 w-4 text-teal-500" />
+                  <span className="flex items-center gap-2 whitespace-nowrap text-ink-600">
+                    <Icon className="h-4 w-4 shrink-0 text-teal-500" />
                     {label}
                   </span>
-                  <span className="font-display font-semibold text-ink-800">{value}</span>
+                  <span className="whitespace-nowrap font-display font-semibold text-ink-800">{value}</span>
                 </div>
               ))}
             </div>
