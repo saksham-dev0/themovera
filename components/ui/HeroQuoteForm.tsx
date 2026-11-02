@@ -18,7 +18,7 @@ export function HeroQuoteForm() {
 
   function goToQuote(suburb: string) {
     const params = suburb.trim() ? `?from=${encodeURIComponent(suburb.trim())}` : "";
-    router.push(`/quote${params}`);
+    router.push(`/quote${params}#quote-form`);
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

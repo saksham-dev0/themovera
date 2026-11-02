@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
+import { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "outline" | "ghost" | "dark-outline" | "dark-sage";
 
@@ -24,5 +25,19 @@ export function Button({
     <button className={`${base} ${variants[variant]} ${className}`} {...props}>
       {children}
     </button>
+  );
+}
+
+/** A link styled like a Button — use for CTAs that navigate. */
+export function ButtonLink({
+  variant = "primary",
+  className = "",
+  children,
+  ...props
+}: ComponentProps<typeof Link> & { variant?: Variant; children: ReactNode }) {
+  return (
+    <Link className={`${base} ${variants[variant]} no-underline ${className}`} {...props}>
+      {children}
+    </Link>
   );
 }

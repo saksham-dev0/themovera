@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input, Label } from "@/components/ui/Input";
+import { melbourneDate, useMelbourneToday } from "@/lib/dates";
 
 function QuoteFormInner({ defaultLocation = "" }: { defaultLocation?: string }) {
   const [submitted, setSubmitted] = useState(false);
@@ -15,18 +16,27 @@ function QuoteFormInner({ defaultLocation = "" }: { defaultLocation?: string }) 
 
   const submitQuote = useMutation(api.quotes.submit);
 
+  // Customers may pick today or any future date (Melbourne time), never a past one.
+  const minDate = useMelbourneToday();
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    setSubmitting(true);
 
+    const formData = new FormData(e.currentTarget);
+    const moveDate = String(formData.get("moveDate") ?? "");
+    if (!moveDate || moveDate < melbourneDate(0)) {
+      setError("Please choose today or a future date for your move.");
+      return;
+    }
+
+    setSubmitting(true);
     try {
-      const formData = new FormData(e.currentTarget);
       await submitQuote({
         name: String(formData.get("name") ?? ""),
         phone: String(formData.get("phone") ?? ""),
         email: String(formData.get("email") ?? ""),
-        moveDate: String(formData.get("moveDate") ?? ""),
+        moveDate,
         movingFrom: String(formData.get("movingFrom") ?? ""),
       });
       setSubmitted(true);
@@ -95,7 +105,14 @@ function QuoteFormInner({ defaultLocation = "" }: { defaultLocation?: string }) 
           <Label htmlFor="quote-date" className="text-xs uppercase tracking-wide">
             Move date
           </Label>
-          <Input id="quote-date" name="moveDate" type="date" required className="bg-white" />
+          <Input
+            id="quote-date"
+            name="moveDate"
+            type="date"
+            required
+            min={minDate || undefined}
+            className="bg-white"
+          />
         </div>
         {error && <div className="text-sm text-danger">{error}</div>}
         <Button type="submit" variant="primary" className="w-full mt-1" disabled={submitting}>

@@ -138,19 +138,6 @@ export function StepTwoForm({ token }: { token: string }) {
         />
       </div>
 
-      <div className="mt-4">
-        <label htmlFor="notes" className={labelClass}>
-          Anything else we should know?
-        </label>
-        <textarea
-          id="notes"
-          name="notes"
-          rows={4}
-          placeholder="Parking, narrow driveway, settlement times, flexible dates…"
-          className={`${fieldClass} resize-y`}
-        />
-      </div>
-
       {error && <div className="mt-4 text-sm text-danger">{error}</div>}
 
       <button

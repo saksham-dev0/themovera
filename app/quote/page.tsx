@@ -24,7 +24,7 @@ export default function QuotePage() {
           Get Started
         </div>
 
-        <div className="max-w-[520px] mx-auto">
+        <div id="quote-form" className="max-w-[520px] mx-auto scroll-mt-28">
           <Suspense fallback={null}>
             <QuoteFormSection />
           </Suspense>

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
@@ -75,7 +75,7 @@ export default async function ServicePage({
         <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">{service.tagline}</p>
         <div className="flex flex-wrap items-center gap-4">
           <Button variant="secondary">☎ 03 7074 1820</Button>
-          <Button variant="primary">Get My Free Quote →</Button>
+          <ButtonLink variant="primary" href="/quote#quote-form">Get My Free Quote →</ButtonLink>
         </div>
       </section>
 

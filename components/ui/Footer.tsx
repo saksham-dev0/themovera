@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const columns = [
   {
@@ -41,9 +42,12 @@ export function CTABand() {
         Move Right with Movera
       </div>
       <div className="relative flex justify-center gap-4 flex-wrap">
-        <button className="font-display font-semibold text-[15px] text-white bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer">
+        <Link
+          href="/quote#quote-form"
+          className="font-display font-semibold text-[15px] text-white no-underline bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer"
+        >
           Get a Quote ›
-        </button>
+        </Link>
         <button className="font-display font-semibold text-[15px] text-white bg-clay-500 hover:bg-clay-600 rounded-sm px-[26px] py-3.5 cursor-pointer">
           Call 03 7074 1820
         </button>

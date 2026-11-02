@@ -1,26 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { melbourneDate, useMelbourneToday } from "@/lib/dates";
 
 /**
  * Submissions go over plain HTTP to the Convex /landing-quote endpoint rather
  * than through the Convex browser client, so this page ships no Convex JS.
  */
 const QUOTE_ENDPOINT = `${process.env.NEXT_PUBLIC_CONVEX_SITE_URL}/landing-quote`;
-
-/** Melbourne-local YYYY-MM-DD, `offsetDays` days from now. */
-function melbourneDate(offsetDays: number) {
-  const now = new Date();
-  const melbourneNow = new Date(
-    now.toLocaleString("en-US", { timeZone: "Australia/Melbourne" }),
-  );
-  melbourneNow.setDate(melbourneNow.getDate() + offsetDays);
-  const y = melbourneNow.getFullYear();
-  const m = String(melbourneNow.getMonth() + 1).padStart(2, "0");
-  const d = String(melbourneNow.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
 
 export function LandingQuoteForm({
   id,
@@ -33,11 +21,10 @@ export function LandingQuoteForm({
   subheading?: string;
   source?: string;
 }) {
-  // Customers may only pick today or tomorrow (Melbourne time).
-  const { minDate, maxDate } = useMemo(
-    () => ({ minDate: melbourneDate(0), maxDate: melbourneDate(1) }),
-    [],
-  );
+  // Customers may pick today or any future date (Melbourne time), never a past one.
+  const minDate = useMelbourneToday();
+  const [pickedDate, setPickedDate] = useState("");
+  const moveDateValue = pickedDate || minDate;
 
   const router = useRouter();
   const [movingFrom, setMovingFrom] = useState("");
@@ -51,8 +38,8 @@ export function LandingQuoteForm({
 
     const formData = new FormData(e.currentTarget);
     const moveDate = String(formData.get("moveDate") ?? "");
-    if (moveDate < minDate || moveDate > maxDate) {
-      setError("Please choose today or tomorrow. For a later date, call us and we'll book it in.");
+    if (!moveDate || moveDate < melbourneDate(0)) {
+      setError("Please choose today or a future date for your move.");
       return;
     }
 
@@ -148,9 +135,9 @@ export function LandingQuoteForm({
             name="moveDate"
             type="date"
             required
-            min={minDate}
-            max={maxDate}
-            defaultValue={minDate}
+            min={minDate || undefined}
+            value={moveDateValue}
+            onChange={(e) => setPickedDate(e.target.value)}
             className="w-full min-w-0 rounded-sm border-[1.5px] border-border bg-white px-3.5 py-2.5 font-sans text-[15px] text-ink-800 outline-none transition-shadow focus:border-teal-500 focus:shadow-[0_0_0_4px_rgba(44,95,138,0.15)]"
           />
         </div>

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { Nav } from "@/components/ui/Nav";
 import { CTABand, Footer } from "@/components/ui/Footer";
 import { TruckRates } from "@/components/ui/TruckRates";
@@ -56,7 +56,7 @@ export default function PricingPage() {
           not a guess. Choose a fixed price or an hourly rate, whichever suits your move: what we assess is what
           we quote, and what we quote is what&rsquo;s on the invoice. No depot-to-depot charges, no bidding war.
         </p>
-        <Button variant="primary">Get My Free Quote →</Button>
+        <ButtonLink variant="primary" href="/quote#quote-form">Get My Free Quote →</ButtonLink>
       </section>
 
       <section className="border-t border-border">

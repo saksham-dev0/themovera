@@ -5,7 +5,7 @@ import { truckRates } from "@/lib/pricing";
  * Hourly rate cards, one per truck size. `quoteHref` points the card buttons
  * at the quote form — an in-page anchor on landing pages, /quote elsewhere.
  */
-export function TruckRates({ quoteHref = "/quote" }: { quoteHref?: string }) {
+export function TruckRates({ quoteHref = "/quote#quote-form" }: { quoteHref?: string }) {
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {truckRates.map((truck) => {

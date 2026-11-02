@@ -164,7 +164,6 @@ export const sendSalesNotification = internalAction({
           row("Preferred time", two.preferredTime),
           row("Packing help", two.packingHelp),
           row("Special items", two.specialItems),
-          row("Notes", two.notes),
         ].join("")
       : "";
 
