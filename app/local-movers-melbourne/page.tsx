@@ -194,6 +194,9 @@ export default function LocalMoversMelbourne() {
             <p className="m-0 mt-1.5 font-sans text-[11px] leading-none tracking-wide text-white/45 sm:text-[12px]">
               *T&amp;Cs apply.
             </p>
+            <div className="mt-5">
+              <CtaPair tone="dark" />
+            </div>
             <p className="mt-5 mb-6 max-w-[560px] text-[15px] leading-[1.7] text-white/80">
               Hire local removalists who actually turn up. Movera moves Melbourne homes and offices
               every day — cheap furniture removals, full packers and movers service, and one honest
@@ -201,7 +204,7 @@ export default function LocalMoversMelbourne() {
             </p>
 
             {/* 2 · Trust factor strip, directly under the hero quote */}
-            <div className="mb-7 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-3">
               {trustBadges.map((badge) => (
                 <div
                   key={badge.label}
@@ -218,7 +221,9 @@ export default function LocalMoversMelbourne() {
               ))}
             </div>
 
-            <CtaPair tone="dark" />
+            <div className="mt-7">
+              <CtaPair tone="dark" />
+            </div>
           </div>
 
           <LandingQuoteForm id="quote-form" />

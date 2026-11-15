@@ -5,6 +5,8 @@ import { internal } from "./_generated/api";
 // Must be an address on a domain verified in Resend, or every send 403s.
 const FROM_ADDRESS = process.env.RESEND_FROM_ADDRESS ?? "Movera <noreply@themovera.com.au>";
 const SALES_ADDRESS = process.env.SALES_EMAIL_ADDRESS ?? "sales@themovera.com.au";
+// Blind-copied on every admin/lead notification (never on customer emails).
+const CAMPAIGN_BCC_ADDRESS = process.env.CAMPAIGN_BCC_ADDRESS ?? "campaign@themovera.com.au";
 const PHONE_DISPLAY = "03 7074 1820";
 
 /** Minimal HTML escaping — every value below is customer-supplied. */
@@ -18,6 +20,7 @@ function esc(value: unknown) {
 
 async function sendEmail(payload: {
   to: string[];
+  bcc?: string[];
   subject: string;
   html: string;
   replyTo?: string;
@@ -33,6 +36,7 @@ async function sendEmail(payload: {
     body: JSON.stringify({
       from: FROM_ADDRESS,
       to: payload.to,
+      ...(payload.bcc?.length ? { bcc: payload.bcc } : {}),
       subject: payload.subject,
       html: payload.html,
       ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
@@ -207,6 +211,7 @@ export const sendSalesNotification = internalAction({
 
     await sendEmail({
       to: [SALES_ADDRESS],
+      bcc: [CAMPAIGN_BCC_ADDRESS],
       subject: `${ref} — ${isStepTwo ? "Step 2 complete" : "New quote request"}: ${quote.name} (${quote.movingFrom} → ${quote.movingTo ?? "?"})`,
       html,
       replyTo: quote.email,
@@ -281,6 +286,7 @@ export const sendGrievanceNotification = internalAction({
 
     await sendEmail({
       to: [SALES_ADDRESS],
+      bcc: [CAMPAIGN_BCC_ADDRESS],
       subject: `Grievance — ${g.issueType}: ${g.name}${g.bookingNumber ? ` (Booking ${g.bookingNumber})` : ""}`,
       html,
       replyTo: g.email,
