@@ -1,42 +1,93 @@
-import { ButtonLink } from "@/components/ui/Button";
 import { Nav } from "@/components/ui/Nav";
-import { CTABand, Footer } from "@/components/ui/Footer";
-import { TruckRates } from "@/components/ui/TruckRates";
+import { Footer } from "@/components/ui/Footer";
+import { ClosingCtaBand, ContentSections, PageHero, type Block } from "@/components/content/ContentBlocks";
+import { photos } from "@/components/content/images";
+
+const metaTitle = "Removalists Melbourne Cost | Movera Pricing";
+const metaDescription =
+  "See what can affect removalist costs in Melbourne, including property access, furniture, travel, packing and moving requirements. Request a quote from Movera.";
 
 export const metadata = {
-  title: "Pricing | Movera Removals & Storage",
-  description: "An accurate quote based on your move's actual volume, distance and access — confirmed before the day, no depot-to-depot tricks.",
+  title: metaTitle,
+  description: metaDescription,
   alternates: { canonical: "/pricing" },
-  openGraph: {
-    title: "Pricing | Movera Removals & Storage",
-    description: "An accurate quote based on your move's actual volume, distance and access — confirmed before the day, no depot-to-depot tricks.",
-    url: "/pricing",
-  },
+  openGraph: { title: metaTitle, description: metaDescription, url: "/pricing" },
 };
 
-const comparison = [
+const sections: Block[] = [
   {
-    title: "DIY move",
-    points: ["Your time, your vehicle, your risk", "No insurance on your belongings", "No equipment for heavy or fragile items"],
+    heading: "What Can Affect the Cost of a Move?",
+    body: ["Several parts of the move can affect the final price.", "These can include:"],
+    list: [
+      "Pickup and delivery suburbs",
+      "Property type",
+      "Amount of furniture and boxes",
+      "Stairs or lift access",
+      "Parking distance",
+      "Larger or heavier items",
+      "Time needed for loading and unloading",
+      "Packing or unpacking support",
+      "Office or commercial moving requirements",
+    ],
+    after: ["Providing accurate information helps give a clearer picture of the work involved."],
   },
   {
-    title: "Comparison-site mover",
-    points: ["Details sold to 4-5 competing movers", "Crew and quality can vary quote to quote", "Hourly meter can run over quoted time"],
+    heading: "House and Apartment Moving Costs",
+    body: [
+      "House and apartment moves can have very different requirements.",
+      "A house with easy driveway access may allow furniture to be moved directly between the property and vehicle. An apartment in Melbourne CBD, Richmond or South Yarra may involve lift bookings, loading areas or longer carrying distances.",
+      "These differences can affect the time required even when the number of items is similar.",
+    ],
+    image: photos.houseStreet("House move in Melbourne with direct street access"),
   },
   {
-    title: "Movera",
-    points: ["One dedicated, trained crew", "Quote based on your move's actual requirements", "$100,000 goods-in-transit cover included"],
-    highlight: true,
+    heading: "Furniture and Specialty Items",
+    body: ["Larger items may need more preparation and handling than standard boxes.", "This can include:"],
+    list: ["Sofas", "Wardrobes", "Dining tables", "Large appliances", "Pianos", "Pool tables", "Gym equipment"],
+    listStyle: "chips",
+    after: ["If the move includes an unusually large or heavy item, mention it when requesting the quote."],
+    image: photos.furniture("Removalists carrying large furniture"),
+    links: [
+      { label: "Furniture Removals", href: "/services/furniture-removals" },
+      { label: "Specialty Item Removals", href: "/services/specialty-item-removals" },
+    ],
   },
-];
-
-const included = [
-  "Volume, distance and access assessed before you're quoted",
-  "Furniture wrap and blanket protection",
-  "Trained, background-checked moving teams — own crews and vetted partners",
-  "$100,000 goods-in-transit insurance",
-  "Live phone support — call your coordinator for a real-time update on moving day",
-  "A dedicated coordinator for your move",
+  {
+    heading: "Packing and Other Moving Support",
+    body: [
+      "The final cost may also depend on whether you need additional help beyond transport.",
+      "Movera provides services such as:",
+    ],
+    list: [
+      "Packing and unpacking",
+      "Furniture removals",
+      "Specialty item removals",
+      "Loading and unloading",
+      "Office and commercial relocations",
+    ],
+    after: ["These can be discussed based on what is required for your move."],
+    links: [
+      { label: "Packing & Unpacking", href: "/services/packing-unpacking" },
+      { label: "Loading & Unloading", href: "/services/loading-unloading" },
+      { label: "Office & Commercial Relocations", href: "/services/office-commercial-relocations" },
+    ],
+  },
+  {
+    heading: "Getting a Moving Quote",
+    body: ["When requesting a quote, it helps to share:"],
+    list: [
+      "Moving date",
+      "Pickup suburb",
+      "Delivery suburb",
+      "Property type",
+      "Main furniture items",
+      "Approximate number of boxes",
+      "Access details",
+      "Any special items",
+      "Extra services you may need",
+    ],
+    after: ["This gives Movera enough information to understand the move before pricing it."],
+  },
 ];
 
 export default function PricingPage() {
@@ -44,88 +95,27 @@ export default function PricingPage() {
     <div className="bg-gray-50 font-sans text-ink-600">
       <Nav />
 
-      <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-6">
-          Pricing
-        </div>
-        <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          A Genuine Quote, Based on Your Move.
-        </h1>
-        <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">
-          Every quote is calculated from your move&rsquo;s actual requirements — volume, distance and access —
-          not a guess. Choose a fixed price or an hourly rate, whichever suits your move: what we assess is what
-          we quote, and what we quote is what&rsquo;s on the invoice. No depot-to-depot charges, no bidding war.
-        </p>
-        <ButtonLink variant="primary" href="/quote#quote-form">Get My Free Quote →</ButtonLink>
-      </section>
+      <PageHero
+        eyebrow="Pricing"
+        title="Removalists Melbourne Cost"
+        intro={[
+          "The cost of a move can vary depending on the property, the amount being moved and the access at both locations.",
+          "A short move between two Melbourne suburbs may still take more time if there are stairs, limited parking or a larger amount of furniture. A longer move may be easier to manage if both properties have direct access.",
+          "Movera looks at the details of the job before providing a moving quote.",
+        ]}
+        image={photos.fleet("Movera removal trucks in Melbourne")}
+        ctaLabel="Request a Moving Quote"
+      />
 
-      <section className="border-t border-border">
-        <div className="max-w-[1180px] mx-auto px-8 py-16">
-          <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
-            Our Hourly Rates
-          </div>
-          <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-3 max-w-[640px]">
-            Pick the truck that fits your move
-          </h2>
-          <p className="text-[15px] leading-[1.65] max-w-[620px] m-0 mb-10">
-            Every rate includes two trained removalists, a fully equipped truck and $100,000 goods-in-transit
-            cover. Not sure which size you need? We&rsquo;ll recommend one when we quote.
-          </p>
-          <TruckRates />
-        </div>
-      </section>
+      <ContentSections blocks={sections} />
 
-      <section className="bg-white">
-        <div className="max-w-[1180px] mx-auto px-8 py-16">
-          <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-10 max-w-[640px]">
-            Why a genuine, work-based quote beats the alternatives
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {comparison.map((c) => (
-              <div
-                key={c.title}
-                className={`rounded-md p-6 border ${c.highlight ? "border-teal-500 bg-teal-50" : "border-border bg-gray-50"}`}
-              >
-                <div className="font-display font-semibold text-[16px] text-ink-800 mb-4">{c.title}</div>
-                <div className="grid gap-3">
-                  {c.points.map((p) => (
-                    <div key={p} className="flex items-start gap-2.5 text-sm">
-                      <span
-                        className={`w-5 h-5 rounded-pill grid place-items-center text-xs shrink-0 mt-0.5 ${
-                          c.highlight ? "bg-teal-500 text-white" : "bg-ink-400/20 text-ink-400"
-                        }`}
-                      >
-                        {c.highlight ? "✓" : "•"}
-                      </span>
-                      {p}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="max-w-[1180px] mx-auto px-8 py-16">
-        <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
-          What&rsquo;s included in every quote
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-3 max-w-[820px]">
-          {included.map((item) => (
-            <div key={item} className="flex items-start gap-3 text-sm">
-              <span className="w-5 h-5 rounded-pill bg-teal-500 text-white grid place-items-center text-xs shrink-0 mt-0.5">
-                ✓
-              </span>
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="max-w-[1180px] mx-auto px-8 pb-16">
-        <CTABand />
-      </div>
+      <ClosingCtaBand
+        cta={{
+          heading: "Looking for a Removalist Quote in Melbourne?",
+          body: ["Send Movera the details of your move and the services you need."],
+          label: "Request a Moving Quote",
+        }}
+      />
 
       <Footer />
     </div>

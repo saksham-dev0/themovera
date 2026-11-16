@@ -1,54 +1,99 @@
 import Link from "next/link";
 import { Nav } from "@/components/ui/Nav";
-import { CTABand, Footer } from "@/components/ui/Footer";
+import { Footer } from "@/components/ui/Footer";
 import { guides } from "@/app/guides/data";
+import { ClosingCtaBand, ContentSections, PageHero, type Block } from "@/components/content/ContentBlocks";
+import { photos } from "@/components/content/images";
+
+const metaTitle = "Moving Guides Melbourne | Movera";
+const metaDescription =
+  "Read practical moving guides from Movera covering packing, house moves, apartments, office relocations and planning a move across Melbourne.";
 
 export const metadata = {
-  title: "Moving Guides | Movera Removals & Storage",
-  description: "Practical, no-nonsense guides for planning and executing your move.",
+  title: metaTitle,
+  description: metaDescription,
   alternates: { canonical: "/guides" },
-  openGraph: {
-    title: "Moving Guides | Movera Removals & Storage",
-    description: "Practical, no-nonsense guides for planning and executing your move.",
-    url: "/guides",
-  },
+  openGraph: { title: metaTitle, description: metaDescription, url: "/guides" },
 };
+
+const sections: Block[] = [
+  {
+    heading: "Guides for Different Types of Moves",
+    body: [
+      "A house move does not need the same preparation as an apartment or office relocation.",
+      "Apartment moves may involve lift bookings and building access, while office moves may need more planning around workstations, equipment and business hours.",
+      "By keeping the advice grouped around different moving situations, it is easier to find information that matches your own move.",
+    ],
+    image: photos.packing("Boxes and packing materials prepared before moving day"),
+  },
+  {
+    heading: "Melbourne Moving Advice",
+    body: [
+      "Moving around Melbourne can also involve local issues such as busy streets, parking limits, apartment access and different property layouts.",
+      "Our guides can include practical advice for customers moving in areas such as Melbourne CBD, Richmond, South Yarra, Carlton, Reservoir, Doncaster and other Melbourne suburbs.",
+    ],
+    image: photos.houseStreet("Moving day on a Melbourne street"),
+  },
+];
 
 export default function GuidesIndexPage() {
   return (
     <div className="bg-gray-50 font-sans text-ink-600">
       <Nav />
 
-      <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-16">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
-          Moving Guides
-        </div>
-        <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          Practical Guides For Your Move
-        </h1>
-        <p className="text-[17px] leading-[1.65] max-w-[620px] mb-12">
-          No fluff — just what to do, when to do it, and how to avoid the mistakes that turn moving day into a
-          bad day.
-        </p>
+      <PageHero
+        eyebrow="Moving Guides"
+        title="Moving Guides"
+        intro={[
+          "Planning a move usually brings a lot of small questions.",
+          "When should you start packing? What should be ready before the movers arrive? How do apartment lift bookings work? What details should you have ready before requesting a moving quote?",
+          "The Movera guides are designed to answer practical questions like these and help customers prepare before moving day.",
+        ]}
+        ctaLabel="View Removal Services"
+        ctaHref="/services"
+      />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {guides.map((g) => (
-            <Link
-              key={g.slug}
-              href={`/guides/${g.slug}`}
-              className="block bg-white rounded-md overflow-hidden border border-border no-underline hover:shadow-raised transition-shadow p-6"
-            >
-              <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">{g.title}</div>
-              <p className="m-0 mb-3 text-sm leading-[1.6]">{g.summary}</p>
-              <span className="text-sm font-display font-semibold text-teal-500">Read guide →</span>
-            </Link>
-          ))}
+      <section className="bg-white border-y border-border">
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-8 py-14 sm:py-16">
+          <h2 className="font-display font-bold text-[26px] sm:text-[28px] leading-[1.2] text-ink-800 m-0 mb-5">
+            Helpful Information Before You Move
+          </h2>
+          <p className="text-[15px] leading-[1.75] m-0 mb-8 max-w-[760px]">
+            Our moving guides can cover topics such as:
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {guides.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/guides/${g.slug}`}
+                className="block bg-gray-50 rounded-md border border-border no-underline hover:shadow-raised transition-shadow p-6"
+              >
+                <h3 className="font-display font-semibold text-[17px] text-ink-800 m-0 mb-2">{g.title}</h3>
+                <p className="m-0 mb-3 text-sm leading-[1.6] text-ink-600">{g.summary}</p>
+                <span className="text-sm font-display font-semibold text-teal-500">Read guide →</span>
+              </Link>
+            ))}
+          </div>
+          <p className="text-[15px] leading-[1.75] m-0 max-w-[760px]">
+            The guides are meant to give practical answers you can use while planning the move, not just general
+            moving advice.
+          </p>
         </div>
       </section>
 
-      <div className="max-w-[1180px] mx-auto px-8 pb-16">
-        <CTABand />
-      </div>
+      {/* Start at 1 so the first section is untinted after the white guide list */}
+      <ContentSections blocks={sections} startIndex={1} />
+
+      <ClosingCtaBand
+        cta={{
+          heading: "Looking for Help With a Move?",
+          body: [
+            "If you have already planned your move and need help with transport, furniture, packing or loading, you can also view Movera’s removal services.",
+          ],
+          label: "View Removal Services",
+          href: "/services",
+        }}
+      />
 
       <Footer />
     </div>

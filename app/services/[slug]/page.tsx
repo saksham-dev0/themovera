@@ -1,19 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Button, ButtonLink } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import Link from "next/link";
 import { Nav } from "@/components/ui/Nav";
-import { CTABand, Footer } from "@/components/ui/Footer";
+import { Footer } from "@/components/ui/Footer";
 import { services, getService } from "@/app/services/data";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-
-const trustStrip = [
-  "A genuine quote based on your move — fixed-price or hourly rate, confirmed before the day, no surprises.",
-  "Trained, vetted moving teams — including trusted local partner crews.",
-  "$100,000 goods-in-transit insurance on every move.",
-];
+import { ClosingCtaBand, ContentSections, PageHero } from "@/components/content/ContentBlocks";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -27,13 +20,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  const title = `${service.title} | Movera Removals & Storage`;
   const url = `/services/${slug}`;
   return {
-    title,
-    description: service.tagline,
+    title: service.metaTitle,
+    description: service.metaDescription,
     alternates: { canonical: url },
-    openGraph: { title, description: service.tagline, url },
+    openGraph: { title: service.metaTitle, description: service.metaDescription, url },
   };
 }
 
@@ -51,8 +43,8 @@ export default async function ServicePage({
       <JsonLd
         data={[
           serviceSchema({
-            name: service.title,
-            description: service.tagline,
+            name: service.h1,
+            description: service.metaDescription,
             path: `/services/${slug}`,
           }),
           breadcrumbSchema([
@@ -64,89 +56,24 @@ export default async function ServicePage({
       />
       <Nav />
 
-      {/* Hero */}
-      <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-6">
-          Services / {service.title}
-        </div>
-        <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          {service.title}
-        </h1>
-        <p className="text-[17px] leading-[1.65] max-w-[620px] mb-8">{service.tagline}</p>
-        <div className="flex flex-wrap items-center gap-4">
-          <Button variant="secondary">☎ 03 7074 1820</Button>
-          <ButtonLink variant="primary" href="/quote#quote-form">Get My Free Quote →</ButtonLink>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={
+          <>
+            <Link href="/services" className="text-ink-400 no-underline hover:text-teal-500">
+              Services
+            </Link>{" "}
+            / {service.title}
+          </>
+        }
+        title={service.h1}
+        intro={service.intro}
+        image={service.heroImage}
+        ctaLabel={service.cta.label}
+      />
 
-      {/* Photo banner */}
-      <section className="max-w-[1180px] mx-auto px-8 pb-16">
-        <div className="relative rounded-md overflow-hidden border border-border shadow-raised h-[360px]">
-          <Image src={service.image} alt={service.title} fill className="object-cover" priority />
-          <div className="absolute bottom-5 left-5 bg-white/95 rounded-pill px-4 py-2 text-xs font-display font-semibold text-ink-800 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-pill bg-clay-500" />
-            {service.caption}
-          </div>
-        </div>
-      </section>
+      <ContentSections blocks={service.sections} />
 
-      {/* Description + features */}
-      <section className="max-w-[1180px] mx-auto px-8 pb-16 grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-start">
-        <div>
-          <h2 className="font-display font-bold text-[24px] text-ink-800 m-0 mb-4">
-            What&rsquo;s included
-          </h2>
-          <p className="text-[15px] leading-[1.75] mb-8 max-w-[600px]">{service.description}</p>
-          <div className="flex flex-wrap gap-2.5">
-            {service.idealFor.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-display font-semibold tracking-wide uppercase text-teal-500 bg-teal-100 rounded-pill px-3.5 py-1.5"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <Card className="rounded-md p-8">
-          <div className="font-display font-bold text-lg text-ink-800 mb-4">Service includes</div>
-          <div className="grid gap-3">
-            {service.features.map((item) => (
-              <div key={item} className="flex items-start gap-3 text-sm text-ink-600">
-                <span className="w-5 h-5 rounded-pill bg-teal-500 text-white grid place-items-center text-xs shrink-0 mt-0.5">
-                  ✓
-                </span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </Card>
-      </section>
-
-      {/* Trust strip */}
-      <section className="bg-ink-900">
-        <div className="max-w-[1180px] mx-auto px-8 py-14">
-          <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-teal-500 mb-5">
-            Why move with Movera
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {trustStrip.map((item) => (
-              <div key={item} className="flex items-start gap-3 text-sm text-white/90">
-                <span className="w-5 h-5 rounded-pill bg-teal-500 text-white grid place-items-center text-xs shrink-0 mt-0.5">
-                  ✓
-                </span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <div className="max-w-[1180px] mx-auto px-8 pb-16 pt-16">
-        <CTABand />
-      </div>
+      <ClosingCtaBand cta={service.cta} />
 
       <Footer />
     </div>

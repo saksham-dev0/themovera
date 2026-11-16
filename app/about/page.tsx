@@ -1,41 +1,66 @@
-import { Card } from "@/components/ui/Card";
 import { Nav } from "@/components/ui/Nav";
-import { CTABand, Footer } from "@/components/ui/Footer";
+import { Footer } from "@/components/ui/Footer";
+import { ClosingCtaBand, ContentSections, PageHero, type Block } from "@/components/content/ContentBlocks";
+import { photos } from "@/components/content/images";
+
+const metaTitle = "About Movera | Melbourne Removalists";
+const metaDescription =
+  "Learn more about Movera and its removal services across Melbourne for homes, apartments, offices, furniture, packing and specialty items.";
 
 export const metadata = {
-  title: "About Us | Movera Removals & Storage",
-  description: "Family owned removalists with 8+ years serving Melbourne and surrounding suburbs.",
+  title: metaTitle,
+  description: metaDescription,
   alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About Us | Movera Removals & Storage",
-    description: "Family owned removalists with 8+ years serving Melbourne and surrounding suburbs.",
-    url: "/about",
-  },
+  openGraph: { title: metaTitle, description: metaDescription, url: "/about" },
 };
 
-const stats = [
-  { value: "5,000+", label: "MOVES COMPLETED" },
-  { value: "4.8★", label: "FROM 2,700+ REVIEWS" },
-  { value: "8+ yrs", label: "IN BUSINESS" },
-  { value: "$100k", label: "GOODS-IN-TRANSIT COVER" },
-];
-
-const values = [
+const sections: Block[] = [
   {
-    title: "Family owned, not a bidding site",
-    body: "Movera is family owned and operated. When you call us, you're talking to the people who run the crews — not a call centre passing your details around to the highest bidder.",
+    heading: "Moving Support Across Melbourne",
+    body: [
+      "Movera works with customers in Melbourne and nearby suburbs.",
+      "This includes areas such as Melbourne CBD, South Melbourne, Port Melbourne, Richmond, South Yarra, Fitzroy, Carlton, Preston, Reservoir, Box Hill and Doncaster.",
+      "Different parts of Melbourne can bring different moving challenges. Central areas may involve limited parking or building access, while larger suburban properties may involve more furniture and longer carrying distances.",
+    ],
+    image: photos.houseStreet("Movera removalists moving a household in a Melbourne suburb"),
   },
   {
-    title: "Vetted crews, start to finish",
-    body: "Every move is handled by a trained, background-checked moving team — our own crews and trusted local partners we hold to the same standard, so the service is consistent every time.",
+    heading: "Services for Different Types of Moves",
+    body: ["Movera supports a range of moving needs, including:"],
+    list: [
+      "Local house and apartment moves",
+      "Office and commercial relocations",
+      "Packing and unpacking",
+      "Furniture removals",
+      "Specialty item removals",
+      "Loading and unloading",
+    ],
+    after: ["Customers may need one service or a combination depending on the move."],
+    links: [
+      { label: "Local Removals", href: "/services/local-removals" },
+      { label: "Office & Commercial Relocations", href: "/services/office-commercial-relocations" },
+      { label: "Packing & Unpacking", href: "/services/packing-unpacking" },
+      { label: "Furniture Removals", href: "/services/furniture-removals" },
+      { label: "Specialty Item Removals", href: "/services/specialty-item-removals" },
+      { label: "Loading & Unloading", href: "/services/loading-unloading" },
+    ],
   },
   {
-    title: "A genuine quote, every time",
-    body: "We assess volume, distance and access up front, then quote based on the actual work involved. What we assess is what we quote, and what we quote is what's on the invoice.",
+    heading: "Planning Around the Property",
+    body: [
+      "The layout of the property can affect how a move is handled.",
+      "Stairs, lifts, parking, loading areas and narrow entrances can all change how much planning is required.",
+      "Before the move, it helps to share these details so the job can be arranged around the actual property rather than only the distance between addresses.",
+    ],
+    image: photos.loading("Movera crew planning and loading a move"),
   },
   {
-    title: "Careful with what matters",
-    body: "From everyday furniture to pianos and antiques, every item is wrapped, handled and placed with the same level of care.",
+    heading: "A Practical Approach to Moving",
+    body: [
+      "Movera focuses on understanding what needs to be moved before the job begins.",
+      "For some customers, that may mean moving most of a household. For others, it may only involve selected furniture, office equipment or a few larger items.",
+      "Providing clear information about the property and belongings helps make the move easier to plan.",
+    ],
   },
 ];
 
@@ -44,54 +69,28 @@ export default function AboutPage() {
     <div className="bg-gray-50 font-sans text-ink-600">
       <Nav />
 
-      <section className="max-w-[1180px] mx-auto px-8 pt-16 pb-10">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-6">
-          About Movera
-        </div>
-        <h1 className="font-display font-bold text-5xl leading-[1.1] text-ink-800 m-0 mb-6 max-w-[720px]">
-          Reliable Removalists Melbourne Trusts.
-        </h1>
-        <p className="text-[17px] leading-[1.65] max-w-[640px]">
-          Movera is a family owned and operated removals company serving Melbourne and surrounding suburbs. Over
-          8+ years in business, our trained crews and partner teams have completed 5,000+ moves — homes, offices,
-          and everything in between — always with a quote based on the actual work involved, and one point of
-          accountability.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="About Movera"
+        title="About Movera"
+        intro={[
+          "Movera provides removal services for homes, apartments and businesses across Melbourne.",
+          "The work can range from a local house move to an office relocation, furniture-only job, packing support or moving larger specialty items. The service is based around the details of each job, including the property, access and what needs to be moved.",
+        ]}
+        image={photos.team("The Movera removals team in Melbourne")}
+        ctaLabel="Request a Moving Quote"
+      />
 
-      <section className="bg-white border-y border-border">
-        <div className="max-w-[1180px] mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div className="font-display font-bold text-3xl text-teal-500 mb-1.5">{s.value}</div>
-              <div className="text-xs font-display font-semibold tracking-[1.2px] uppercase text-ink-400">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ContentSections blocks={sections} />
 
-      <section className="max-w-[1180px] mx-auto px-8 py-16">
-        <div className="text-xs font-display font-semibold tracking-[1.5px] uppercase text-ink-400 mb-3">
-          What We Stand For
-        </div>
-        <h2 className="font-display font-bold text-[28px] text-ink-800 m-0 mb-8 max-w-[640px]">
-          Every move, handled properly
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {values.map((v) => (
-            <Card key={v.title}>
-              <div className="font-display font-semibold text-[16px] text-ink-800 mb-2">{v.title}</div>
-              <p className="m-0 text-sm leading-[1.6]">{v.body}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <div className="max-w-[1180px] mx-auto px-8 pb-16">
-        <CTABand />
-      </div>
+      <ClosingCtaBand
+        cta={{
+          heading: "Need Help With a Move in Melbourne?",
+          body: [
+            "If you are planning a move, send Movera the pickup location, delivery location, preferred date and an idea of what needs to be moved.",
+          ],
+          label: "Request a Moving Quote",
+        }}
+      />
 
       <Footer />
     </div>
