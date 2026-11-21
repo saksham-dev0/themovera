@@ -98,3 +98,20 @@ body {
   content-visibility: auto;
   contain-intrinsic-size: auto 700px;
 }
+
+/* CRM: print only the quotation document. */
+@media print {
+  body.printing-quote * {
+    visibility: hidden;
+  }
+  body.printing-quote #quote-print,
+  body.printing-quote #quote-print * {
+    visibility: visible;
+  }
+  body.printing-quote #quote-print {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    border: 0;
+  }
+}

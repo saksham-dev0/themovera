@@ -10,7 +10,7 @@ const CAMPAIGN_BCC_ADDRESS = process.env.CAMPAIGN_BCC_ADDRESS ?? "campaign@themo
 const PHONE_DISPLAY = "03 7074 1820";
 
 /** Minimal HTML escaping — every value below is customer-supplied. */
-function esc(value: unknown) {
+export function esc(value: unknown) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -18,7 +18,7 @@ function esc(value: unknown) {
     .replace(/"/g, "&quot;");
 }
 
-async function sendEmail(payload: {
+export async function sendEmail(payload: {
   to: string[];
   bcc?: string[];
   subject: string;

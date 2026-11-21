@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/design-system", "/local-movers-melbourne/thank-you", "/api/"],
+        disallow: ["/design-system", "/local-movers-melbourne/thank-you", "/api/", "/crm"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
