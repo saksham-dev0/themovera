@@ -17,10 +17,10 @@ export function QuotePreview({ data, number, createdAt }: { data: EstimateData; 
   if (q.pricingType === "hourly") {
     rows.push([
       `Labour — ${l.crewSize} removalists + ${l.trucks} × ${l.truckSize} truck`,
-      `${t.billableHours} hrs × ${money(l.hourlyRate, true)}${l.travelHours ? ` (incl. ${l.travelHours} h travel)` : ""}`,
+      `${t.movingHours} hrs moving${l.travelHours ? ` + ${l.travelHours} hr call-out` : ""} × ${money(l.hourlyRate, true)}/hr`,
       t.labourCost,
     ]);
-    if (t.movingFee) rows.push(["Call-out / travel fee", "", t.movingFee]);
+    if (t.movingFee) rows.push(["Moving fee", "", t.movingFee]);
   } else {
     rows.push([`Fixed price move — ${l.crewSize} removalists + ${l.trucks} × ${l.truckSize} truck`, "", t.labourCost]);
   }

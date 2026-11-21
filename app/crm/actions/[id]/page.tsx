@@ -249,11 +249,11 @@ function Builder({ estimate }: { estimate: Loaded }) {
               <Row k="Inventory" v={`${t.itemCount} items · ${t.volume} m³`} />
               <Row k="Crew / trucks" v={`${data.labour.crewSize} × ${data.labour.trucks} ${data.labour.truckSize}`} />
               {data.quotation.pricingType === "hourly" ? (
-                <Row k={`Labour ${t.billableHours} h × ${money(data.labour.hourlyRate)}`} v={money(t.labourCost)} />
+                <Row k={`Labour ${t.movingHours} h + ${data.labour.travelHours} h call-out × ${money(data.labour.hourlyRate)}`} v={money(t.labourCost)} />
               ) : (
                 <Row k="Fixed price" v={money(t.labourCost)} />
               )}
-              {t.movingFee > 0 && <Row k="Call-out fee" v={money(t.movingFee)} />}
+              {t.movingFee > 0 && <Row k="Moving fee" v={money(t.movingFee)} />}
               {t.packingCost > 0 && <Row k="Packing" v={money(t.packingCost)} />}
               {t.accessFees > 0 && <Row k="Stairs / heavy" v={money(t.accessFees)} />}
               {t.materialsTotal > 0 && <Row k="Materials" v={money(t.materialsTotal)} />}

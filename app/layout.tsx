@@ -22,6 +22,9 @@ const mulish = Mulish({
 // One gtag.js load serves both the Analytics and Ads IDs.
 const GOOGLE_ANALYTICS_ID = "G-S2KBYP9ZMN";
 const GOOGLE_ADS_ID = "AW-18470170169";
+// ClickTrue click-fraud tracking (client-supplied snippet). Script goes at the
+// start of <head>, the noscript fallback at the start of <body>.
+const CLICKTRUE_ID = "6be66136d72a67df93dcefcdf30eae26";
 const GOOGLE_SITE_VERIFICATION = "Nhq-XZ65njsEGpLASrNwVb34hLunEi_bpaneCAC3dLc";
 
 const title = "Removalists Melbourne | Movera — Furniture & House Movers";
@@ -78,7 +81,22 @@ export default function RootLayout({
       lang="en-AU"
       className={`${poppins.variable} ${mulish.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          async
+          src={`https://ob.sornavellon.com/i/${CLICKTRUE_ID}.js`}
+          className="ct_clicktrue"
+        />
+      </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
+        <noscript>
+          <iframe
+            src={`https://ob.sornavellon.com/ns/${CLICKTRUE_ID}.html?ch=`}
+            width="0"
+            height="0"
+            style={{ display: "none" }}
+          />
+        </noscript>
         <JsonLd data={[organizationSchema, websiteSchema]} />
         {children}
         <Script

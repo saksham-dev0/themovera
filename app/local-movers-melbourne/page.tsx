@@ -36,13 +36,13 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, organizationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Local Movers Melbourne | Two Men and a Truck from $130/hr — Movera",
+  title: "Local Movers Melbourne | Two Men and a Truck from $135/hr — Movera",
   description:
-    "Hire local removalists in Melbourne. Two Men and a Truck from $130/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    "Hire local removalists in Melbourne. Two Men and a Truck from $135/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
   alternates: { canonical: "/local-movers-melbourne" },
   openGraph: {
-    title: "Local Movers Melbourne | Two Men and a Truck from $130/hr — Movera",
-    description: "Hire local removalists in Melbourne. Two Men and a Truck from $130/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
+    title: "Local Movers Melbourne | Two Men and a Truck from $135/hr — Movera",
+    description: "Hire local removalists in Melbourne. Two Men and a Truck from $135/hr, cheap furniture removals, packers and movers, $100k cover. Trusted, reliable and efficient removalists near me.",
     url: "/local-movers-melbourne",
   },
 };

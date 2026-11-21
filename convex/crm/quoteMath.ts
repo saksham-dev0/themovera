@@ -12,6 +12,7 @@ import type {
   estimateQuotation,
   estimateStorage,
 } from "../schema";
+import { truckRates } from "../../lib/pricing";
 
 export type MoveInfo = Infer<typeof estimateMoveInfo>;
 export type InventoryItem = Infer<typeof estimateInventoryItem>;
@@ -31,16 +32,26 @@ export type EstimateData = {
 
 export const GST_RATE = 0.1;
 
+/** Usable load volume per truck size, in m³. */
+const CAPACITY: Record<string, number> = { Small: 20, Medium: 30, Large: 40, "Extra-Large": 50 };
+
 /**
- * Truck sizes and customer hourly rates (2 removalists), matching the public
- * /pricing page (lib/pricing.ts). `capacity` is usable load volume in m³.
+ * Truck sizes and customer hourly rates (2 removalists), read straight from
+ * lib/pricing.ts — the same source as the public /pricing page — so a price
+ * change on the website automatically flows into every CRM quote.
  */
-export const TRUCKS = [
-  { size: "Small", capacity: 20, rate: 130 },
-  { size: "Medium", capacity: 30, rate: 140 },
-  { size: "Large", capacity: 40, rate: 150 },
-  { size: "Extra-Large", capacity: 50, rate: 160 },
-] as const;
+export const TRUCKS: { size: string; capacity: number; rate: number }[] = truckRates.map((t) => ({
+  size: t.size,
+  capacity: CAPACITY[t.size] ?? 20,
+  rate: Number(t.rate.replace(/[^\d.]/g, "")),
+}));
+
+/** Billing rules published on the website (local-movers-melbourne, terms). */
+export const MINIMUM_HOURS = 2;
+/** Time after the minimum is billed in this increment (hours). */
+export const BILLING_INCREMENT = 0.5;
+/** Half-hour call-out covers depot-to-site travel, charged at the hourly rate. */
+export const CALL_OUT_HOURS = 0.5;
 
 /** Added to the hourly rate for every removalist beyond the included two. */
 export const EXTRA_MOVER_RATE = 55;
@@ -53,9 +64,9 @@ export function round2(n: number) {
   return Math.round(n * 100) / 100;
 }
 
-/** Round hours up to the nearest quarter hour. */
-export function quarterHours(n: number) {
-  return Math.ceil(n * 4) / 4;
+/** Round hours up to the billing increment (30 minutes). */
+export function billableIncrement(n: number) {
+  return Math.ceil(round2(n) / BILLING_INCREMENT) * BILLING_INCREMENT;
 }
 
 export function inventoryVolume(items: InventoryItem[]) {
@@ -108,7 +119,7 @@ export function suggestLabour(moveInfo: MoveInfo, volume: number) {
   const workHours = volume > 0 ? (volume / (crewSize * M3_PER_MOVER_HOUR)) * factor : 0;
   const stopHours = moveInfo.extraStops * 0.5;
   const driveHours = moveInfo.distanceKm > 0 ? moveInfo.distanceKm / 40 : 0; // ~40 km/h metro
-  const estimatedHours = quarterHours(Math.max(2, workHours + stopHours + driveHours));
+  const estimatedHours = billableIncrement(Math.max(MINIMUM_HOURS, workHours + stopHours + driveHours));
 
   return {
     trucks,
@@ -131,6 +142,9 @@ export function storageTotal(s: Storage) {
 export type QuoteTotals = {
   volume: number;
   itemCount: number;
+  /** Moving hours after the minimum and 30-minute rounding (excludes call-out). */
+  movingHours: number;
+  /** movingHours + call-out/travel hours — what the hourly rate is charged on. */
   billableHours: number;
   labourCost: number;
   packingCost: number;
@@ -150,12 +164,14 @@ export type QuoteTotals = {
 };
 
 /**
- * The full quotation. For hourly quotes the range is ± `hoursSpread` hours of
- * labour; fixed quotes have no range.
+ * The full quotation. Hourly: moving hours are rounded up to 30 minutes with
+ * the minimum applied, then the call-out (travel) hours are added on top. The
+ * range is ± `hoursSpread` hours of moving time; fixed quotes have no range.
  */
 export function computeQuote(e: EstimateData): QuoteTotals {
   const { labour: l, quotation: q } = e;
-  const billableHours = Math.max(l.minimumHours, l.estimatedHours + l.travelHours);
+  const movingHours = Math.max(l.minimumHours, billableIncrement(l.estimatedHours));
+  const billableHours = movingHours + l.travelHours;
 
   const labourCost = q.pricingType === "fixed" ? q.fixedPrice : round2(billableHours * l.hourlyRate);
   const packingCost = round2(l.packingHours * l.packingRate);
@@ -181,14 +197,15 @@ export function computeQuote(e: EstimateData): QuoteTotals {
   if (q.pricingType === "hourly" && q.hoursSpread > 0) {
     const gstMul =
       (q.includeGst ? 1 + GST_RATE : 1) * (q.discountType === "percent" ? 1 - q.discount / 100 : 1);
-    const lowHours = Math.max(l.minimumHours, billableHours - q.hoursSpread);
-    low = round2(total - (billableHours - lowHours) * l.hourlyRate * gstMul);
+    const lowHours = Math.max(l.minimumHours, movingHours - q.hoursSpread);
+    low = round2(total - (movingHours - lowHours) * l.hourlyRate * gstMul);
     high = round2(total + q.hoursSpread * l.hourlyRate * gstMul);
   }
 
   return {
     volume: inventoryVolume(e.inventory),
     itemCount: inventoryCount(e.inventory),
+    movingHours,
     billableHours,
     labourCost,
     packingCost,
@@ -209,7 +226,9 @@ export function computeQuote(e: EstimateData): QuoteTotals {
 }
 
 export const DEFAULT_TERMS =
-  "Hourly quotes are charged in 15-minute increments after the minimum hours, from arrival at pickup to completion at drop-off, plus the call-out fee. " +
-  "Includes $100,000 goods-in-transit cover, blankets, trolleys and straps. " +
+  "Hourly moves have a minimum booking of 2 hours, then are charged in 30-minute increments from arrival at pickup to completion at drop-off. " +
+  "A half-hour call-out fee covers depot-to-site travel — no depot-to-depot charges. " +
+  "Includes $100,000 goods-in-transit cover, blankets, trolleys and straps. Packing materials, piano and pool-table handling are quoted separately. " +
   "Fixed-price quotes cover the inventory listed; additional items may change the price. " +
-  "A deposit secures your booking and is deducted from the final invoice. Cancellations within 48 hours of the move may forfeit the deposit.";
+  "A deposit secures your booking and is deducted from the final invoice. Cancellations or date changes within 7 days of the move forfeit the deposit. " +
+  "Payment is due on completion; card payments incur a 1.8% surcharge.";

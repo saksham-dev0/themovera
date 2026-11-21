@@ -15,6 +15,8 @@ import {
 } from "@/lib/crm/constants";
 import { money } from "@/lib/crm/format";
 import {
+  CALL_OUT_HOURS,
+  MINIMUM_HOURS,
   TRUCKS,
   computeQuote,
   inventoryVolume,
@@ -573,11 +575,15 @@ export function LabourStep({ data, change }: StepProps) {
       <div>
         <H>Time</H>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <Field label="Moving hours (est.)">{(id) => <NumberInput id={id} step={0.25} value={l.estimatedHours} suffix="hrs" onChange={(n) => set("estimatedHours", n)} />}</Field>
-          <Field label="Travel time (depot)" hint="Charged at the hourly rate">
-            {(id) => <NumberInput id={id} step={0.25} value={l.travelHours} suffix="hrs" onChange={(n) => set("travelHours", n)} />}
+          <Field label="Moving hours (est.)" hint="Billed in 30-min increments">
+            {(id) => <NumberInput id={id} step={0.5} value={l.estimatedHours} suffix="hrs" onChange={(n) => set("estimatedHours", n)} />}
           </Field>
-          <Field label="Minimum hours">{(id) => <NumberInput id={id} step={0.5} value={l.minimumHours} suffix="hrs" onChange={(n) => set("minimumHours", n)} />}</Field>
+          <Field label="Call-out (depot travel)" hint={`Standard: ${CALL_OUT_HOURS} hr at the hourly rate`}>
+            {(id) => <NumberInput id={id} step={0.5} value={l.travelHours} suffix="hrs" onChange={(n) => set("travelHours", n)} />}
+          </Field>
+          <Field label="Minimum hours" hint={`Standard: ${MINIMUM_HOURS} hrs`}>
+            {(id) => <NumberInput id={id} step={0.5} value={l.minimumHours} suffix="hrs" onChange={(n) => set("minimumHours", n)} />}
+          </Field>
         </div>
       </div>
 
@@ -660,10 +666,16 @@ export function QuotationStep({ data, change }: StepProps) {
           <Field label="Hourly rate">{(id) => <NumberInput id={id} prefix="$" suffix="/hr" value={l.hourlyRate} onChange={(n) => setL("hourlyRate", n)} />}</Field>
           <Field label="Crew size">{(id) => <NumberInput id={id} min={1} value={l.crewSize} onChange={(n) => setL("crewSize", n)} />}</Field>
           <Field label="Trucks">{(id) => <NumberInput id={id} value={l.trucks} onChange={(n) => setL("trucks", n)} />}</Field>
-          <Field label="Moving hours">{(id) => <NumberInput id={id} step={0.25} value={l.estimatedHours} suffix="hrs" onChange={(n) => setL("estimatedHours", n)} />}</Field>
+          <Field label="Moving hours" hint="30-min increments">
+            {(id) => <NumberInput id={id} step={0.5} value={l.estimatedHours} suffix="hrs" onChange={(n) => setL("estimatedHours", n)} />}
+          </Field>
           <Field label="Minimum hours">{(id) => <NumberInput id={id} step={0.5} value={l.minimumHours} suffix="hrs" onChange={(n) => setL("minimumHours", n)} />}</Field>
-          <Field label="Moving / call-out fee">{(id) => <NumberInput id={id} prefix="$" value={q.movingFee} onChange={(n) => setQ("movingFee", n)} />}</Field>
-          <Field label="Travel time">{(id) => <NumberInput id={id} step={0.25} value={l.travelHours} suffix="hrs" onChange={(n) => setL("travelHours", n)} />}</Field>
+          <Field label="Call-out (travel)" hint={`${money(l.travelHours * l.hourlyRate)} at hourly rate`}>
+            {(id) => <NumberInput id={id} step={0.5} value={l.travelHours} suffix="hrs" onChange={(n) => setL("travelHours", n)} />}
+          </Field>
+          <Field label="Moving fee (flat)" hint="Optional extra flat fee">
+            {(id) => <NumberInput id={id} prefix="$" value={q.movingFee} onChange={(n) => setQ("movingFee", n)} />}
+          </Field>
           <Field label="Quote range ±" hint="Shown to the customer as a price range">
             {(id) => <NumberInput id={id} step={0.5} value={q.hoursSpread} suffix="hrs" onChange={(n) => setQ("hoursSpread", n)} />}
           </Field>

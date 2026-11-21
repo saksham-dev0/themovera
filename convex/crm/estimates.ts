@@ -13,7 +13,7 @@ import {
 } from "../schema";
 import { num, requireStaff, requireStaffMutation, text } from "./session";
 import { setLeadStatus } from "./leads";
-import { DEFAULT_TERMS, computeQuote, standardHourlyRate, type EstimateData } from "./quoteMath";
+import { CALL_OUT_HOURS, DEFAULT_TERMS, MINIMUM_HOURS, computeQuote, standardHourlyRate, type EstimateData } from "./quoteMath";
 import { esc, sendEmail } from "../emails";
 
 const MAX_INVENTORY = 600;
@@ -75,8 +75,8 @@ function blankEstimate(lead: Doc<"quoteRequests">): EstimateData {
       truckSize: "Small",
       hourlyRate: standardHourlyRate("Small", 2, 1),
       estimatedHours: 3,
-      minimumHours: 2,
-      travelHours: 0.5,
+      minimumHours: MINIMUM_HOURS,
+      travelHours: CALL_OUT_HOURS,
       packingHours: 0,
       packingRate: 65,
       stairFee: 0,
@@ -385,8 +385,13 @@ function quoteEmailHtml(e: Doc<"estimates">, staffName: string) {
   const rows: string[] = [];
   if (q.pricingType === "hourly") {
     rows.push(row(`${l.crewSize} removalists + ${l.trucks} ${l.truckSize} truck${l.trucks > 1 ? "s" : ""}`, `${money(l.hourlyRate)}/hr`));
-    rows.push(row(`Estimated ${t.billableHours} hrs (min ${l.minimumHours} hrs)`, money(t.labourCost)));
-    if (t.movingFee) rows.push(row("Call-out / travel fee", money(t.movingFee)));
+    rows.push(
+      row(
+        `Estimated ${t.movingHours} hrs moving (min ${l.minimumHours} hrs)${l.travelHours ? ` + ${l.travelHours} hr call-out` : ""}`,
+        money(t.labourCost),
+      ),
+    );
+    if (t.movingFee) rows.push(row("Moving fee", money(t.movingFee)));
   } else {
     rows.push(row("Fixed moving price", money(t.labourCost)));
   }
